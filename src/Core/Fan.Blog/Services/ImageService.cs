@@ -205,7 +205,6 @@ namespace Fan.Blog.Services
         public async Task DeleteAsync(int mediaId)
         {
             var media = await _mediaSvc.GetMediaAsync(mediaId);
-            var resizes = GetImageResizeList(media.UploadedOn);
             var resizeCount = media.ResizeCount; // how many files to delete
 
             // delete file from storage
