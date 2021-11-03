@@ -7,6 +7,11 @@ namespace Fan.Blog.Helpers
     /// </summary>
     public class BlogCache
     {
+        protected BlogCache()
+        {
+            //
+        }
+
         public const string KEY_POSTS_INDEX = "BlogPostsIndex";
         public const string KEY_POSTS_RECENT = "BlogPostsRecent";
         public const string KEY_POST = "BlogPost_{0}_{1}_{2}_{3}";

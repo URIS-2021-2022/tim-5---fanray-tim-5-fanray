@@ -120,7 +120,7 @@ namespace Fan.Blog.Models
         /// Post title.
         /// </summary>
         /// <remarks>
-        /// TODO consider removing the maxlen requirement since there is no index on this field.
+        ///
         /// </remarks>
         [StringLength(maximumLength: 256)]
         public string Title { get; set; }
@@ -134,7 +134,7 @@ namespace Fan.Blog.Models
         /// When user last updated a draft, when the post is published this value is null.
         /// </summary>
         /// <remarks>
-        /// TODO: This actually should be called DraftSavedOn
+        ///
         /// </remarks>
         public DateTimeOffset? UpdatedOn { get; set; }
 
