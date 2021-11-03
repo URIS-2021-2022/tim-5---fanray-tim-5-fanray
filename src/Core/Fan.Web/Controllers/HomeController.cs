@@ -106,7 +106,7 @@ namespace Fan.Web.Controllers
             var error = feature?.Error;
 
             // FanException occurred unhandled
-            if (error !=null && error is FanException)
+            if (error is FanException)
             {
                 return ((FanException)error).ExceptionType == EExceptionType.ResourceNotFound ? 
                     View("404") :

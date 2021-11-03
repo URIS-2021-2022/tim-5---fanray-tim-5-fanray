@@ -8,6 +8,11 @@ namespace Fan.Blog.Helpers
 {
     public class BlogUtil
     {
+        protected BlogUtil()
+        {
+            //
+        }
+
         /// <summary>
         /// Returns a valid slug for a category or tag.
         /// </summary>

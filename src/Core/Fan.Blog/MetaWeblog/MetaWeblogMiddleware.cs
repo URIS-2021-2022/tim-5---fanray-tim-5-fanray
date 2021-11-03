@@ -13,8 +13,8 @@ namespace Fan.Blog.MetaWeblog
     /// </summary>
     public class MetaWeblogMiddleware
     {
-        private ILoggerFactory _loggerFactory;
-        private ILogger<MetaWeblogMiddleware> _logger;
+        private readonly ILoggerFactory _loggerFactory;
+        private readonly ILogger<MetaWeblogMiddleware> _logger;
 
         public MetaWeblogMiddleware(RequestDelegate next, ILoggerFactory loggerFactory)
         {

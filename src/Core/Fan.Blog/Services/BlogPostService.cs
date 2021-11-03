@@ -77,69 +77,69 @@ namespace Fan.Blog.Services
         /// <remarks>
         /// It creates tags, post and invalidates cache for posts on index page.
         /// </remarks>
-        public async Task<BlogPost> CreateAsync(BlogPost blogPost)
+        public async Task<BlogPost> CreateAsync(BlogPost post)
         {
             // validate
-            if (blogPost == null) throw new ArgumentNullException(nameof(blogPost));
-            await blogPost.ValidateTitleAsync();
+            if (post == null) throw new ArgumentNullException(nameof(post));
+            await post.ValidateTitleAsync();
 
             // prep
-            var post = await ConvertToPostAsync(blogPost, ECreateOrUpdate.Create);
+            var postAsync = await ConvertToPostAsync(post, ECreateOrUpdate.Create);
 
             // before create
             await mediator.Publish(new BlogPostBeforeCreate
             {
-                CategoryTitle = blogPost.CategoryTitle,
-                TagTitles = blogPost.TagTitles
+                CategoryTitle = post.CategoryTitle,
+                TagTitles = post.TagTitles
             });
 
             // create (post will get new id)
-            await postRepository.CreateAsync(post, blogPost.CategoryTitle, blogPost.TagTitles);
+            await postRepository.CreateAsync(postAsync, post.CategoryTitle, post.TagTitles);
 
             // invalidate cache only when published
-            if (blogPost.Status == EPostStatus.Published)
+            if (post.Status == EPostStatus.Published)
             {
                 await RemoveBlogCacheAsync();
             }
 
             // after create
-            await mediator.Publish(new BlogPostCreated { BlogPost = blogPost });
+            await mediator.Publish(new BlogPostCreated { BlogPost = post });
 
-            return await GetAsync(post.Id);
+            return await GetAsync(postAsync.Id);
         }
 
         /// <summary>
         /// Updates a <see cref="BlogPost"/>.
         /// </summary>
         /// <param name="blogPost">Contains incoming blog post data to update.</param>
-        public async Task<BlogPost> UpdateAsync(BlogPost blogPost)
+        public async Task<BlogPost> UpdateAsync(BlogPost post)
         {
             // validate
-            if (blogPost == null || blogPost.Id <= 0) throw new ArgumentException(null, nameof(blogPost));
-            await blogPost.ValidateTitleAsync();
+            if (post == null || post.Id <= 0) throw new ArgumentException(null, nameof(post));
+            await post.ValidateTitleAsync();
 
             // prep current post with blog post
-            var post = await ConvertToPostAsync(blogPost, ECreateOrUpdate.Update);
+            var postAsync = await ConvertToPostAsync(post, ECreateOrUpdate.Update);
 
             // before update
             await mediator.Publish(new BlogPostBeforeUpdate
             {
-                CategoryTitle = blogPost.CategoryTitle,
-                TagTitles = blogPost.TagTitles,
-                PostTags = post.PostTags,
+                CategoryTitle = post.CategoryTitle,
+                TagTitles = post.TagTitles,
+                PostTags = postAsync.PostTags,
             });
 
             // update
-            await postRepository.UpdateAsync(post, blogPost.CategoryTitle, blogPost.TagTitles);
+            await postRepository.UpdateAsync(postAsync, post.CategoryTitle, post.TagTitles);
 
             // invalidate cache 
             await RemoveBlogCacheAsync();
-            await RemoveSinglePostCacheAsync(post);
+            await RemoveSinglePostCacheAsync(postAsync);
 
             // after update
-            await mediator.Publish(new BlogPostUpdated { BlogPost = blogPost });
+            await mediator.Publish(new BlogPostUpdated { BlogPost = post });
 
-            return await GetAsync(post.Id);
+            return await GetAsync(postAsync.Id);
         }
 
         /// <summary>
