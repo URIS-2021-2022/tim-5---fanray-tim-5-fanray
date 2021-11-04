@@ -116,7 +116,7 @@ namespace Fan.Blog.Services
         /// depends on entire tags. If any filtering needs to be done for presentation purpose, then
         /// it must be done in presentation layer.
         /// 
-        /// TODO: currently create and update post depend on all tags instead for querying each tag 
+        ///
         /// individually to db each time, this saves some db round trip. however there is fine line
         /// for how large the number of tags grow, in which case we need a better strategy.
         /// </remarks>
@@ -153,7 +153,6 @@ namespace Fan.Blog.Services
             // prep slug, description and count
             tag.Slug = BlogUtil.SlugifyTaxonomy(tag.Title, SLUG_MAXLEN, allTags.Select(c => c.Slug)); // slug is based on title
             tag.Description = Util.CleanHtml(tag.Description);
-            tag.Count = tag.Count;
 
             // create
             tag = await tagRepository.CreateAsync(tag);

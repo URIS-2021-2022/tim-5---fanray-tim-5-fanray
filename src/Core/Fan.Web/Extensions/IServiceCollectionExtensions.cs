@@ -57,7 +57,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 }
                 catch (Exception)
                 {
-                    continue;
+                    //
                 }
             }
 

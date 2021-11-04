@@ -51,6 +51,8 @@ namespace Fan.Tests.Data
             // When inserting the 2nd record, FanException will NOT throw
             await _repo.CreateAsync(meta);
             await _repo.CreateAsync(meta2);
+
+            Assert.IsTrue(true);
         }
 
         /// <summary>
