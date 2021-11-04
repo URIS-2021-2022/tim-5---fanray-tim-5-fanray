@@ -105,10 +105,12 @@ namespace Fan.Web.Controllers
             var feature = HttpContext.Features.Get<IExceptionHandlerFeature>();
             var error = feature?.Error;
 
+            var fanErr = error as FanException;
+
             // FanException occurred unhandled
-            if (error is FanException)
+            if (fanErr != null)
             {
-                return ((FanException)error).ExceptionType == EExceptionType.ResourceNotFound ? 
+                return fanErr.ExceptionType == EExceptionType.ResourceNotFound ? 
                     View("404") :
                     View("Error", error.Message);
             }

@@ -120,6 +120,8 @@ namespace Fan.Blog.Tests.Integration
                 Title = "Login",
                 Status = EPostStatus.Published,
             });
+
+            Assert.True(true);
         }
 
         /// <summary>

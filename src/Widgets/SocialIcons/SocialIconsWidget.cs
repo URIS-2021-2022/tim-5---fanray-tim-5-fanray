@@ -1,6 +1,7 @@
 ﻿using Fan.Widgets;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SocialIcons
 {
@@ -54,7 +55,7 @@ namespace SocialIcons
         /// Returns my initial social links for seeding.
         /// </summary>
         /// <returns></returns>
-        public static List<SocialLink> SocialLinkSeeds = new List<SocialLink>
+        public static readonly List<SocialLink> SocialLinkSeeds = new List<SocialLink>
         {
             new SocialLink { Icon = "rss", Url = "/feed" },
             new SocialLink { Icon = "twitter", Url = "https://twitter.com/fanraymedia" },
@@ -78,13 +79,14 @@ namespace SocialIcons
                 var socialLink = new SocialLink { Icon = "link", Url = url };
                 var uri = new Uri(url);
                 var host = uri.Host;
-                foreach (var icon in IconNames)
+
+                IEnumerable<string> icons = IconNames.Where(i => host.Contains(i, StringComparison.OrdinalIgnoreCase));
+
+                foreach (var icon in icons)
                 {
-                    if (host.Contains(icon, StringComparison.OrdinalIgnoreCase))
-                    {
-                        socialLink.Icon = icon;
-                        break;
-                    }
+                    socialLink.Icon = icon;
+
+                    break;
                 }
 
                 return socialLink;

@@ -22,7 +22,7 @@ namespace Shortcodes
         /// Language list is based on <see cref="http://alexgorbatchev.com/SyntaxHighlighter/manual/brushes/"/>
         /// and <see cref="https://en.support.wordpress.com/code/posting-source-code/"/> with modifications.
         /// </remarks>
-        private string[,] lang_alias_lookup = {
+        private readonly string[,] lang_alias_lookup = {
             { "as3", "as3" }, { "actionscript3", "as3" }, // ActionScript3
             { "bash", "bash" }, { "shell", "bash" }, // Bash
             { "clojure", "clojure" }, // Clojure
