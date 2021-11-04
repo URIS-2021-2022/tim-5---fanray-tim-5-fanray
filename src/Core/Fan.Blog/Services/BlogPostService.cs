@@ -142,6 +142,8 @@ namespace Fan.Blog.Services
             return await GetAsync(postAsync.Id);
         }
 
+        
+        
         /// <summary>
         /// Deletes a blog post and invalidates cache for posts on index page.
         /// </summary>

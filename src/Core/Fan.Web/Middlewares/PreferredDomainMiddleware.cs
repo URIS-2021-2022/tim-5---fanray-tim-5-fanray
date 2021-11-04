@@ -16,7 +16,7 @@ namespace Fan.Web.Middlewares
     public class PreferredDomainMiddleware
     {
         private readonly RequestDelegate _next;
-        private ILogger<PreferredDomainMiddleware> _logger;
+        private readonly ILogger<PreferredDomainMiddleware> _logger;
 
         /// <summary>
         /// Initializes the PreferredDomainMiddleware.

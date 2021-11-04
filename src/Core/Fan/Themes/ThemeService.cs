@@ -79,7 +79,9 @@ namespace Fan.Themes
 
             var themeDefinedAreas = themeToActivate.WidgetAreas.Where(ta => 
                                     !WidgetService.SystemDefinedWidgetAreaInfos.Any(sa => sa.Id == ta.Id));
-            foreach (var area in themeDefinedAreas)
+
+           
+           foreach (var area in themeDefinedAreas)
             {
                 var key = string.Format($"{folderName}-{area.Id}").ToLower();
 

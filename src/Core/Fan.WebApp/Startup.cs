@@ -120,7 +120,7 @@ namespace Fan.WebApp
             });
                  
             // MVC, Razor Pages, TempData, Json.net
-            var builder = services.AddMvc() // https://bit.ly/2XTLFZB
+                var builder = services.AddMvc() // https://bit.ly/2XTLFZB
                 .AddApplicationPart(typeof(HomeController).Assembly) // https://bit.ly/2Zbbe8I
                 .AddSessionStateTempDataProvider()
                 .AddNewtonsoftJson(options => {

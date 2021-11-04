@@ -44,13 +44,13 @@ namespace Fan.Data
         /// <exception cref="FanException">
         /// Throws if insert violates unique key constraint. See <see cref="https://stackoverflow.com/a/47465944/32240"/>
         /// </exception>
-        public virtual async Task<T> CreateAsync(T entity)
+        public virtual async Task<T> CreateAsync(T obj)
         {
             try
             {
-                await _entities.AddAsync(entity);
+                await _entities.AddAsync(obj);
                 await _db.SaveChangesAsync();
-                return entity;
+                return obj;
             }
             catch (DbUpdateException dbUpdEx) 
             {

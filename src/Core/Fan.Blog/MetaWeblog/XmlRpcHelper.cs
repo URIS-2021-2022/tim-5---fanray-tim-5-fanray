@@ -19,7 +19,7 @@ namespace Fan.Blog.MetaWeblog
     /// </remarks>
     public class XmlRpcHelper : IXmlRpcHelper
     {
-        private ILogger<XmlRpcHelper> _logger;
+        private readonly ILogger<XmlRpcHelper> _logger;
 
         public XmlRpcHelper(ILogger<XmlRpcHelper> logger)
         {
@@ -255,10 +255,10 @@ namespace Fan.Blog.MetaWeblog
             return sw.ToString();
         }
 
-        public string BuildOutput(string methodName, XmlRpcResponse response)
+        public string BuildOutput(string requestMethodName, XmlRpcResponse response)
         {            
             XElement ele = null;
-            switch (methodName)
+            switch (requestMethodName)
             {
                 case "metaWeblog.newPost":
                     ele = BuildNewPost(response);
@@ -300,7 +300,7 @@ namespace Fan.Blog.MetaWeblog
                     break;
 
                 default:
-                    throw new MetaWeblogException(EMetaWeblogCode.UnknownMethod, $"Unknown Method ({methodName}).");
+                    throw new MetaWeblogException(EMetaWeblogCode.UnknownMethod, $"Unknown Method ({requestMethodName}).");
             }
 
             var doc = new XDocument(new XElement("methodResponse",
