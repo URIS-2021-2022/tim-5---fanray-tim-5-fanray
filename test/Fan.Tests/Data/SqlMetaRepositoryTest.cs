@@ -52,7 +52,7 @@ namespace Fan.Tests.Data
             await _repo.CreateAsync(meta);
             await _repo.CreateAsync(meta2);
 
-            Assert.IsTrue(true);
+            Assert.True(true);
         }
 
         /// <summary>

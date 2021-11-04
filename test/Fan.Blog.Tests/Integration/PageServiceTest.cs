@@ -121,7 +121,7 @@ namespace Fan.Blog.Tests.Integration
                 Status = EPostStatus.Published,
             });
 
-            Assert.IsTrue(true);
+            Assert.True(true);
         }
 
         /// <summary>
