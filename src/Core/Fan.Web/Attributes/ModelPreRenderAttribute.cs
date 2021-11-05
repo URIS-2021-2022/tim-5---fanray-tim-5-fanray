@@ -1,4 +1,5 @@
-﻿using Fan.Blog.Models.View;
+﻿using System;
+using Fan.Blog.Models.View;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -51,6 +52,7 @@ namespace Fan.Web.Attributes
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
+            throw new NotSupportedException();
         }
     }
 }

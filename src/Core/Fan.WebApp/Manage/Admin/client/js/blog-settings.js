@@ -9,7 +9,7 @@
         ],
         postPerPageRules: [
             v => !!v || 'Required',
-            v => /^[0-9]+$/.test(v) || 'Integer only',
+            v => /^[\d]+$/.test(v) || 'Integer only',
             v => (parseInt(v) >= 1 && parseInt(v) <= 50) || 'Must be between 1 and 50',
         ],
         errMsg: '',

@@ -48,7 +48,7 @@ namespace Fan.Blog.MetaWeblog
 
         // -------------------------------------------------------------------- Posts
 
-        public async Task<string> NewPostAsync(string blogid, string userName, string password, MetaPost post, bool publish)
+        public async Task<string> NewPostAsync(string blogId, string userName, string password, MetaPost post, bool publish)
         {
             var user = await ValidUserAsync(userName, password);
 

@@ -14,6 +14,13 @@ namespace Fan.Helpers
         /// </summary>
         /// <param name="body">A post body.</param>
         /// <returns></returns>
+        /// 
+
+        protected OembedParser()
+        {
+
+        }
+
         public static string Parse(string body)
         {
             if (body.IsNullOrEmpty()) return body;
