@@ -54,7 +54,7 @@ namespace Fan.Blog.Services
         /// <summary>
         /// validFileTypes: ['.jpg', '.jpeg', '.png', '.gif']
         /// </summary>
-        public static string ValidFileTypesJson = JsonConvert.SerializeObject(Accepted_Image_Types);
+        public static readonly string ValidFileTypesJson = JsonConvert.SerializeObject(Accepted_Image_Types);
 
         /// <summary>
         /// Max image file size is 5MB.

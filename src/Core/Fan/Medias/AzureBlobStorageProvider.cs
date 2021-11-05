@@ -44,7 +44,7 @@ namespace Fan.Medias
         /// <summary>
         /// Prepares blob container.
         /// </summary>
-        private async void PrepBlobContainer()
+        private async Task PrepBlobContainer()
         {
             await _container.CreateIfNotExistsAsync();
             await _container.SetPermissionsAsync(new BlobContainerPermissions
