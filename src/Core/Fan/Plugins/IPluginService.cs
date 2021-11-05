@@ -23,7 +23,6 @@ namespace Fan.Plugins
         /// Deletes a plugin by deleting the plugin's files from server.
         /// </summary>
         /// <returns></returns>
-        //Task DeletePluginAsync();
 
         /// <summary>
         /// Returns a list of active plugins.

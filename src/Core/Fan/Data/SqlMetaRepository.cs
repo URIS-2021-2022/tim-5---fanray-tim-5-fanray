@@ -10,11 +10,11 @@ namespace Fan.Data
     /// </summary>
     public class SqlMetaRepository : EntityRepository<Meta>, IMetaRepository
     {
-        private readonly FanDbContext _db;
+        
 
         public SqlMetaRepository(FanDbContext db) : base(db)
         {
-            _db = db;
+           
         }
 
         /// <summary>

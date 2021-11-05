@@ -321,7 +321,6 @@ namespace Fan.Web.Controllers
 
                         // https://www.w3schools.com/xml/rss_tag_author.asp
                         // the author tag exposes email  
-                        //item.AddContributor(new SyndicationPerson(post.User.DisplayName, post.User.Email));
 
                         await writer.Write(item);
                     }
