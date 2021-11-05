@@ -112,10 +112,16 @@ namespace Fan.Blog.Services
         /// Updates a <see cref="BlogPost"/>.
         /// </summary>
         /// <param name="blogPost">Contains incoming blog post data to update.</param>
-        public async Task<BlogPost> UpdateAsync(BlogPost post)
+        public  Task<BlogPost> UpdateAsync(BlogPost post)
         {
-            // validate
-            if (post == null || post.Id <= 0) throw new ArgumentException(null, nameof(post));
+             if (post == null || post.Id <= 0) { throw new ArgumentException(null, nameof(post)); }
+
+             return UpdateInternalAsync(post);
+            
+        }
+
+       public  async Task<BlogPost> UpdateInternalAsync(BlogPost post)
+        {
             await post.ValidateTitleAsync();
 
             // prep current post with blog post
@@ -142,7 +148,6 @@ namespace Fan.Blog.Services
             return await GetAsync(postAsync.Id);
         }
 
-        
         
         /// <summary>
         /// Deletes a blog post and invalidates cache for posts on index page.

@@ -137,71 +137,37 @@ namespace Fan.Helpers
         /// </remarks>
         public static string RemapInternationalCharToAscii(char c)
         {
-            string s = c.ToString().ToLowerInvariant();
-            if ("àåáâäãåa".Contains(s))
-            {
-                return "a";
-            }
-            else if ("èéêëe".Contains(s))
-            {
-                return "e";
-            }
-            else if ("ìíîïi".Contains(s))
-            {
-                return "i";
-            }
-            else if ("òóôõöøo".Contains(s))
-            {
-                return "o";
-            }
-            else if ("ùúûü".Contains(s))
-            {
-                return "u";
-            }
-            else if ("çcc".Contains(s))
-            {
-                return "c";
-            }
-            else if ("zzž".Contains(s))
-            {
-                return "z";
-            }
-            else if ("ssš".Contains(s))
-            {
-                return "s";
-            }
-            else if ("ñn".Contains(s))
-            {
-                return "n";
-            }
-            else if ("ýŸ".Contains(s))
-            {
-                return "y";
-            }
-            else if (c == 'l')
-            {
-                return "l";
-            }
-            else if (c == 'd')
-            {
-                return "d";
-            }
-            else if (c == 'ß')
-            {
-                return "ss";
-            }
-            else if (c == 'g')
-            {
-                return "g";
-            }
-            else if (c == 'Þ')
-            {
-                return "th";
-            }
-            else
-            {
-                return "";
-            }
+            var s = c.ToString().ToLowerInvariant();
+
+        var mappings = new Dictionary<string, string>
+        {
+            { "a", "àåáâäãåą" },
+            { "c", "çćčĉ" },
+            { "d", "đ" },
+            { "e", "èéêëę" },
+            { "g", "ğĝ" },
+            { "h", "ĥ" },
+            { "i", "ìíîïı" },
+            { "j", "ĵ" },
+            { "l", "ł" },
+            { "n", "ñń" },
+            { "o", "òóôõöøőð" },
+            { "r", "ř" },
+            { "s", "śşšŝ" },
+            { "ss", "ß" },
+            { "th", "Þ" },
+            { "u", "ùúûüŭů" },
+            { "y", "ýÿ" },
+            { "z", "żźž" }
+        };
+
+        foreach(var mapping in mappings)
+        {
+            if (mapping.Value.Contains(s))
+                return mapping.Key;
+        }
+
+        return string.Empty;
         }
 
         /// <summary>

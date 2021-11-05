@@ -56,7 +56,7 @@ namespace Fan.WebApp.Manage.Admin
         {
             var users = await GetUsersAsync();
             UsersJson = JsonConvert.SerializeObject(users);
-            TotalUsers = users.Count();
+            TotalUsers = users.Count;
 
             var roles = GetRoles();
             RolesJson = JsonConvert.SerializeObject(roles);
