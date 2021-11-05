@@ -1,7 +1,12 @@
 ﻿namespace Fan.Helpers
 {
-    public static class SysVersion
+    public class SysVersion
     {
-        public const string CurrentVersion = "v1.1.0-preview4";
+        private string currentVersion = "v1.1.0-preview4";
+
+        public string CurrentVersion
+        {
+            get { return currentVersion; }
+        }
     }
 }

@@ -48,8 +48,13 @@ namespace Fan.Plugins
         /// </remarks>
         public async Task<Plugin> ActivatePluginAsync(string folder)
         {
-            if (folder.IsNullOrEmpty()) throw new ArgumentNullException("Cannot activate a plugin with an empty name.");
+            if (folder.IsNullOrEmpty()) throw new ArgumentNullException("folder", "Cannot activate a plugin with an empty name.");
 
+            return await ActivatePluginInternalAsync(folder);
+        }
+
+        private async Task<Plugin> ActivatePluginInternalAsync(string folder)
+        {
             Plugin plugin = null;
 
             var meta = await GetPluginMetaAsync(folder);
@@ -84,7 +89,7 @@ namespace Fan.Plugins
         /// <returns></returns>
         /// <remarks>
         /// De-activation removes plugin id from active-plugins but does not delete the plugin meta.
-        /// TODO should I check if plugin is SysPlugin and throw exception if it is
+        ///
         /// </remarks>
         public async Task DeactivatePluginAsync(int id)
         {
