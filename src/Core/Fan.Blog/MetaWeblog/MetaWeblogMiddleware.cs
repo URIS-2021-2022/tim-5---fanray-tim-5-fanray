@@ -13,12 +13,10 @@ namespace Fan.Blog.MetaWeblog
     /// </summary>
     public class MetaWeblogMiddleware
     {
-        private readonly ILoggerFactory _loggerFactory;
         private readonly ILogger<MetaWeblogMiddleware> _logger;
 
         public MetaWeblogMiddleware(RequestDelegate next, ILoggerFactory loggerFactory)
         {
-            _loggerFactory = loggerFactory;
             _logger = loggerFactory.CreateLogger<MetaWeblogMiddleware>();
         }
 

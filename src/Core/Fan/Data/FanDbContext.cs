@@ -31,7 +31,7 @@ namespace Fan.Data
         /// <see cref="https://stackoverflow.com/a/11198345/32240"/>. I get around this issue using 
         /// reflection here to load everything dynamically. This method is called once on startup.
         /// </remarks>
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
             // find entities and model builders from app assemblies
             var entityTypes = TypeFinder.Find<Entity>();
@@ -40,12 +40,12 @@ namespace Fan.Data
             // add entity types to the model
             foreach (var type in entityTypes)
             {
-                modelBuilder.Entity(type);
+                builder.Entity(type);
                 logger.LogDebug($"Entity: '{type.Name}' added to model");
             }
 
             // call base
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(builder);
 
             // https://bit.ly/30muQrB
             if (Database.ProviderName == "Microsoft.EntityFrameworkCore.Sqlite")
@@ -56,13 +56,13 @@ namespace Fan.Data
                 // use the DateTimeOffsetToBinaryConverter
                 // Based on: https://github.com/aspnet/EntityFrameworkCore/issues/10784#issuecomment-415769754
                 // This only supports millisecond precision, but should be sufficient for most use cases.
-                foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+                foreach (var entityType in builder.Model.GetEntityTypes())
                 {
                     var properties = entityType.ClrType.GetProperties()
                         .Where(p => p.PropertyType == typeof(DateTimeOffset) || p.PropertyType == typeof(DateTimeOffset?));
                     foreach (var property in properties)
                     {
-                        modelBuilder
+                        builder
                             .Entity(entityType.Name)
                             .Property(property.Name)
                             .HasConversion(new DateTimeOffsetToBinaryConverter());
@@ -76,8 +76,8 @@ namespace Fan.Data
                 if (builderType != null && builderType != typeof(IEntityModelBuilder))
                 {
                     logger.LogDebug($"ModelBuilder '{builderType.Name}' added to model");
-                    var builder = (IEntityModelBuilder) Activator.CreateInstance(builderType);
-                    builder.CreateModel(modelBuilder);
+                    var entityModelBuilder = (IEntityModelBuilder) Activator.CreateInstance(builderType);
+                    entityModelBuilder.CreateModel(builder);
                 }
             }
         }

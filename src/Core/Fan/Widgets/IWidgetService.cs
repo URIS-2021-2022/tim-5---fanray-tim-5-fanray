@@ -33,7 +33,6 @@ namespace Fan.Widgets
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        //Task<Widget> GetWidgetAsync(int id);
         /// <summary>
         /// Updates a widget instance.
         /// </summary>

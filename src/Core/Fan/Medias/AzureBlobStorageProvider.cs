@@ -63,7 +63,6 @@ namespace Fan.Medias
             blob.Properties.ContentType = MimeTypeMap.GetMimeType(Path.GetExtension(fileName));
             blob.Properties.CacheControl = "public, max-age=31536000"; // 1 yr
 
-            //await blob.UploadFromStreamAsync(source);
             await blob.UploadFromByteArrayAsync(source, 0, source.Length);
         }
 

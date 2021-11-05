@@ -46,8 +46,6 @@ namespace Fan.Web.Middlewares
             }
 
             _logger.LogInformation("RewriteUrl: {@RewriteUrl}", url);
-            //context.Response.Headers[HeaderNames.Location] = url;
-            //context.Response.StatusCode = StatusCodes.Status301MovedPermanently;
             context.Response.Redirect(url, permanent: true);
 
             return Task.CompletedTask;

@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Fan.WebApp
 {
-    public class Program
+    public static class Program
     {
         /// <summary>
         /// The entry point for the entire program.
