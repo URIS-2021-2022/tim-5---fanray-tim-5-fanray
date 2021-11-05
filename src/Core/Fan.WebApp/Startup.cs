@@ -118,22 +118,6 @@ namespace Fan.WebApp
             {
                 options.AddPolicy("AdminRoles", policy => policy.RequireRole("Administrator", "Editor"));
             });
-                 
-            // MVC, Razor Pages, TempData, Json.net
-                var builder = services.AddMvc() // https://bit.ly/2XTLFZB
-                .AddApplicationPart(typeof(HomeController).Assembly) // https://bit.ly/2Zbbe8I
-                .AddSessionStateTempDataProvider()
-                .AddNewtonsoftJson(options => {
-                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                })
-                .AddRazorPagesOptions(options =>
-                {
-                    options.RootDirectory = "/Manage";
-                    options.Conventions.AuthorizeFolder("/Admin", "AdminRoles");
-                    options.Conventions.AuthorizeFolder("/Plugins", "AdminRoles");
-                    options.Conventions.AuthorizeFolder("/Widgets", "AdminRoles");
-                });
 
             services.AddSession(); // for TempData only
 
@@ -163,6 +147,22 @@ namespace Fan.WebApp
                     var dirPath = Directory.GetDirectories(Path.GetFullPath(Path.Combine(Env.ContentRootPath, "..", "..", extDir)));
                     extPaths = extPaths.Concat(dirPath).ToArray();
                 }
+
+                // MVC, Razor Pages, TempData, Json.net
+                var builder = services.AddMvc() // https://bit.ly/2XTLFZB
+                .AddApplicationPart(typeof(HomeController).Assembly) // https://bit.ly/2Zbbe8I
+                .AddSessionStateTempDataProvider()
+                .AddNewtonsoftJson(options => {
+                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                })
+                .AddRazorPagesOptions(options =>
+                {
+                    options.RootDirectory = "/Manage";
+                    options.Conventions.AuthorizeFolder("/Admin", "AdminRoles");
+                    options.Conventions.AuthorizeFolder("/Plugins", "AdminRoles");
+                    options.Conventions.AuthorizeFolder("/Widgets", "AdminRoles");
+                });
 
                 builder.AddRazorRuntimeCompilation(options =>
                 {

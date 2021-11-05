@@ -16,15 +16,35 @@
   font-family: monospace;
   height: 300px;
   color: black;
+  position: relative;
+  overflow: hidden;
+  background: white;
 }
 
 /* PADDING */
 
 .CodeMirror-lines {
   padding: 4px 0; /* Vertical padding around content */
+  cursor: text;
+  min-height: 1px; /* prevents collapsing before first draw */
 }
 .CodeMirror pre {
   padding: 0 4px; /* Horizontal padding of content */
+  /* Reset some styles that the rest of the page might have set */
+  -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
+  border-width: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  white-space: pre;
+  word-wrap: normal;
+  line-height: inherit;
+  color: inherit;
+  z-index: 2;
+  position: relative;
+  overflow: visible;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
@@ -37,8 +57,10 @@
   border-right: 1px solid #ddd;
   background-color: #f7f7f7;
   white-space: nowrap;
+  position: absolute; left: 0; top: 0;
+  z-index: 3;
 }
-.CodeMirror-linenumbers {}
+
 .CodeMirror-linenumber {
   padding: 0 3px 0 5px;
   min-width: 20px;
@@ -55,6 +77,9 @@
 
 .CodeMirror div.CodeMirror-cursor {
   border-left: 1px solid black;
+  position: absolute;
+  border-right: none;
+  width: 0;
 }
 /* Shown when moving in bi-directional text */
 .CodeMirror div.CodeMirror-secondarycursor {
@@ -92,9 +117,6 @@
   100% { background: #7e7; }
 }
 
-/* Can style cursor different in overwrite (non-insert) mode */
-div.CodeMirror-overwrite div.CodeMirror-cursor {}
-
 .cm-tab { display: inline-block; text-decoration: inherit; }
 
 .CodeMirror-ruler {
@@ -108,10 +130,6 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
 .cm-s-default .cm-atom {color: #219;}
 .cm-s-default .cm-number {color: #164;}
 .cm-s-default .cm-def {color: #00f;}
-.cm-s-default .cm-variable,
-.cm-s-default .cm-punctuation,
-.cm-s-default .cm-property,
-.cm-s-default .cm-operator {}
 .cm-s-default .cm-variable-2 {color: #05a;}
 .cm-s-default .cm-variable-3 {color: #085;}
 .cm-s-default .cm-comment {color: #a50;}
@@ -149,12 +167,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 
 /* The rest of this file contains styles related to the mechanics of
    the editor. You probably shouldn't touch them. */
-
-.CodeMirror {
-  position: relative;
-  overflow: hidden;
-  background: white;
-}
 
 .CodeMirror-scroll {
   overflow: scroll !important; /* Things will break if this is overridden */
@@ -200,10 +212,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   left: 0; bottom: 0;
 }
 
-.CodeMirror-gutters {
-  position: absolute; left: 0; top: 0;
-  z-index: 3;
-}
 .CodeMirror-gutter {
   white-space: normal;
   height: 100%;
@@ -213,45 +221,21 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   margin-bottom: -30px;
   /* Hack to make IE7 behave */
   *zoom:1;
-  *display:inline;
 }
 .CodeMirror-gutter-wrapper {
   position: absolute;
   z-index: 4;
   height: 100%;
+ -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 .CodeMirror-gutter-elt {
   position: absolute;
   cursor: default;
   z-index: 4;
 }
-.CodeMirror-gutter-wrapper {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
 
-.CodeMirror-lines {
-  cursor: text;
-  min-height: 1px; /* prevents collapsing before first draw */
-}
-.CodeMirror pre {
-  /* Reset some styles that the rest of the page might have set */
-  -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
-  border-width: 0;
-  background: transparent;
-  font-family: inherit;
-  font-size: inherit;
-  margin: 0;
-  white-space: pre;
-  word-wrap: normal;
-  line-height: inherit;
-  color: inherit;
-  z-index: 2;
-  position: relative;
-  overflow: visible;
-  -webkit-tap-highlight-color: transparent;
-}
 .CodeMirror-wrap pre {
   word-wrap: break-word;
   white-space: pre-wrap;
@@ -270,8 +254,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   overflow: auto;
 }
 
-.CodeMirror-widget {}
-
 .CodeMirror-code {
   outline: none;
 }
@@ -283,13 +265,8 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   overflow: hidden;
   visibility: hidden;
 }
-.CodeMirror-measure pre { position: static; }
 
-.CodeMirror div.CodeMirror-cursor {
-  position: absolute;
-  border-right: none;
-  width: 0;
-}
+.CodeMirror-measure pre { position: static; }
 
 div.CodeMirror-cursors {
   visibility: hidden;
