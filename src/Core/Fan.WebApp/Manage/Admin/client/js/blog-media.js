@@ -288,8 +288,8 @@ Vue.component('blog-media', {
                 axios.post(url, ids, this.$root.headers)
                     .then(resp => {
                         // remove selected images from images since they are deleted
-                        for (var i = 0; i < selectedCount; i++) {
-                            let idx = this.images.findIndex(img => img.id === this.selectedImages[i].id);
+                        for (var j = 0; j < selectedCount; j++) {
+                            let idx = this.images.findIndex(img => img.id === this.selectedImages[j].id);
                             this.images.splice(idx, 1);
                         }
 
