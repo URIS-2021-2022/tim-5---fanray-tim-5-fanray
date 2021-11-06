@@ -79,7 +79,7 @@
     var startString = options.blockCommentStart || mode.blockCommentStart;
     var endString = options.blockCommentEnd || mode.blockCommentEnd;
     if (!startString || !endString) {
-      if ((options.lineComment || mode.lineComment) && options.fullLines != false)
+      if ((options.lineComment || mode.lineComment) && options.fullLines)
         self.lineComment(from, to, options);
       return;
     }
@@ -91,7 +91,7 @@
     if (from.line > end) return;
 
     self.operation(function() {
-      if (options.fullLines != false) {
+      if (options.fullLines) {
         var lastLineHasText = nonWS.test(self.getLine(end));
         self.replaceRange(pad + endString, Pos(end));
         self.replaceRange(startString + pad, Pos(from.line, 0));
