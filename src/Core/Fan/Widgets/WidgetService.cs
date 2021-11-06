@@ -23,9 +23,9 @@ namespace Fan.Widgets
     /// </summary>
     public class WidgetService : ExtensibleService<WidgetManifest, Widget>, IWidgetService
     {
-        public static WidgetAreaInfo BlogSidebar1 = new WidgetAreaInfo { Id = "blog-sidebar1", Name = "Blog - Sidebar1" };
+        public static readonly WidgetAreaInfo BlogSidebar1 = new WidgetAreaInfo { Id = "blog-sidebar1", Name = "Blog - Sidebar1" };
         public static WidgetAreaInfo BlogSidebar2 = new WidgetAreaInfo { Id = "blog-sidebar2", Name = "Blog - Sidebar2" };
-        public static WidgetAreaInfo BlogBeforePost = new WidgetAreaInfo { Id = "blog-before-post", Name = "Blog - Before Post" };
+        public static readonly  WidgetAreaInfo BlogBeforePost = new WidgetAreaInfo { Id = "blog-before-post", Name = "Blog - Before Post" };
         public static WidgetAreaInfo BlogAfterPost = new WidgetAreaInfo { Id = "blog-after-post", Name = "Blog - After Post" };
         public static WidgetAreaInfo BlogBeforePostList = new WidgetAreaInfo { Id = "blog-before-post-list", Name = "Blog - Before Post List" };
         public static WidgetAreaInfo BlogAfterPostList = new WidgetAreaInfo { Id = "blog-after-post-list", Name = "Blog - After Post List" };
@@ -250,7 +250,7 @@ namespace Fan.Widgets
         public async Task RemoveWidgetFromAreaAsync(int widgetId, string areaId)
         {
             // get the area by key
-            var metaArea = await GetAreaMetaAsync(areaId); // metaRepository.GetAsync(areaId, type);
+            var metaArea = await GetAreaMetaAsync(areaId);
             var widgetArea = JsonConvert.DeserializeObject<WidgetArea>(metaArea.Value);
 
             // delete the id from area's id array

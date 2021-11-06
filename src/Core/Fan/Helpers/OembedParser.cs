@@ -133,7 +133,6 @@ namespace Fan.Helpers
         {
             if (url.Contains("youtu.be/") || url.Contains("youtube.com/")) return EEmbedType.YouTube;
             if (url.Contains("vimeo.com/")) return EEmbedType.Vimeo;
-            //if (url.Contains("twitter.com/")) return EEmbedType.Twitter;
 
             return EEmbedType.Unknown;
         }

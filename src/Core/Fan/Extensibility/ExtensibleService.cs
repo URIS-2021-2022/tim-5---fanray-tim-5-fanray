@@ -31,7 +31,7 @@ namespace Fan.Extensibility
         /// </summary>
         public const string FOLDER_REGEX = @"^[a-zA-Z0-9_.-]+$";
 
-        public ExtensibleService(IMetaRepository metaRepository,
+        protected ExtensibleService(IMetaRepository metaRepository,
             IDistributedCache distributedCache,
             IWebHostEnvironment hostingEnvironment, 
             ILogger<IExtensibleService<TManifest, TExtension>> logger)

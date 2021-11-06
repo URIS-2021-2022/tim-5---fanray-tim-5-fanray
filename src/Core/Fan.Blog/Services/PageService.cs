@@ -60,7 +60,7 @@ namespace Fan.Blog.Services
         /// A parent page slug cannot be one of these values since it's intended to be used right 
         /// after web root.
         /// </summary>
-        public static string[] Reserved_Slugs = new string[] 
+        public static readonly string[] Reserved_Slugs = new string[] 
         {
             "admin", "account", "api", "app", "apps", "assets",
             "blog", "blogs",
