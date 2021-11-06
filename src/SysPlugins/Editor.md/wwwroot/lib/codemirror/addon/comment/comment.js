@@ -96,12 +96,14 @@
         self.replaceRange(pad + endString, Pos(end));
         self.replaceRange(startString + pad, Pos(from.line, 0));
         var lead = options.blockCommentLead || mode.blockCommentLead;
-        if (lead != null) for (var i = from.line + 1; i <= end; ++i)
-          if (i != end || lastLineHasText)
-            self.replaceRange(lead + pad, Pos(i, 0));
+          if (lead != null)
+              for (var i = from.line + 1; i <= end; ++i) {
+                   if (i != end || lastLineHasText)
+                    self.replaceRange(lead + pad, Pos(i, 0));
+              }  
       } else {
-        self.replaceRange(endString, to);
-        self.replaceRange(startString, from);
+         self.replaceRange(endString, to);
+         self.replaceRange(startString, from);
       }
     });
   });
