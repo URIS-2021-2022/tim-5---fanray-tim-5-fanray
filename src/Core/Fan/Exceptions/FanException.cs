@@ -11,11 +11,14 @@ namespace Fan.Exceptions
     /// Caller should log before throw an exception.  I choose not to pass in ILogger here for max flexibility.
     /// The message giving to this class will be displayed on Error.cshtml.
     /// </remarks>
+    /// 
+  
     public class FanException : Exception
     {
         public FanException()
         {
         }
+
 
         /// <summary>
         /// Thrown with a message.

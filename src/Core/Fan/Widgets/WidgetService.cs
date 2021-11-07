@@ -39,7 +39,7 @@ namespace Fan.Widgets
         public static WidgetAreaInfo Footer2 = new WidgetAreaInfo { Id = "footer2", Name = "Footer 2" };
         public static WidgetAreaInfo Footer3 = new WidgetAreaInfo { Id = "footer3", Name = "Footer 3" };
 
-        public static IEnumerable<WidgetAreaInfo> SystemDefinedWidgetAreaInfos = new List<WidgetAreaInfo>
+        public static readonly IEnumerable<WidgetAreaInfo> SystemDefinedWidgetAreaInfos = new List<WidgetAreaInfo>
         {
             BlogSidebar1,
             BlogSidebar2,

@@ -61,7 +61,7 @@ namespace Fan.Medias
         /// <returns></returns>
         public async Task<bool> ExistsAsync(Expression<Func<Media, bool>> predicate)
         {
-            return (await _mediaRepo.FindAsync(predicate)).Count() > 0;
+            return (await _mediaRepo.FindAsync(predicate)).Any() ;
         }
 
         /// <summary>
