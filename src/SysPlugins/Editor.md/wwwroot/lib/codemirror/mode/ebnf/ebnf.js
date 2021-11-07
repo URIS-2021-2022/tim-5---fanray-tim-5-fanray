@@ -139,16 +139,19 @@
           break;
         case "/":
           if (stream.match(/[\/][A-Za-z]+/)) {
-          return "keyword";
-        }
+            return "keyword";
+          }
+          break;
         case "\\":
           if (stream.match(/[\][a-z]+/)) {
             return "string-2";
           }
+          break;
         case ".":
           if (stream.match(".")) {
             return "atom";
           }
+          break;
         case "*":
         case "-":
         case "+":
@@ -156,12 +159,14 @@
           if (stream.match(peek)) {
             return "atom";
           }
+          break;
         case "$":
           if (stream.match("$$")) {
             return "builtin";
           } else if (stream.match(/[$][0-9]+/)) {
             return "variable-3";
           }
+          break;
         case "<":
           if (stream.match(/<<[a-zA-Z_]+>>/)) {
             return "builtin";

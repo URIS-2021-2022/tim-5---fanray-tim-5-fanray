@@ -133,7 +133,7 @@ namespace Fan.WebApp.Manage.Admin
                         $"{Request.Scheme}://{Request.Host}" + BlogRoutes.GetPageRelativeLink(page.Slug);
         }
 
-        private string? checkPageStatus(Fan.Blog.Models.Page parent, Blog.Models.Page page, string pageLink)
+        private string checkPageStatus(Fan.Blog.Models.Page parent, Blog.Models.Page page, string pageLink)
         {
             return page.Status == EPostStatus.Draft || (parent != null && parent.Status == EPostStatus.Draft) ? null : pageLink;
         }

@@ -20,7 +20,7 @@
 
   function setFullscreen(cm) {
     var wrap = cm.getWrapperElement();
-    cm.state.fullScreenRestore = {scrollTop: window.pageYOffset, scrollLeft: window.pageXOffset,
+    cm.state.fullScreenRestore = {scrollTop: window.scrollY, scrollLeft: window.scrollX,
                                   width: wrap.style.width, height: wrap.style.height};
     wrap.style.width = "";
     wrap.style.height = "auto";
