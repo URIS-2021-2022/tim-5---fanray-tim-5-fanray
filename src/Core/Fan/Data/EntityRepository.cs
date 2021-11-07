@@ -130,7 +130,7 @@ namespace Fan.Data
         /// The entities to be updated, the EF implementation does not use this parameter.
         /// </param>
         /// <returns></returns>
-        public virtual async Task UpdateAsync(IEnumerable<T> entities)
+        public virtual async Task UpdateAsync(IEnumerable<T> objs)
         {
             await _db.SaveChangesAsync();
         }
