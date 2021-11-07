@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Fan.Blog.MetaWeblog
 {
@@ -20,12 +21,18 @@ namespace Fan.Blog.MetaWeblog
         NewMediaObject,
     }
 
+    [Serializable]
     public class MetaWeblogException : Exception
     {
         public MetaWeblogException(EMetaWeblogCode code, string message)
             : base(message)
         {
             Code = code;
+        }
+
+        protected MetaWeblogException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+             base.GetObjectData(info, context);
         }
 
         public EMetaWeblogCode Code { get; private set; }
