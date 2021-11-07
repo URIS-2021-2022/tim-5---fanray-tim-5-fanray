@@ -22,7 +22,7 @@ namespace Shortcodes.Services
         /// <summary>
         /// A dictionary contains tag name (key) and shortcode type (value).
         /// </summary>
-        private Dictionary<string, Type> _shortcodes = new Dictionary<string, Type>(StringComparer.OrdinalIgnoreCase);
+        private readonly Dictionary<string, Type> _shortcodes = new Dictionary<string, Type>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// Adds shortcode of type T with optional tag name. If tag name is not provided, 

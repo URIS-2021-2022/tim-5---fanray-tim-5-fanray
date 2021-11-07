@@ -68,7 +68,7 @@ namespace Fan.WebApp.Manage.Admin
             public IEnumerable<ImageVM> Images { get; set; }
             public IEnumerable<string> ErrorMessages { get; set; }
             public string ImagesJson =>
-                (Images == null || Images.Count() <= 0) ? "[]" :
+                (Images == null || /*Images.Count() <= 0 */ !Images.Any()) ? "[]" :
                 JsonConvert.SerializeObject(Images);
         }
 
@@ -150,7 +150,7 @@ namespace Fan.WebApp.Manage.Admin
                 {
                     errMsgs.Add(ex.Message);
                 }
-                catch (FanException ex) // todo consider errcode
+                catch (FanException ex) 
                 {
                     errMsgs.Add(ex.Message);
                 }
@@ -196,7 +196,6 @@ namespace Fan.WebApp.Manage.Admin
         /// Returns 
         /// </summary>
         /// <remarks>
-        /// TODO check each media AppType to decide which GetImageUrl to call
         /// </remarks>
         private async Task<(IEnumerable<ImageVM> medias, int count)> GetImageVMsAsync(int pageNumber)
         {
