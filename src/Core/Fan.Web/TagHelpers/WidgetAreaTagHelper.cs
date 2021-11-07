@@ -11,7 +11,6 @@ namespace Fan.Web.TagHelpers
     /// Renders a widget area, it requires a valid area id.
     /// </summary>
     /// <remarks>
-    /// TODO there should be tag attributes that allow user to specify what html tag to surround the
     /// area, right now I'm hard coding a div. Also a css class to attach to the area.
     /// </remarks>
     [HtmlTargetElement("widget-area", Attributes = "id")]

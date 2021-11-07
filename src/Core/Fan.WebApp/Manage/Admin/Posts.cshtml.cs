@@ -99,7 +99,7 @@ namespace Fan.WebApp.Manage.Admin
         {
             var postList = status.Equals("published", StringComparison.InvariantCultureIgnoreCase) ?
                 await blogPostService.GetListAsync(pageNumber, pageSize, cacheable: false) :
-                await blogPostService.GetListForDraftsAsync(); // TODO drafts need pagination too
+                await blogPostService.GetListForDraftsAsync(); 
 
             var coreSettings = await settingService.GetSettingsAsync<CoreSettings>();
             var postVms = from p in postList.Posts
