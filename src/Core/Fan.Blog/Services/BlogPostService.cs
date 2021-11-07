@@ -543,7 +543,6 @@ namespace Fan.Blog.Services
         }
 
         /// <summary>
-        /// Pre render processing of a blog post. TODO consider refactor.
         /// </summary>
         /// <param name="blogPost"></param>
         /// <returns></returns>

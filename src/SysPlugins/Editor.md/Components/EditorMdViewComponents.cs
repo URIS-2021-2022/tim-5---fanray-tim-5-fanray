@@ -15,7 +15,6 @@ namespace Editor.md.Components
     {
         public IViewComponentResult Invoke(Plugin plugin)
         {
-            // TODO make styles configurable
             return View("~/Components/EditorMdStyles.cshtml");
         }
     }
