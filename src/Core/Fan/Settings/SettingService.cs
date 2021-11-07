@@ -17,7 +17,6 @@ namespace Fan.Settings
     {
         private readonly IMetaRepository metaRepository;
         private readonly IDistributedCache cache;
-        private readonly ILogger<SettingService> logger;
 
         /// <summary>
         /// Cache key for all settings records.
@@ -38,7 +37,6 @@ namespace Fan.Settings
         {
             this.metaRepository = metaRepository;
             this.cache = cache;
-            this.logger = logger;
         }
 
         /// <summary>
@@ -97,34 +95,42 @@ namespace Fan.Settings
                 var valueStr = TypeDescriptor.GetConverter(property.PropertyType).CanConvertFrom(typeof(string)) ?
                                TypeDescriptor.GetConverter(typeof(object)).ConvertToInvariantString(value) :
                                JsonConvert.SerializeObject(value);
-
                 var key = (typeof(T).Name + "." + property.Name).ToLowerInvariant();
-                if (allSettings == null || !allSettings.Any(s => s.Key == key))
-                {
-                    settingsCreate.Add(new Meta
-                    {
-                        Key = key,
-                        Value = valueStr
-                    });
-                }
-                else
-                {
-                    var setting = await metaRepository.GetAsync(key, EMetaType.Setting);
-                    if (setting != null && setting.Value != valueStr)
-                    {
-                        setting.Value = valueStr;
-                        settingsUpdate.Add(setting);
-                    }
-                }
+
+                UpsertSettingsInternalAsync(allSettings, settingsCreate, settingsUpdate, valueStr, key);
             }
 
             if (settingsCreate.Count > 0) await metaRepository.CreateRangeAsync(settingsCreate);
             if (settingsUpdate.Count > 0) await metaRepository.UpdateAsync(settingsUpdate);
 
             string cacheKey = typeof(T).Name;
+
             await cache.RemoveAsync(cacheKey);
             await cache.RemoveAsync(KEY_ALL_SETTINGS);
+
             return settings;
+        }
+
+        private async Task UpsertSettingsInternalAsync(IEnumerable<Meta> allSettings, List<Meta> settingsCreate, List<Meta> settingsUpdate, string valueStr, string key)
+        {
+            if (allSettings == null || !allSettings.Any(s => s.Key == key))
+            {
+                settingsCreate.Add(new Meta
+                {
+                    Key = key,
+                    Value = valueStr
+                });
+            }
+            else
+            {
+                var setting = await metaRepository.GetAsync(key, EMetaType.Setting);
+
+                if (setting != null && setting.Value != valueStr)
+                {
+                    setting.Value = valueStr;
+                    settingsUpdate.Add(setting);
+                }
+            }
         }
 
         /// <summary>

@@ -90,8 +90,7 @@ namespace Fan.WebApp.Manage.Admin
                     Author = parent.User.DisplayName,
                     EditLink = BlogRoutes.GetPageEditLink(parent.Id),
                     IsDraft = parent.Status == EPostStatus.Draft,
-                    PageLink = parent.Status == EPostStatus.Draft ? null :
-                            $"{Request.Scheme}://{Request.Host}" + BlogRoutes.GetPageRelativeLink(parent.Slug),
+                    PageLink = checkPageLink(parent),
                     ChildCount = parent.Children.Count,
                     ViewCount = parent.ViewCount,
                 });
@@ -99,11 +98,9 @@ namespace Fan.WebApp.Manage.Admin
 
             foreach (var page in pages)
             {
-                var pageLink = parent != null && parent.Status == EPostStatus.Published?
-                        $"{Request.Scheme}://{Request.Host}" + BlogRoutes.GetPageRelativeLink(parent.Slug, page.Slug) :
-                        $"{Request.Scheme}://{Request.Host}" + BlogRoutes.GetPageRelativeLink(page.Slug);
+                var pageLink = checkParentStatus(parent, page);
 
-                pageLink = page.Status == EPostStatus.Draft || (parent != null && parent.Status == EPostStatus.Draft) ? null : pageLink;
+                pageLink = checkPageStatus(parent, page, pageLink);
 
                 pageVMs.Add(new PageAdminVM
                 {
@@ -111,18 +108,45 @@ namespace Fan.WebApp.Manage.Admin
                     Title = page.Title,
                     Date = page.CreatedOn.ToLocalTime(coreSettings.TimeZoneId).ToString(POST_DATE_STRING_FORMAT),
                     Author = page.User.DisplayName,
-                    ChildrenLink = !isChild && page.Children.Count > 0 ? $"{Request.Path}/{page.Id}" : "",
+                    ChildrenLink = checkChildrenLink(isChild, page),
                     EditLink = BlogRoutes.GetPageEditLink(page.Id),
                     PageLink = pageLink,
                     IsChild = isChild,
                     IsDraft = page.Status == EPostStatus.Draft,
-                    ChildCount = isChild ? 0 : page.Children.Count,
+                    ChildCount = checkChildCount(isChild, page),
                     ViewCount = page.ViewCount,
                 });
             }
 
             return pageVMs;
-        }     
+        }
+
+        private string checkPageLink(Fan.Blog.Models.Page parent)
+        {
+            return parent.Status == EPostStatus.Draft ? null : $"{Request.Scheme}://{Request.Host}" + BlogRoutes.GetPageRelativeLink(parent.Slug);
+        }
+
+        private string checkParentStatus(Fan.Blog.Models.Page parent, Blog.Models.Page page)
+        {
+            return parent != null && parent.Status == EPostStatus.Published ?
+                        $"{Request.Scheme}://{Request.Host}" + BlogRoutes.GetPageRelativeLink(parent.Slug, page.Slug) :
+                        $"{Request.Scheme}://{Request.Host}" + BlogRoutes.GetPageRelativeLink(page.Slug);
+        }
+
+        private string checkPageStatus(Fan.Blog.Models.Page parent, Blog.Models.Page page, string pageLink)
+        {
+            return page.Status == EPostStatus.Draft || (parent != null && parent.Status == EPostStatus.Draft) ? null : pageLink;
+        }
+
+        private string checkChildrenLink(bool isChild, Blog.Models.Page page)
+        {
+            return !isChild && page.Children.Count > 0 ? $"{Request.Path}/{page.Id}" : "";
+        }
+        
+        private int checkChildCount(bool isChild, Blog.Models.Page page)
+        {
+            return isChild ? 0 : page.Children.Count;
+        }
     }
 
     /// <summary>

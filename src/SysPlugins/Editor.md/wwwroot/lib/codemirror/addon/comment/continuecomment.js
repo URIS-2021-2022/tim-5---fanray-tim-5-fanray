@@ -17,8 +17,8 @@
   function continueComment(cm) {
     if (cm.getOption("disableInput")) return CodeMirror.Pass;
     var ranges = cm.listSelections(), mode, inserts = [];
-    for (var i = 0; i < ranges.length; i++) {
-      var pos = ranges[i].head, token = cm.getTokenAt(pos);
+    for (var x = 0; x < ranges.length; x++) {
+      var pos = ranges[x].head, token = cm.getTokenAt(pos);
       if (token.type != "comment") return CodeMirror.Pass;
       var modeHere = CodeMirror.innerMode(cm.getMode(), token.state).mode;
       if (!mode) mode = modeHere;
@@ -56,8 +56,8 @@
     }
 
     cm.operation(function() {
-      for (var i = ranges.length - 1; i >= 0; i--)
-        cm.replaceRange(inserts[i], ranges[i].from(), ranges[i].to(), "+insert");
+      for (var u = ranges.length - 1; u >= 0; u--)
+        cm.replaceRange(inserts[u], ranges[u].from(), ranges[u].to(), "+insert");
     });
   }
 

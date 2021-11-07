@@ -63,11 +63,11 @@ namespace Fan.Data
         /// </summary>
         /// <param name="entities"></param>
         /// <returns></returns>
-        public virtual async Task<IEnumerable<T>> CreateRangeAsync(IEnumerable<T> entities)
+        public virtual async Task<IEnumerable<T>> CreateRangeAsync(IEnumerable<T> obj)
         {
-            _entities.AddRange(entities);
+            _entities.AddRange(obj);
             await _db.SaveChangesAsync();
-            return entities;
+            return obj;
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Fan.Data
         /// The entities to be updated, the EF implementation does not use this parameter.
         /// </param>
         /// <returns></returns>
-        public virtual async Task UpdateAsync(IEnumerable<T> entities)
+        public virtual async Task UpdateAsync(IEnumerable<T> objs)
         {
             await _db.SaveChangesAsync();
         }

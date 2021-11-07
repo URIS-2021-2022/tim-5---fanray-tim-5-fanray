@@ -80,11 +80,13 @@
             axios.post('/admin/users', this.editedUser, this.$root.headers)
                 .then(resp => {
                     console.log('Returned user: ', resp.data);
-                    if (this.editedIndex > -1) { 
+
+                    if (this.editedIndex > -1) {
                         Object.assign(this.users[this.editedIndex], this.editedUser)
                     } else { // insert
                         this.users.push(resp.data);
                     }
+              
                     this.close();
                 })
                 .catch(err => {

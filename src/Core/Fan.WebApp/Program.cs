@@ -5,6 +5,7 @@ using Serilog;
 using System;
 using System.IO;
 
+
 namespace Fan.WebApp
 {
     public static class Program

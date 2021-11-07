@@ -257,14 +257,14 @@ Vue.component('blog-media', {
             let url = `/admin/media?handler=more&pageNumber=${this.pageNumber}`;
             axios.get(url).then(resp => {
                 // returned data is the list of images
-                for (var i = 0; i < resp.data.length; i++) {
-                    // first make sure returned item is not already on the page
-                    var found = this.images.some(function (img) {
-                        return img.id === resp.data[i].id;
+                for (const r of resp.data) {
+                    let found = this.images.some((img) => {
+                        return img.id === r.id;
                     });
 
-                    if (!found)
-                        this.images.push(resp.data[i]); // only append to images if not found
+                    if (!found) {
+                        this.images.push(r);
+                    }
                 }
             }).catch(err => console.log(err));
         },
@@ -288,8 +288,8 @@ Vue.component('blog-media', {
                 axios.post(url, ids, this.$root.headers)
                     .then(resp => {
                         // remove selected images from images since they are deleted
-                        for (var i = 0; i < selectedCount; i++) {
-                            let idx = this.images.findIndex(img => img.id === this.selectedImages[i].id);
+                        for (var j = 0; j < selectedCount; j++) {
+                            let idx = this.images.findIndex(img => img.id === this.selectedImages[j].id);
                             this.images.splice(idx, 1);
                         }
 

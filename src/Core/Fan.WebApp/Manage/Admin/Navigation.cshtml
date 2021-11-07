@@ -222,8 +222,6 @@
                 <v-card-text>
                     <iframe ref="settingsIframe"
                             @@load="$root.initIframeHeight($refs.settingsIframe)"
-                            frameborder="0"
-                            scrolling="no"
                             class="ext-settings-frame"
                             v-if="settingsUrl"
                             :src="settingsUrl"

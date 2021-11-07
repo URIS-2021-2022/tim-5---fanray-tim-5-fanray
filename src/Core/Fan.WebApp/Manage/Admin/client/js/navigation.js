@@ -11,8 +11,8 @@
         rules: {
             required: value => !!value || 'Required.', // trim handled on server side
             url: value => {
-                //const pattern = 'TODO url regex that includes root /'
-                //return pattern.test(value) || 'Invalid URL.'
+                // const pattern = url regex that includes root
+                // return pattern.test(value) || 'Invalid URL.'
                 return true;
             }
         },

@@ -23,14 +23,14 @@ namespace Fan.Widgets
     /// </summary>
     public class WidgetService : ExtensibleService<WidgetManifest, Widget>, IWidgetService
     {
-        public static WidgetAreaInfo BlogSidebar1 = new WidgetAreaInfo { Id = "blog-sidebar1", Name = "Blog - Sidebar1" };
+        public static readonly WidgetAreaInfo BlogSidebar1 = new WidgetAreaInfo { Id = "blog-sidebar1", Name = "Blog - Sidebar1" };
         public static WidgetAreaInfo BlogSidebar2 = new WidgetAreaInfo { Id = "blog-sidebar2", Name = "Blog - Sidebar2" };
-        public static WidgetAreaInfo BlogBeforePost = new WidgetAreaInfo { Id = "blog-before-post", Name = "Blog - Before Post" };
-        public static WidgetAreaInfo BlogAfterPost = new WidgetAreaInfo { Id = "blog-after-post", Name = "Blog - After Post" };
+        public static readonly  WidgetAreaInfo BlogBeforePost = new WidgetAreaInfo { Id = "blog-before-post", Name = "Blog - Before Post" };
+        public static readonly WidgetAreaInfo BlogAfterPost = new WidgetAreaInfo { Id = "blog-after-post", Name = "Blog - After Post" };
         public static WidgetAreaInfo BlogBeforePostList = new WidgetAreaInfo { Id = "blog-before-post-list", Name = "Blog - Before Post List" };
         public static WidgetAreaInfo BlogAfterPostList = new WidgetAreaInfo { Id = "blog-after-post-list", Name = "Blog - After Post List" };
 
-        public static WidgetAreaInfo PageSidebar1 = new WidgetAreaInfo { Id = "page-sidebar1", Name = "Page - Sidebar1" };
+        public static readonly WidgetAreaInfo PageSidebar1 = new WidgetAreaInfo { Id = "page-sidebar1", Name = "Page - Sidebar1" };
         public static WidgetAreaInfo PageSidebar2 = new WidgetAreaInfo { Id = "page-sidebar2", Name = "Page - Sidebar2" };
         public static WidgetAreaInfo PageBeforeContent = new WidgetAreaInfo { Id = "page-before-content", Name = "Page - Before Content" };
         public static WidgetAreaInfo PageAfterContent = new WidgetAreaInfo { Id = "page-after-content", Name = "Page - After Content" };
@@ -39,7 +39,7 @@ namespace Fan.Widgets
         public static WidgetAreaInfo Footer2 = new WidgetAreaInfo { Id = "footer2", Name = "Footer 2" };
         public static WidgetAreaInfo Footer3 = new WidgetAreaInfo { Id = "footer3", Name = "Footer 3" };
 
-        public static IEnumerable<WidgetAreaInfo> SystemDefinedWidgetAreaInfos = new List<WidgetAreaInfo>
+        public static readonly IEnumerable<WidgetAreaInfo> SystemDefinedWidgetAreaInfos = new List<WidgetAreaInfo>
         {
             BlogSidebar1,
             BlogSidebar2,
@@ -250,7 +250,7 @@ namespace Fan.Widgets
         public async Task RemoveWidgetFromAreaAsync(int widgetId, string areaId)
         {
             // get the area by key
-            var metaArea = await GetAreaMetaAsync(areaId); // metaRepository.GetAsync(areaId, type);
+            var metaArea = await GetAreaMetaAsync(areaId);
             var widgetArea = JsonConvert.DeserializeObject<WidgetArea>(metaArea.Value);
 
             // delete the id from area's id array
