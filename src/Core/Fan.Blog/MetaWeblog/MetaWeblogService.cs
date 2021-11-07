@@ -24,7 +24,7 @@ namespace Fan.Blog.MetaWeblog
         private readonly ITagService _tagSvc;
         private readonly IImageService _imgSvc;
         private readonly ISettingService _settingSvc;
-        private readonly ILogger<MetaWeblogService> _logger;
+        
 
         public MetaWeblogService(
             IUserService userService,
@@ -33,8 +33,7 @@ namespace Fan.Blog.MetaWeblog
             ICategoryService catSvc,
             ITagService tagService,
             IImageService imgService,
-            ISettingService settingService,
-            ILogger<MetaWeblogService> logger)
+            ISettingService settingService)
         {
             _userSvc = userService;
             _signInManager = signInManager;
@@ -43,7 +42,7 @@ namespace Fan.Blog.MetaWeblog
             _tagSvc = tagService;
             _imgSvc = imgService;
             _settingSvc = settingService;
-            _logger = logger;
+            
         }
 
         // -------------------------------------------------------------------- Posts

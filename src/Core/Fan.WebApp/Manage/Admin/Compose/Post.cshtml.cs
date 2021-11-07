@@ -45,22 +45,23 @@ namespace Fan.WebApp.Manage.Admin.Compose
         private readonly ITagService _tagSvc;
         private readonly ISettingService _settingSvc;
         private readonly UserManager<User> _userManager;
-        private readonly IMediaService _mediaSvc;
+        
 
         public PostModel(
             UserManager<User> userManager,
             IBlogPostService blogService,
             ICategoryService catService,
             ITagService tagService,
-            IMediaService mediaSvc,
             ISettingService settingService)
+            
         {
             _userManager = userManager;
             _blogSvc = blogService;
             _catSvc = catService;
             _tagSvc = tagService;
-            _mediaSvc = mediaSvc;
             _settingSvc = settingService;
+            
+            
         }
 
         /// <summary>
