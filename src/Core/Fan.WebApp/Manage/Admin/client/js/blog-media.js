@@ -153,7 +153,7 @@ Vue.component('blog-media', {
                 this.validFileTypes.forEach(type => {
                     if (file.name.substr(file.name.length - type.length, type.length).toLowerCase() === type.toLowerCase()) {
                         valid = true;
-                        return;
+                        
                     }
                 });
 

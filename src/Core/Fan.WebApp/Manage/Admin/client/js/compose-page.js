@@ -157,7 +157,7 @@
         },
         preview() {
             this.previewDialogVisible = true;
-            //this.payload.body = this.editor.getHTML();
+           
             this.payload.body = this.editor.getPreviewedHTML();
             this.payload.bodyMark = this.editor.getMarkdown();
 

@@ -18,18 +18,18 @@ namespace Fan.WebApp.Manage.Admin
 {
     public class MediaModel : PageModel
     {
-        private readonly IBlogPostService _blogSvc;
+        
         private readonly IMediaService _mediaSvc;
         private readonly IImageService _imgSvc;
         private readonly UserManager<User> _userManager;
 
         public MediaModel(
-            IBlogPostService blogSvc,
+            
             IMediaService mediaSvc,
             IImageService imgService,
             UserManager<User> userManager)
         {
-            _blogSvc = blogSvc;
+            
             _mediaSvc = mediaSvc;
             _imgSvc = imgService;
             _userManager = userManager;

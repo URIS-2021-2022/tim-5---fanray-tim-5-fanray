@@ -14,7 +14,7 @@ namespace Fan.Helpers
     /// <remarks>
     /// TODO needs a new strategy.
     /// </remarks>
-    public class TypeFinder
+    public static class TypeFinder
     {
         /// <summary>
         /// Skip dll file name regex.
@@ -59,9 +59,9 @@ namespace Fan.Helpers
                             types.AddRange(assembly.DefinedTypes.Where(t => t.BaseType == baseType && !t.GetTypeInfo().IsAbstract));
                     }
                 }
-                catch (Exception)
+                catch(Exception)
                 {
-
+                    return types;
                 }
             }
 
