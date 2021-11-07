@@ -6576,7 +6576,7 @@
     var line = getLine(doc, pos.line), state = getStateBefore(cm, pos.line, precise);
     var stream = new StringStream(line.text, cm.options.tabSize), tokens;
     if (asArray) tokens = [];
-    while ((asArray || stream.pos < pos.ch) && !stream.eol()) {
+    while (stream.pos < pos.ch && !stream.eol()) {
       stream.start = stream.pos;
       style = readToken(mode, stream, state);
       if (asArray) tokens.push(getObj(true));

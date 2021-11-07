@@ -257,14 +257,14 @@ Vue.component('blog-media', {
             let url = `/admin/media?handler=more&pageNumber=${this.pageNumber}`;
             axios.get(url).then(resp => {
                 // returned data is the list of images
-                for (var i = 0; i < resp.data.length; i++) {
-                    // first make sure returned item is not already on the page
-                    var found = this.images.some(function (img) {
-                        return img.id === resp.data[i].id;
+                for (const r of resp.data) {
+                    let found = this.images.some((img) => {
+                        return img.id === r.id;
                     });
 
-                    if (!found)
-                        this.images.push(resp.data[i]); // only append to images if not found
+                    if (!found) {
+                        this.images.push(r);
+                    }
                 }
             }).catch(err => console.log(err));
         },

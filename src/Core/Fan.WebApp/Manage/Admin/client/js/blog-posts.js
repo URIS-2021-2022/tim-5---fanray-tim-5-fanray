@@ -24,8 +24,7 @@
         active: {
             get: function () {
                 return (this.activeStatus === 'published') ? 0 : 1;
-            },
-            set: function (value) { },
+            }
         },
     },
     methods: {
