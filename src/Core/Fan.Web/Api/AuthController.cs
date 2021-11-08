@@ -35,7 +35,7 @@ namespace Fan.Web.Api
         /// <remarks>
         /// Logout can still happen the traditional way.
         /// 
-        /// TODO: 1. check role and return url; 2. error messages.
+        
         /// With 2.1 !ModelState.IsValid is not necessary but error messages returned is buried deep.
         /// </remarks>
         /// <returns></returns>
