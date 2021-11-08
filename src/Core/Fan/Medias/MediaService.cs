@@ -23,15 +23,15 @@ namespace Fan.Medias
     public class MediaService : IMediaService
     {
         private readonly IStorageProvider _storageProvider;
-        
+        private readonly AppSettings _appSettings;
         private readonly IMediaRepository _mediaRepo;
 
         public MediaService(IStorageProvider storageProvider,
-            
+            IOptionsSnapshot<AppSettings> settings,
             IMediaRepository mediaRepo)
         {
             _storageProvider = storageProvider;
-            
+            _appSettings = settings.Value;
             _mediaRepo = mediaRepo;
         }
 
