@@ -111,7 +111,7 @@ namespace Fan.Data
         /// <exception cref="FanException">
         /// Throws if update violates unique key constraint.
         /// </exception>
-        public virtual async Task UpdateAsync(T entity)
+        public virtual async Task UpdateAsync(T obj)
         {
             try
             {

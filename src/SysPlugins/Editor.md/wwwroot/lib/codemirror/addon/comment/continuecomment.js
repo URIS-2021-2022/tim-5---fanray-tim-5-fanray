@@ -11,8 +11,8 @@
 })(function(CodeMirror) {
   var modes = ["clike", "css", "javascript"];
 
-  for (var i = 0; i < modes.length; ++i)
-    CodeMirror.extendMode(modes[i], {blockCommentContinue: " * "});
+  for (let mode of modes)
+    CodeMirror.extendMode(mode, {blockCommentContinue: " * "});
 
   function continueComment(cm) {
     if (cm.getOption("disableInput")) return CodeMirror.Pass;
@@ -44,11 +44,11 @@
         if (insert != null) insert += mode.blockCommentContinue;
       }
       if (insert == null && mode.lineComment && continueLineCommentEnabled(cm)) {
-        var line = cm.getLine(pos.line), found = line.indexOf(mode.lineComment);
-        if (found > -1) {
-          insert = line.slice(0, found);
+        var line = cm.getLine(pos.line), found1 = line.indexOf(mode.lineComment);
+        if (found1 > -1) {
+          insert = line.slice(0, found1);
           if (/\S/.test(insert)) insert = null;
-          else insert += mode.lineComment + line.slice(found + mode.lineComment.length).match(/^\s*/)[0];
+          else insert += mode.lineComment + line.slice(found1 + mode.lineComment.length).match(/^\s*/)[0];
         }
       }
       if (insert == null) return CodeMirror.Pass;

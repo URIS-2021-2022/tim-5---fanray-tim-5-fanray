@@ -81,7 +81,7 @@ namespace Fan.WebApp.Manage.Admin.Compose
                     DraftDate = page.UpdatedOn.HasValue ? page.UpdatedOn.Value.ToString(DATE_FORMAT) : "",
                     Excerpt = page.Excerpt,
                     IsDraft = page.Status == EPostStatus.Draft,
-                    IsParentDraft = parent != null ? parent.Status == EPostStatus.Draft : false,
+                    IsParentDraft = parent.Status == EPostStatus.Draft,
                     ParentId = page.ParentId,
                     PostDate = postDate,
                     Published = page.Status == EPostStatus.Published,
