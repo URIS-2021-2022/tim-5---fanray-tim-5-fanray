@@ -19,7 +19,7 @@ namespace Shortcodes.Parsing
         public Char CurrentChar { get { return _text[_position]; } }
         public int Length { get { return _text.Length; } }
         public int Remaining { get { return _text.Length - _position; } }
-        public static char NullChar = (char)0;
+        public static readonly char NullChar = (char)0;
 
         public TextParser()
         {
