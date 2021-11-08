@@ -417,8 +417,6 @@ namespace Fan.Blog.Services
             }
             else 
             {
-                // TODO Add a time picker on the composer
-
                 // get post.CreatedOn in local time
                 var coreSettings = await settingService.GetSettingsAsync<CoreSettings>();
                 var postCreatedOnLocal = post.CreatedOn.ToLocalTime(coreSettings.TimeZoneId);

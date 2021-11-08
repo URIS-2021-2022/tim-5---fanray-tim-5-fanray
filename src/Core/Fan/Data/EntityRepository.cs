@@ -63,11 +63,11 @@ namespace Fan.Data
         /// </summary>
         /// <param name="entities"></param>
         /// <returns></returns>
-        public virtual async Task<IEnumerable<T>> CreateRangeAsync(IEnumerable<T> obj)
+        public virtual async Task<IEnumerable<T>> CreateRangeAsync(IEnumerable<T> objs)
         {
-            _entities.AddRange(obj);
+            _entities.AddRange(objs);
             await _db.SaveChangesAsync();
-            return obj;
+            return objs;
         }
 
         /// <summary>

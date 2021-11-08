@@ -225,6 +225,7 @@ namespace Fan.Navigation
                 }
                 catch(FanException ex) when (ex.ExceptionType == EExceptionType.ResourceNotFound)
                 {
+                    //FanException
                 }
             }
 

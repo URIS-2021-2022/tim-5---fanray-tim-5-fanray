@@ -107,7 +107,7 @@ namespace Fan.WebApp.Manage.Admin.Compose
                     ParentId = parentId,
                     Published = false,
                     IsDraft = false,
-                    IsParentDraft = parent != null ? parent.Status == EPostStatus.Draft : false,
+                    IsParentDraft = parent.Status == EPostStatus.Draft,
                     PageLayout = parent != null ? (EPageLayout) parent.PageLayout : EPageLayout.Layout1,
                 };
             }

@@ -60,9 +60,9 @@
       Backspace: function(cm) {
         if (cm.getOption("disableInput")) return CodeMirror.Pass;
         var ranges = cm.listSelections();
-        for (var i = 0; i < ranges.length; i++) {
-          if (!ranges[i].empty()) return CodeMirror.Pass;
-          var around = charsAround(cm, ranges[i].head);
+        for (var value of ranges) {
+            if (!ranges[value].empty()) return CodeMirror.Pass;
+            var around = charsAround(cm, ranges[value].head);
           if (!around || pairs.indexOf(around) % 2 != 0) return CodeMirror.Pass;
         }
         for (var i = ranges.length - 1; i >= 0; i--) {

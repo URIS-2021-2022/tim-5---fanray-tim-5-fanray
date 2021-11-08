@@ -98,9 +98,6 @@ namespace Fan.WebApp.Manage.Admin
                 // re-get the user after create 
                 user = await _userManager.FindByNameAsync(model.UserName);
 
-                // assign role to it
-                result = await _userManager.AddToRoleAsync(user, model.Role);
-
                 // return new user
                 var userVM = MapUser(user, model.Role);
                 return new JsonResult(userVM);

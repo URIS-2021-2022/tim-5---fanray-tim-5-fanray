@@ -127,7 +127,7 @@
         lines.push(line);
       }
       self.operation(function() {
-        for (var i = start; i <= end; ++i) {
+        for (i = start; i <= end; ++i) {
           var line = lines[i - start];
           var pos = line.indexOf(lineString), endPos = pos + lineString.length;
           if (pos < 0) continue;

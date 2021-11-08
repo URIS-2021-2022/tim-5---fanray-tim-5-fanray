@@ -12,7 +12,6 @@ namespace Fan.Helpers
     /// Finds a type in assembly.
     /// </summary>
     /// <remarks>
-    /// TODO needs a new strategy.
     /// </remarks>
     public static class TypeFinder
     {
