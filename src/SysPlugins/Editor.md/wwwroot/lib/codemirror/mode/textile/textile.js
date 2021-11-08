@@ -417,8 +417,9 @@
     },
 
     table: function(stream, state) {
-      state.layoutType = "table";
-      return (state.mode = Modes.tableCell)(stream, state);
+        state.layoutType = "table";
+        state.mode = Modes.tableCell;
+        return (state.mode)(stream, state);
     },
 
     tableCell: function(stream, state) {
