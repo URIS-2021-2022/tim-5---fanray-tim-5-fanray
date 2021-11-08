@@ -31,8 +31,8 @@ namespace Fan.Widgets
         public static WidgetAreaInfo BlogAfterPostList = new WidgetAreaInfo { Id = "blog-after-post-list", Name = "Blog - After Post List" };
 
         public static readonly WidgetAreaInfo PageSidebar1 = new WidgetAreaInfo { Id = "page-sidebar1", Name = "Page - Sidebar1" };
-        public static WidgetAreaInfo PageSidebar2 = new WidgetAreaInfo { Id = "page-sidebar2", Name = "Page - Sidebar2" };
-        public static WidgetAreaInfo PageBeforeContent = new WidgetAreaInfo { Id = "page-before-content", Name = "Page - Before Content" };
+        public static readonly WidgetAreaInfo PageSidebar2 = new WidgetAreaInfo { Id = "page-sidebar2", Name = "Page - Sidebar2" };
+        public static readonly WidgetAreaInfo PageBeforeContent = new WidgetAreaInfo { Id = "page-before-content", Name = "Page - Before Content" };
         public static WidgetAreaInfo PageAfterContent = new WidgetAreaInfo { Id = "page-after-content", Name = "Page - After Content" };
 
         public static WidgetAreaInfo Footer1 = new WidgetAreaInfo { Id = "footer1", Name = "Footer 1" };
@@ -335,6 +335,7 @@ namespace Fan.Widgets
                 }
                 catch (FanException ex) when (ex.ExceptionType == EExceptionType.DuplicateRecord)
                 {
+                    //FanException
                 }
             }
 

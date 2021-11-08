@@ -416,7 +416,6 @@ namespace Fan.Blog.Services
             post.Body = ParseNavLinks(page.Body, parentSlug.IsNullOrEmpty() ? slug : parentSlug);
             post.BodyMark = WebUtility.HtmlEncode(page.BodyMark); // decoded on the client
 
-            // Excerpt TODO should I extract excerpt from body if user didn't put an excerpt?
             post.Excerpt = page.Excerpt;
 
             // UserId
