@@ -286,8 +286,8 @@ CodeMirror.defineMode("dylan", function(_config) {
     token: function(stream, state) {
       if (stream.eatSpace())
         return null;
-      var style = state.tokenize(stream, state);
-      return style;
+      return  state.tokenize(stream, state);
+      
     },
     blockCommentStart: "/*",
     blockCommentEnd: "*/"
