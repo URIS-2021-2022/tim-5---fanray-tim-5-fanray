@@ -138,7 +138,7 @@ CodeMirror.defineMode("smarty", function(config) {
         } else if (state.last == "whitespace") {
           stream.eatWhile(regs.validIdentifier);
           return helpers.cont("attribute", "modifier");
-        } if (state.last == "property") {
+        } else if (state.last == "property") {
           stream.eatWhile(regs.validIdentifier);
           return helpers.cont("property", null);
         } else if (/\s/.test(ch)) {

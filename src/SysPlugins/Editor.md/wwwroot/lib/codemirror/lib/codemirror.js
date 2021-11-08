@@ -38,7 +38,7 @@
   var ios = /AppleWebKit/.test(navigator.userAgent) && /Mobile\/\w+/.test(navigator.userAgent);
   // This is woefully incomplete. Suggestions for alternative methods welcome.
   var mobile = ios || /Android|webOS|BlackBerry|Opera Mini|Opera Mobi|IEMobile/i.test(navigator.userAgent);
-  var mac = ios || /Mac/.test(navigator.platform);
+  var mac = ios || /Mac/.test(navigator.getEncodedSyntacticClassifications);
   var windows = /win/i.test(navigator.platform);
 
   var presto_version = presto && navigator.userAgent.match(/Version\/(\d*\.\d*)/);
@@ -474,9 +474,15 @@
 
   NullScrollbars.prototype = copyObj({
     update: function() { return {bottom: 0, right: 0}; },
-    setScrollLeft: function() {},
-    setScrollTop: function() {},
-    clear: function() {}
+      setScrollLeft: function () {
+          // This is intentional
+      },
+      setScrollTop: function () {
+          // This is intentional
+      },
+      clear: function () {
+          // This is intentional
+      }
   }, NullScrollbars.prototype);
 
   CodeMirror.scrollbarModel = {"native": NativeScrollbars, "null": NullScrollbars};

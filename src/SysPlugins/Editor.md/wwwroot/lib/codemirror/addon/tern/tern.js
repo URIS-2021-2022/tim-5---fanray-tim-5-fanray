@@ -227,8 +227,8 @@
         remove(tooltip);
         var content = ts.options.completionTip ? ts.options.completionTip(cur.data) : cur.data.doc;
         if (content) {
-          tooltip = makeTooltip(node.parentNode.getBoundingClientRect().right + window.pageXOffset,
-                                node.getBoundingClientRect().top + window.pageYOffset, content);
+          tooltip = makeTooltip(node.parentNode.getBoundingClientRect().right + window.scrollX,
+                                node.getBoundingClientRect().top + window.scrollY, content);
           tooltip.className += " " + cls + "hint-doc";
         }
       });
@@ -484,12 +484,12 @@
       (perFile[ch.file] || (perFile[ch.file] = [])).push(ch);
     }
     for (var file in perFile) {
-      var known = ts.docs[file], chs = perFile[file];;
+      var known = ts.docs[file], chs = perFile[file];
       if (!known) continue;
       chs.sort(function(a, b) { return cmpPos(b.start, a.start); });
       var origin = "*rename" + (++nextChangeOrig);
-      for (var i = 0; i < chs.length; ++i) {
-        var ch = chs[i];
+      for (let value of chs) {
+        var ch = value;
         known.doc.replaceRange(ch.text, ch.start, ch.end, origin);
       }
     }
