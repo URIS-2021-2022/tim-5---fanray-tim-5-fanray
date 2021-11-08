@@ -125,12 +125,11 @@
       };
       if (left != right) map["'" + right + "'"] = function(cm) {
         var ranges = cm.listSelections();
-        for (var i = 0; i < ranges.length; i++) {
-          var range = ranges[i];
-          if (!range.empty() ||
-              cm.getRange(range.head, Pos(range.head.line, range.head.ch + 1)) != right)
-            return CodeMirror.Pass;
-        }
+          for (let range of ranges) {
+              if (!range.empty() ||
+                  cm.getRange(range.head, Pos(range.head.line, range.head.ch + 1)) != right)
+                  return CodeMirror.Pass;
+          }
         cm.execCommand("goCharRight");
       };
     })(pairs.charAt(i), pairs.charAt(i + 1));

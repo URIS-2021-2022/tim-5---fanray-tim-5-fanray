@@ -87,7 +87,7 @@
       inner.className = "CodeMirror-lint-marker-multiple";
     }
 
-    if (tooltips != false) CodeMirror.on(inner, "mouseover", function(e) {
+    if (!tooltips) CodeMirror.on(inner, "mouseover", function(e) {
       showTooltipFor(e, labels, inner);
     });
 

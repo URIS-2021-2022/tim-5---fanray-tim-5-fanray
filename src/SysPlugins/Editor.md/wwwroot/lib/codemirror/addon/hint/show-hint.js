@@ -277,7 +277,7 @@
     cm.on("scroll", this.onScroll = function() {
       var curScroll = cm.getScrollInfo(), editor = cm.getWrapperElement().getBoundingClientRect();
       var newTop = top + startScroll.top - curScroll.top;
-      var point = newTop - (window.pageYOffset || (document.documentElement || document.body).scrollTop);
+        var point = newTop - (window.scrollY || (document.documentElement || document.body).scrollTop);
       if (!below) point += hints.offsetHeight;
       if (point <= editor.top || point >= editor.bottom) return completion.close();
       hints.style.top = newTop + "px";

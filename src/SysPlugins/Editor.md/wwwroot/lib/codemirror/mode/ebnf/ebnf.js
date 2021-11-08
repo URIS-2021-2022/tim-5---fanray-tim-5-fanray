@@ -178,7 +178,7 @@
           return "comment";
         } else if (stream.match(/return/)) {
           return "operator";
-        } else if (stream.match(/^[a-zA-Z_][a-zA-Z0-9_]*/)) {
+        } else if (stream.match(/^[a-zA-Z_][\w]*/)) {
           if (stream.match(/(?=[\(.])/)) {
             return "variable";
           } else if (stream.match(/(?=[\s\n]*[:=])/)) {

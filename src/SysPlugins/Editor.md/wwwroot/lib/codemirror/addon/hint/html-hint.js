@@ -330,8 +330,12 @@
     rel: ["stylesheet", "alternate", "author", "bookmark", "help", "license", "next", "nofollow", "noreferrer", "prefetch", "prev", "search", "tag"]
   };
   function populate(obj) {
-    for (var attr in globalAttrs) if (globalAttrs.hasOwnProperty(attr))
-      obj.attrs[attr] = globalAttrs[attr];
+      for (var attr in globalAttrs) {
+          if (globalAttrs.hasOwnProperty(attr)) {
+              obj.attrs[attr] = globalAttrs[attr];
+          }
+      }
+      
   }
 
   populate(s);
