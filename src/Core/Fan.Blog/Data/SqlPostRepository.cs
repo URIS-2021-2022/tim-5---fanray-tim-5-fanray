@@ -162,7 +162,7 @@ namespace Fan.Blog.Data
         /// </summary>
         public async Task<Post> GetAsync(string slug, int year, int month, int day) =>
             isSqlite ?
-                 _entities.Include(p => p.User).Include(p => p.Category).Include(p => p.PostTags).ThenInclude(p => p.Tag).ToList()
+                 _entities.Include(p => p.User).Include(p => p.Category).Include(p => p.PostTags).ThenInclude(p => p.Tag).AsEnumerable()
                                    .SingleOrDefault(p =>
                                      p.Type == EPostType.BlogPost &&
                                      p.Status == EPostStatus.Published &&
