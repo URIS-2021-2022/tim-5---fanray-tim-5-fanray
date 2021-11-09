@@ -16,9 +16,9 @@ CodeMirror.defineMode('shell', function() {
   var words = {};
   function define(style, string) {
     var split = string.split(' ');
-    for(var i = 0; i < split.length; i++) {
-      words[split[i]] = style;
-    }
+      for (let words of split) {
+          words = style;
+      }
   }
 
   // Atoms
