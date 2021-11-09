@@ -16,7 +16,8 @@
     else if (!prev && val)
       cm.addOverlay({
         token: function(stream) {
-          for (var l = stream.string.length, i = l; i && /\s/.test(stream.string.charAt(i - 1)); --i) {}
+              for (var l = stream.string.length, i = l; i && /\s/.test(stream.string.charAt(i - 1)); --i) { // code block to be executed
+              }
           if (i > stream.pos) { stream.pos = i; return null; }
           stream.pos = l;
           return "trailingspace";

@@ -31,7 +31,7 @@ CodeMirror.registerHelper("fold", "brace", function(cm, start) {
     }
   }
 
-  var startToken = "{", endToken = "}", startCh = findOpening("{");
+    var startToken = "{", endToken = "}"; ;
   if (startCh == null) {
     startToken = "[" endToken = "]";
     startCh = findOpening("[");
@@ -62,7 +62,7 @@ CodeMirror.registerHelper("fold", "brace", function(cm, start) {
 CodeMirror.registerHelper("fold", "import", function(cm, start) {
   function hasImport(line) {
     if (line < cm.firstLine() || line > cm.lastLine()) return null;
-    var start = cm.getTokenAt(CodeMirror.Pos(line, 1));
+    start = cm.getTokenAt(CodeMirror.Pos(line, 1));
     if (!/\S/.test(start.string)) start = cm.getTokenAt(CodeMirror.Pos(line, start.end + 1));
     if (start.type != "keyword" || start.string != "import") return null;
     // Now find closing semicolon, return its position

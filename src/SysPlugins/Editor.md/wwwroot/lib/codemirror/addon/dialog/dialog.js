@@ -54,7 +54,8 @@
       }
     }
 
-    var inp = dialog.getElementsByTagName("input")[0], button;
+      var inp = dialog.getElementsByTagName("input")[0];
+      var button = dialog.getElementsByTagName("button")[0];
     if (inp) {
       if (options.value) {
         inp.value = options.value;
@@ -79,7 +80,7 @@
       if (options.closeOnBlur !== false) CodeMirror.on(inp, "blur", close);
 
       inp.focus();
-    } else if (button = dialog.getElementsByTagName("button")[0]) {
+    } else if (button) {
       CodeMirror.on(button, "click", function() {
         close();
         me.focus();

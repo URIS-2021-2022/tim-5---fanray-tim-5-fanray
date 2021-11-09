@@ -32,14 +32,17 @@
 
   function getItem(list, item) {
     if (!list.slice) return list[item];
-    for (var i = list.length - 1; i >= 0; i--) if (getText(list[i]) == item)
-      return list[i];
+      for (var i = list.length - 1; i >= 0; i--) {
+           if (getText(list[i]) == item)
+            return list[i];
+      }
   }
 
   function shallowClone(object) {
     var result = {};
-    for (var key in object) if (object.hasOwnProperty(key))
-      result[key] = object[key];
+      for (var key in object) if (object.hasOwnProperty(key)) {
+               result[key] = object[key];
+          } 
     return result;
   }
 

@@ -102,11 +102,11 @@
     function maybeAdd(str) {
       if (str.lastIndexOf(start, 0) == 0 && !arrayContains(found, str)) found.push(str);
     }
-    function gatherCompletions(obj) {
-      if (typeof obj == "string") forEach(stringProps, maybeAdd);
-      else if (obj instanceof Array) forEach(arrayProps, maybeAdd);
-      else if (obj instanceof Function) forEach(funcProps, maybeAdd);
-      for (var name in obj) maybeAdd(name);
+    function gatherCompletions(objs) {
+      if (typeof objs == "string") forEach(stringProps, maybeAdd);
+      else if (objs instanceof Array) forEach(arrayProps, maybeAdd);
+      else if (objs instanceof Function) forEach(funcProps, maybeAdd);
+      for (var name in objs) maybeAdd(name);
     }
 
     if (context && context.length) {

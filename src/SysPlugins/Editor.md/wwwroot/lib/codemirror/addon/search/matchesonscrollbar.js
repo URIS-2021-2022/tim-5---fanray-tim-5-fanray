@@ -71,7 +71,7 @@
       this.gap = {from: change.from.line, to: endLine + 1};
     }
 
-    if (sizeChange) for (var i = 0; i < this.matches.length; i++) {
+    if (sizeChange) for (var i of matches) {
       var match = this.matches[i];
       var newFrom = offsetLine(match.from.line, startLine, sizeChange);
       if (newFrom != match.from.line) match.from = CodeMirror.Pos(newFrom, match.from.ch);
