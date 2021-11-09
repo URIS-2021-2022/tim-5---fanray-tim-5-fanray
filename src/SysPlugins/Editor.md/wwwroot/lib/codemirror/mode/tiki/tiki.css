@@ -15,9 +15,9 @@
 }
 
 .cm-tw-box {
-	border-top-width: 0px ! important;
-	border-style: solid;
 	border-width: 1px;
+	border-top-width: 0px !important;
+	border-style: solid;
 	border-color: inherit;
 }
 

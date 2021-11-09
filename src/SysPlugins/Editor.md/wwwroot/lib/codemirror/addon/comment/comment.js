@@ -65,9 +65,9 @@
           self.replaceRange(baseString + commentString + pad, Pos(i, 0), Pos(i, cut));
         }
       } else {
-        for (var i = from.line; i < end; ++i) {
-          if (blankLines || nonWS.test(self.getLine(i)))
-            self.replaceRange(commentString + pad, Pos(i, 0));
+      for (var j = from.line; j < end; ++j) {
+        if (blankLines || nonWS.test(self.getLine(j)))
+        self.replaceRange(commentString + pad, Pos(j, 0));
         }
       }
     });

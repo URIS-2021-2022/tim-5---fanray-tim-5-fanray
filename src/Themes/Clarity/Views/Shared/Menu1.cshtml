@@ -4,7 +4,7 @@
     var isSignedIn = signInManager.IsSignedIn(Context.Request.HttpContext.User);
 }
 
-<nav class="navbar my-md-0 mr-md-3 mb-sm-0 p-0">
+<nav class="navbar my-md-0 mr-md-3 mb-sm-0 p-0" aria-label="Menu">
     @foreach (var nav in Model)
     {
         <a class="p-2 text-dark" href="@nav.Url" title="@nav.Title">@nav.Text</a>
