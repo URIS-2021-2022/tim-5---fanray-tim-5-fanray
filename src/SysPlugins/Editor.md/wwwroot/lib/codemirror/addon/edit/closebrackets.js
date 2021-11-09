@@ -65,8 +65,8 @@
             var around = charsAround(cm, ranges[value].head);
           if (!around || pairs.indexOf(around) % 2 != 0) return CodeMirror.Pass;
         }
-        for (var i = ranges.length - 1; i >= 0; i--) {
-          var cur = ranges[i].head;
+        for (var j = ranges.length - 1; j >= 0; j--) {
+          var cur = ranges[j].head;
           cm.replaceRange("", Pos(cur.line, cur.ch - 1), Pos(cur.line, cur.ch + 1));
         }
       }
@@ -77,9 +77,9 @@
       map["'" + left + "'"] = function(cm) {
         if (cm.getOption("disableInput")) return CodeMirror.Pass;
         var ranges = cm.listSelections(), type, next;
-        for (var i = 0; i < ranges.length; i++) {
-          var range = ranges[i], cur = range.head, curType;
-          var next = cm.getRange(cur, Pos(cur.line, cur.ch + 1));
+        for (var ran of ranges) {
+          var range = ran, cur = range.head, curType;
+          next = cm.getRange(cur, Pos(cur.line, cur.ch + 1));
           if (!range.empty()) {
             curType = "surround";
           } else if (left == right && next == right) {
@@ -107,12 +107,12 @@
           if (type == "skip") {
             cm.execCommand("goCharRight");
           } else if (type == "skipThree") {
-            for (var i = 0; i < 3; i++)
+            for (var k = 0; k < 3; k++)
               cm.execCommand("goCharRight");
           } else if (type == "surround") {
             var sels = cm.getSelections();
-            for (var i = 0; i < sels.length; i++)
-              sels[i] = left + sels[i] + right;
+            for (var sel of sels) {
+              sel = left + sel + right;
             cm.replaceSelections(sels, "around");
           } else if (type == "both") {
             cm.replaceSelection(left + right, null);
@@ -140,17 +140,17 @@
     return function(cm) {
       if (cm.getOption("disableInput")) return CodeMirror.Pass;
       var ranges = cm.listSelections();
-      for (var i = 0; i < ranges.length; i++) {
-        if (!ranges[i].empty()) return CodeMirror.Pass;
-        var around = charsAround(cm, ranges[i].head);
+      for (var rang of ranges) {
+        if (!rang.empty()) return CodeMirror.Pass;
+        var around = charsAround(cm, rang.head);
         if (!around || pairs.indexOf(around) % 2 != 0) return CodeMirror.Pass;
       }
       cm.operation(function() {
         cm.replaceSelection("\n\n", null);
         cm.execCommand("goCharLeft");
         ranges = cm.listSelections();
-        for (var i = 0; i < ranges.length; i++) {
-          var line = ranges[i].head.line;
+        for (var r of ranges) {
+          var line = r.head.line;
           cm.indentLine(line, null, true);
           cm.indentLine(line + 1, null, true);
         }

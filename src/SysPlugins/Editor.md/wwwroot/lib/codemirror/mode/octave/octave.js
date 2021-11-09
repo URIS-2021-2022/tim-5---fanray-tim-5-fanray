@@ -57,9 +57,10 @@ CodeMirror.defineMode("octave", function() {
   function tokenComment(stream, state) {
     if (stream.match(/^.*%}/)) {
       state.tokenize = tokenBase;
-      return 'comment';
-    };
+    }
+
     stream.skipToEnd();
+
     return 'comment';
   }
 
