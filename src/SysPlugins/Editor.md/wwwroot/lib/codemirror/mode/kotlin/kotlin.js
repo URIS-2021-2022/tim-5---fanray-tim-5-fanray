@@ -115,12 +115,12 @@ CodeMirror.defineMode("kotlin", function (config, parserConfig) {
 
         if (quote == '"' && next == "$" && !escaped && stream.eat("{")) {
           state.tokenize.push(tokenBaseUntilBrace());
-          return "string";
+          break;
         }
 
         if (next == "$" && !escaped && !stream.eat(" ")) {
           state.tokenize.push(tokenBaseUntilSpace());
-          return "string";
+          break;
         }
         escaped = !escaped && next == "\\";
       }

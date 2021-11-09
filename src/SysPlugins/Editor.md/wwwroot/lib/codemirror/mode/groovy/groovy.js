@@ -91,7 +91,7 @@ CodeMirror.defineMode("groovy", function(config) {
         }
         if (quote == '"' && next == "$" && !escaped && stream.eat("{")) {
           state.tokenize.push(tokenBaseUntilBrace());
-          return "string";
+          break;
         }
         escaped = !escaped && next == "\\";
       }

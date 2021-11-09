@@ -105,29 +105,23 @@
                             var codeTexts  = this.find("textarea").val();
                             var langName   = this.find("select").val();
 
-                            if (langName === "")
-                            {
-                                alert(lang.dialog.codeBlock.unselectedLanguageAlert);
-                                return false;
+							if (langName === "") {
+								alert(lang.dialog.codeBlock.unselectedLanguageAlert);
+							} else if (codeTexts === "") {
+								alert(lang.dialog.codeBlock.codeEmptyAlert);
+							} else {
+								langName = (langName === "other") ? "" : langName;
+
+								cm.replaceSelection(["```" + langName, codeTexts, "```"].join("\n"));
+
+								if (langName === "") {
+									cm.setCursor(cursor.line, cursor.ch + 3);
+								}
+
+								this.hide().lockScreen(false).hideMask();
+
+								this.remove();
                             }
-
-                            if (codeTexts === "")
-                            {
-                                alert(lang.dialog.codeBlock.codeEmptyAlert);
-                                return false;
-                            }
-
-                            langName = (langName === "other") ? "" : langName;
-
-                            cm.replaceSelection(["```" + langName, codeTexts, "```"].join("\n"));
-
-                            if (langName === "") {
-                                cm.setCursor(cursor.line, cursor.ch + 3);
-                            }
-
-                            this.hide().lockScreen(false).hideMask();
-
-                            this.remove();
 
                             return false;
                         }],

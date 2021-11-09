@@ -128,10 +128,10 @@
       }
       self.operation(function() {
         for (i = start; i <= end; ++i) {
-          var line = lines[i - start];
-          var pos = line.indexOf(lineString), endPos = pos + lineString.length;
+          var lineTmp = lines[i - start];
+          var pos = lineTmp.indexOf(lineString), endPos = pos + lineString.length;
           if (pos < 0) continue;
-          if (line.slice(endPos, endPos + pad.length) == pad) endPos += pad.length;
+          if (lineTmp.slice(endPos, endPos + pad.length) == pad) endPos += pad.length;
           didSomething = true;
           self.replaceRange("", Pos(i, pos), Pos(i, endPos));
         }
@@ -174,10 +174,10 @@
       self.replaceRange("", Pos(start, open), Pos(start, openEnd));
       if (lead) for (var i = start + 1; i <= end; ++i) {
         var line = self.getLine(i), found = line.indexOf(lead);
-        if (found == -1 || nonWS.test(line.slice(0, found))) continue;
-        var foundEnd = found + lead.length;
+        if (foundTmp == -1 || nonWS.test(line.slice(0, foundTmp))) continue;
+        var foundEnd = foundTmp + lead.length;
         if (pad && line.slice(foundEnd, foundEnd + pad.length) == pad) foundEnd += pad.length;
-        self.replaceRange("", Pos(i, found), Pos(i, foundEnd));
+        self.replaceRange("", Pos(i, foundTmp), Pos(i, foundEnd));
       }
     });
     return true;

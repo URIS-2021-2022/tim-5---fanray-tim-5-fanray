@@ -100,15 +100,13 @@
 
 							if (line < 1 || line > lineCount) {
 								alert(dialogLang.error);
+							} else {
+								_this.gotoLine(line);
 
-								return false;
-							}
+								this.hide().lockScreen(false).hideMask();
 
-							_this.gotoLine(line);
-
-                            this.hide().lockScreen(false).hideMask();
-
-                            this.remove();
+								this.remove();
+                            }
 
                             return false;
                         }],

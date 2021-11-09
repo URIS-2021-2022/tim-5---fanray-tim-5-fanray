@@ -67,30 +67,23 @@
                             var url   = this.find("[data-url]").val();
                             var title = this.find("[data-title]").val();
 
-                            if (url === "http://" || url === "")
-                            {
+                            if (url === "http://" || url === "") {
                                 alert(linkLang.urlEmpty);
-                                return false;
-                            }
-
-                            /*if (title === "")
-                            {
+                            } else if (title === "") {
                                 alert(linkLang.titleEmpty);
-                                return false;
-                            }*/
-                            
-                            var str = "[" + title + "](" + url + " \"" + title + "\")";
-                            
-                            if (title == "")
-                            {
-                                str = "[" + url + "](" + url + ")";
-                            }                                
+                            } else {
+                                var str = "[" + title + "](" + url + " \"" + title + "\")";
 
-                            cm.replaceSelection(str);
+                                if (title == "") {
+                                    str = "[" + url + "](" + url + ")";
+                                }
 
-                            this.hide().lockScreen(false).hideMask();
+                                cm.replaceSelection(str);
 
-                            this.remove();
+                                this.hide().lockScreen(false).hideMask();
+
+                                this.remove();
+                            }
 
                             return false;
                         }],
