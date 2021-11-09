@@ -3533,10 +3533,6 @@ input[type="button"].btn-block {
     margin-left: 0;
 }
 
-.dropright .dropdown-toggle::after {
-    vertical-align: 0;
-}
-
 .dropleft .dropdown-menu {
     top: 0;
     right: 100%;
@@ -3552,9 +3548,7 @@ input[type="button"].btn-block {
     content: "";
 }
 
-.dropleft .dropdown-toggle::after {
-    display: none;
-}
+
 
 .dropleft .dropdown-toggle::before {
     display: inline-block;
@@ -3570,9 +3564,7 @@ input[type="button"].btn-block {
     margin-left: 0;
 }
 
-.dropleft .dropdown-toggle::before {
-    vertical-align: 0;
-}
+
 
 .dropdown-menu[x-placement^="top"], .dropdown-menu[x-placement^="right"], .dropdown-menu[x-placement^="bottom"], .dropdown-menu[x-placement^="left"] {
     right: auto;

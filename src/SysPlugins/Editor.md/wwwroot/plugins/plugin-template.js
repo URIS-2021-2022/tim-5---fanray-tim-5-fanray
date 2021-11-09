@@ -64,20 +64,7 @@
 		};
 
 		exports.fn.htmlEntities = function() {
-			/*
-			var _this       = this; // this == the current instance object of Editor.md
-			var lang        = _this.lang;
-			var settings    = _this.settings;
-			var editor      = this.editor;
-			var cursor      = cm.getCursor();
-			var selection   = cm.getSelection();
-			var classPrefix = this.classPrefix;
-
-			$.extend(true, this.lang, langs[this.lang.name]); // l18n
-			this.setToolbar();
-
-			cm.focus();
-			*/
+		
 			//....
 		};
 
