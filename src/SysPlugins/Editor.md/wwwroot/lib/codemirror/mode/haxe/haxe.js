@@ -252,7 +252,7 @@ CodeMirror.defineMode("haxe", function(config, parserConfig) {
       if (type == wanted) return cont();
       else if (wanted == ";") return pass();
       else return cont(f);
-    };
+    }
     return f;
   }
 
@@ -486,7 +486,7 @@ CodeMirror.defineMode("hxml", function () {
 
       var ch = stream.peek();
 
-      if (state.inString == false && ch == "'") {
+      if (!state.inString  && ch == "'") {
         state.inString = true;
         ch = stream.next();
       }

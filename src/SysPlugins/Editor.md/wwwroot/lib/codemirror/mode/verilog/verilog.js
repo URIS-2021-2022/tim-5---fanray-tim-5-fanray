@@ -433,13 +433,13 @@ CodeMirror.defineMode("verilog", function(config, parserConfig) {
           curPunc = (/\\SVX_version/.test(stream.string))
             ? "\\SVX_version" : stream.string;
           stream.skipToEnd();
-          if (curPunc == "\\SV" && state.vxCodeActive) {state.vxCodeActive = false;};
+          if (curPunc == "\\SV" && state.vxCodeActive) {state.vxCodeActive = false;}
           if ((/\\SVX/.test(curPunc) && !state.vxCodeActive)
-            || (curPunc=="\\SVX_version" && state.vxCodeActive)) {state.vxCodeActive = true;};
+            || (curPunc=="\\SVX_version" && state.vxCodeActive)) {state.vxCodeActive = true;}
           style = "keyword";
           state.svxCurCtlFlowChar  = state.svxPrevPrevCtlFlowChar
             = state.svxPrevCtlFlowChar = "";
-          if (state.vxCodeActive == true) {
+          if (state.vxCodeActive ) {
             state.svxCurCtlFlowChar  = "\\";
             vxIndent = svxGenIndent(stream, state);
           }
@@ -455,7 +455,7 @@ CodeMirror.defineMode("verilog", function(config, parserConfig) {
           "^^":"attribute", "^":"attribute"};
         var ch = stream.peek();
         var vxCurCtlFlowCharValueAtStart = state.svxCurCtlFlowChar;
-        if (state.vxCodeActive == true) {
+        if (state.vxCodeActive) {
           if (/[\[\]{}\(\);\:]/.test(ch)) {
             // bypass nesting and 1 char punc
             style = "meta";
@@ -501,12 +501,12 @@ CodeMirror.defineMode("verilog", function(config, parserConfig) {
             style = svxkpScopePrefixs[ch];
             state.svxCurCtlFlowChar = state.svxCurCtlFlowChar == "" ? "S" : state.svxCurCtlFlowChar;  // stmt
             stream.next();
-            stream.match(/[a-zA-Z_0-9]+/);
+            stream.match(/\w+/);
           } else if (style = svxchScopePrefixes[ch] || false) {
             // special SVX operators
             state.svxCurCtlFlowChar = state.svxCurCtlFlowChar == "" ? ch : state.svxCurCtlFlowChar;
             stream.next();
-            stream.match(/[a-zA-Z_0-9]+/);
+            stream.match(/\w+/);
           }
           if (state.svxCurCtlFlowChar != vxCurCtlFlowCharValueAtStart) { // flow change
             vxIndent = svxGenIndent(stream, state);
@@ -516,14 +516,14 @@ CodeMirror.defineMode("verilog", function(config, parserConfig) {
         return style;
       },
       token: function(stream, state) {
-        if (state.vxCodeActive == true && stream.sol() && state.svxCurCtlFlowChar != "") {
+        if (state.vxCodeActive  && stream.sol() && state.svxCurCtlFlowChar != "") {
           state.svxPrevPrevCtlFlowChar = state.svxPrevCtlFlowChar;
           state.svxPrevCtlFlowChar = state.svxCurCtlFlowChar;
           state.svxCurCtlFlowChar = "";
         }
       },
       indent: function(state) {
-        return (state.vxCodeActive == true) ? state.vxIndentRq : -1;
+        return (state.vxCodeActive ) ? state.vxIndentRq : -1;
       },
       startState: function(state) {
         state.svxCurCtlFlowChar = "";
