@@ -38,7 +38,7 @@
     for (var i = 0; i < val.length; i++) {
       var elt = document.createElement("div");
       elt.className = "CodeMirror-ruler";
-      var col, cls = null, conf = val[i];
+      var col = null, conf = val[i];
       if (typeof conf == "number") {
         col = conf;
       } else {

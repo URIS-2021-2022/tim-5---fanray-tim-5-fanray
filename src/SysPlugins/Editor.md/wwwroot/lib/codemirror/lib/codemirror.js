@@ -108,9 +108,12 @@
     else
       onBlur(this);
 
-    for (var opt in optionHandlers) if (optionHandlers.hasOwnProperty(opt))
-      optionHandlers[opt](this, options[opt], Init);
-    maybeUpdateLineNumberWidth(this);
+      for (var opt in optionHandlers) {
+          if (optionHandlers.hasOwnProperty(opt)) {
+              optionHandlers[opt](this, options[opt], Init);
+              maybeUpdateLineNumberWidth(this);
+          }
+      }
     if (options.finishInit) options.finishInit(this);
     for (var i = 0; i < initHooks.length; ++i) initHooks[i](this);
     endOperation(this);
@@ -470,7 +473,7 @@
     }
   }, NativeScrollbars.prototype);
 
-  function NullScrollbars() {}
+  function NullScrollbars()
 
   NullScrollbars.prototype = copyObj({
     update: function() { return {bottom: 0, right: 0}; },
@@ -802,8 +805,11 @@
       if (diff > .001 || diff < -.001) {
         updateLineHeight(cur.line, height);
         updateWidgetHeight(cur.line);
-        if (cur.rest) for (var j = 0; j < cur.rest.length; j++)
-          updateWidgetHeight(cur.rest[j]);
+          if (cur.rest) {
+              for (var j = 0; j < cur.rest.length; j++) {
+                  updateWidgetHeight(cur.rest[j]);
+              }
+          }
       }
     }
   }
@@ -811,9 +817,13 @@
   // Read and store the height of line widgets associated with the
   // given line.
   function updateWidgetHeight(line) {
-    if (line.widgets) for (var i = 0; i < line.widgets.length; ++i)
-      line.widgets[i].height = line.widgets[i].node.offsetHeight;
-  }
+      if (line.widgets) {
+          for (var i = 0; i < line.widgets.length; ++i) {
+              line.widgets[i].height = line.widgets[i].node.offsetHeight;
+          }
+      }
+   }
+
 
   // Do a bulk-read of the DOM positions and sizes needed to draw the
   // view, so that we don't interleave reading and writing to the DOM.
@@ -1170,7 +1180,7 @@
     this.inaccurateSelection = false;
     // Used to work around IE issue with selection being forgotten when focus moves away from textarea
     this.hasSelection = false;
-  };
+  }
 
   function hiddenTextarea() {
     var te = elt("textarea", null, null, "position: absolute; padding: 0; width: 1px; height: 1em; outline: none");
@@ -1210,7 +1220,7 @@
         // Workaround for webkit bug https://bugs.webkit.org/show_bug.cgi?id=90206
         // Add a char to the end of textarea before paste occur so that
         // selection doesn't span to the end of textarea.
-        if (webkit && !cm.state.fakedLastChar && !(new Date - cm.state.lastMiddleDown < 200)) {
+        if (webkit && !cm.state.fakedLastChar && !(new Date - cm.state.lastMiddleDown >= 200)) {
           var start = te.selectionStart, end = te.selectionEnd;
           te.value += "$";
           // The selection end needs to be set before the start, otherwise there
@@ -7895,7 +7905,7 @@
     else e.cancelBubble = true;
   };
   function e_defaultPrevented(e) {
-    return e.defaultPrevented != null ? e.defaultPrevented : e.returnValue == false;
+    return e.defaultPrevented != null ? e.defaultPrevented : !e.returnValue;
   }
   var e_stop = CodeMirror.e_stop = function(e) {e_preventDefault(e); e_stopPropagation(e);};
 

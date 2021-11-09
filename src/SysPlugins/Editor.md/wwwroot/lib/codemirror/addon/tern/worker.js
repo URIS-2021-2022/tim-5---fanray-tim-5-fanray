@@ -5,7 +5,7 @@
 
 var server;
 
-this.onmessage = function(e) {
+onmessage = function(e) {
   var data = e.data;
   switch (data.type) {
   case "init": return startServer(data.defs, data.plugins, data.scripts);

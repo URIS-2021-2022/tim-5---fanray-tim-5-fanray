@@ -144,8 +144,8 @@ CodeMirror.defineMode("clojure", function (options) {
             }
             var returnType = null;
 
-            switch(state.mode){
-                case "string": // multi-line string parsing mode
+            if (state.mode == "string") {
+
                     var next, escaped = false;
                     while ((next = stream.next()) != null) {
                         if (next == "\"" && !escaped) {

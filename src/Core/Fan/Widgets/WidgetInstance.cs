@@ -16,7 +16,6 @@ namespace Fan.Widgets
         /// Url to details page of the widget.
         /// </summary>
         /// <remarks>
-        /// TODO info icon on each Available Widgets to show details.
         /// </remarks>
         public new string DetailsUrl => "";
 

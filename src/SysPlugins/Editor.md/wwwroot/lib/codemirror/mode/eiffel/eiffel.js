@@ -102,11 +102,11 @@ CodeMirror.defineMode("eiffel", function() {
       return "comment";
     } else if (ch == ":"&&stream.eat("=")) {
       return "operator";
-    } else if (/[0-9]/.test(ch)) {
+    } else if (/\d/.test(ch)) {
       stream.eatWhile(/[xXbBCc0-9\.]/);
       stream.eat(/[\?\!]/);
       return "ident";
-    } else if (/[a-zA-Z_0-9]/.test(ch)) {
+    } else if (/\w/.test(ch)) {
       stream.eatWhile(/[a-zA-Z_0-9]/);
       stream.eat(/[\?\!]/);
       return "ident";

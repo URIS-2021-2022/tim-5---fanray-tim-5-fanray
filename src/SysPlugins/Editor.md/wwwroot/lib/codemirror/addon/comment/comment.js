@@ -116,7 +116,7 @@
     // Try finding line comments
     var lineString = options.lineComment || mode.lineComment, lines = [];
     var pad = options.padding == null ? " " : options.padding, didSomething;
-    lineComment: {
+    {
       if (!lineString) break lineComment;
       for (var i = start; i <= end; ++i) {
         var line = self.getLine(i);
