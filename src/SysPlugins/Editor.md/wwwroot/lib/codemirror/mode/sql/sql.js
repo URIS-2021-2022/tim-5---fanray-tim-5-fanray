@@ -48,7 +48,7 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
       // numbers
       // ref: http://dev.mysql.com/doc/refman/5.5/en/number-literals.html
           stream.match(/^[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?/);
-      support.decimallessFloat == true && stream.eat('.');
+      support.decimallessFloat && stream.eat('.');
       return "number";
     } else if (ch == "?" && (stream.eatSpace() || stream.eol() || stream.eat(";"))) {
       // placeholders
@@ -58,8 +58,8 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
       // ref: http://dev.mysql.com/doc/refman/5.5/en/string-literals.html
       state.tokenize = tokenLiteral(ch);
       return state.tokenize(stream, state);
-    } else if ((((support.nCharCast == true && (ch == "n" || ch == "N"))
-        || (support.charsetCast == true && ch == "_" && stream.match(/[a-z][a-z0-9]*/i)))
+    } else if ((((support.nCharCast && (ch == "n" || ch == "N"))
+        || (support.charsetCast && ch == "_" && stream.match(/[a-z][a-z0-9]*/i)))
         && (stream.peek() == "'" || stream.peek() == '"'))) {
       // charset casting: _utf8'str', N'str', n'str'
       // ref: http://dev.mysql.com/doc/refman/5.5/en/string-literals.html
@@ -84,12 +84,12 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
       return state.tokenize(stream, state);
     } else if (ch == ".") {
       // .1 for 0.1
-      if (support.zerolessFloat == true && stream.match(/^(?:\d+(?:e[+-]?\d+)?)/i)) {
+      if (support.zerolessFloat && stream.match(/^(?:\d+(?:e[+-]?\d+)?)/i)) {
         return "number";
       }
       // .table_name (ODBC)
       // // ref: http://dev.mysql.com/doc/refman/5.6/en/identifier-qualifiers.html
-      if (support.ODBCdotTable == true && stream.match(/^[a-zA-Z_]+/)) {
+      if (support.ODBCdotTable && stream.match(/^[a-zA-Z_]+/)) {
         return "variable-2";
       }
     } else if (operatorChars.test(ch)) {
@@ -242,7 +242,7 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
       return "variable-2";
     }
     return null;
-  };
+  }
 
   // short client keyword token
   function hookClient(stream) {
@@ -262,7 +262,7 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
   // turn a space-separated list into an array
   function set(str) {
     var obj = {}, words = str.split(" ");
-    for (var i = 0; i < words.length; ++i) obj[words[i]] = true;
+      for (let obj of words) { obj = true; }
     return obj;
   }
 
