@@ -33,7 +33,7 @@ CodeMirror.registerHelper("fold", "brace", function(cm, start) {
 
   var startToken = "{", endToken = "}", startCh = findOpening("{");
   if (startCh == null) {
-    startToken = "[", endToken = "]";
+    startToken = "[" endToken = "]";
     startCh = findOpening("[");
   }
 

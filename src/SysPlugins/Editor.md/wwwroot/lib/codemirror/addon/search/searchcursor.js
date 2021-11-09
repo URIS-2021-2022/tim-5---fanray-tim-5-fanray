@@ -67,7 +67,7 @@
         if (!query.length) {
           // Empty string would match anything and never progress, so
           // we define it to match nothing instead.
-          this.matches = function() {};
+          this.matches = function() 
         } else {
           this.matches = function(reverse, pos) {
             if (reverse) {
