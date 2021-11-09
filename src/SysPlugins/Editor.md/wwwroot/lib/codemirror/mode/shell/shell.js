@@ -19,7 +19,7 @@ CodeMirror.defineMode('shell', function() {
     for(var i = 0; i < split.length; i++) {
       words[split[i]] = style;
     }
-  };
+  }
 
   // Atoms
   define('atom', 'true false');
