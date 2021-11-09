@@ -23,7 +23,7 @@ CodeMirror.defineMode("vb", function(conf, parserConf) {
     var doubleOperators = new RegExp("^((==)|(<>)|(<=)|(>=)|(<>)|(<<)|(>>)|(//)|(\\*\\*))");
     var doubleDelimiters = new RegExp("^((\\+=)|(\\-=)|(\\*=)|(%=)|(/=)|(&=)|(\\|=)|(\\^=))");
     var tripleDelimiters = new RegExp("^((//=)|(>>=)|(<<=)|(\\*\\*=))");
-    var identifiers = new RegExp("^[_A-Za-z][_A-Za-z0-9]*");
+    var identifiers = new RegExp("^[_A-Za-z][\w]*");
 
     var openingKeywords = ['class','module', 'sub','enum','select','while','if','function',  'get','set','property', 'try'];
     var middleKeywords = ['else','elseif','case', 'catch'];

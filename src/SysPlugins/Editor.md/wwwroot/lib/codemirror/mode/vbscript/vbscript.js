@@ -33,7 +33,7 @@ CodeMirror.defineMode("vbscript", function(conf, parserConf) {
     var doubleOperators = new RegExp("^((<>)|(<=)|(>=))");
     var singleDelimiters = new RegExp('^[\\.,]');
     var brakets = new RegExp('^[\\(\\)]');
-    var identifiers = new RegExp("^[A-Za-z][_A-Za-z0-9]*");
+    var identifiers = new RegExp("^[A-Za-z][\w]*");
 
     var openingKeywords = ['class','sub','select','while','if','function', 'property', 'with', 'for'];
     var middleKeywords = ['else','elseif','case'];

@@ -14,7 +14,9 @@
 CodeMirror.defineMode("sieve", function(config) {
   function words(str) {
     var obj = {}, words = str.split(" ");
-    for (var i = 0; i < words.length; ++i) obj[words[i]] = true;
+      for (let obj of words) {
+          obj = true;
+      }
     return obj;
   }
 
@@ -170,7 +172,7 @@ CodeMirror.defineMode("sieve", function(config) {
       if (stream.eatSpace())
         return null;
 
-      return (state.tokenize || tokenBase)(stream, state);;
+      return (state.tokenize || tokenBase)(stream, state);
     },
 
     indent: function(state, _textAfter) {

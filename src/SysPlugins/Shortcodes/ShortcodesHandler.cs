@@ -66,7 +66,7 @@ namespace Shortcodes
         {
             if (!(notification.Model is BlogPostListVM)) return Task.CompletedTask;
 
-            foreach (var postViewModel in ((BlogPostListVM)notification.Model).BlogPostViewModels)
+            foreach (var postViewModel in (notification.Model).BlogPostViewModels)
             {
                 postViewModel.Body = shortcodeService.Parse(postViewModel.Body);
             }

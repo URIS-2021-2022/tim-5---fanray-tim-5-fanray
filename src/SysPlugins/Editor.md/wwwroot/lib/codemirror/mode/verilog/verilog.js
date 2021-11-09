@@ -274,8 +274,8 @@ CodeMirror.defineMode("verilog", function(config, parserConfig) {
         }
       }
     }
-    var re = new RegExp("[{}()\\[\\]]|(" + allClosings.join("|") + ")$");
-    return re;
+    return new RegExp("[{}()\\[\\]]|(" + allClosings.join("|") + ")$");
+    
   }
 
   // Interface
