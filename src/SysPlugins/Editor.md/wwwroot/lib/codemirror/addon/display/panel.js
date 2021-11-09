@@ -42,8 +42,8 @@
 
   Panel.prototype.changed = function(height) {
     var newHeight = height == null ? this.node.offsetHeight : height;
-    var info = this.cm.state.panels;
-    this.cm._setSize(null, info.height += (newHeight - this.height));
+      var info = this.cm.state.panels;
+      this.cm._setSize(null, info.height = info.height + (newHeight - this.height));
     this.height = newHeight;
   };
 
@@ -75,8 +75,8 @@
           newHeight = info.wrapper.offsetHeight;
           info.wrapper.style.height = "";
         }
-      }
-      cm._setSize(width, info.heightLeft += (newHeight - height));
+        }
+        cm._setSize(width, info.heightLeft = info.heightLeft + (newHeight - height));
       height = newHeight;
     };
   }

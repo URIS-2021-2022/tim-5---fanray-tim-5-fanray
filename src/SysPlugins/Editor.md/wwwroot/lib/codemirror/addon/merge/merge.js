@@ -190,7 +190,7 @@
   // Updating the marks for editor content
 
   function clearMarks(editor, arr, classes) {
-    for (var i = 0; i < arr.length; ++i) {
+    for (var i of arr) {
       var mark = arr[i];
       if (mark instanceof CodeMirror.TextMarker) {
         mark.clear();
@@ -315,7 +315,6 @@
         for (var j = 0; j < linesToAlign.length; j++) {
           var align = linesToAlign[j];
           if (align[1] == chunk.editTo) {
-            j = -1;
             break;
           } else if (align[1] > chunk.editTo) {
             break;
@@ -487,7 +486,8 @@
     };
     CodeMirror.on(window, "resize", onResize);
     var resizeInterval = setInterval(function() {
-      for (var p = wrapElt.parentNode; p && p != document.body; p = p.parentNode) {}
+        for (var p = wrapElt.parentNode; p && p != document.body; p = p.parentNode) { // code block to be executed
+        }
       if (!p) { clearInterval(resizeInterval); CodeMirror.off(window, "resize", onResize); }
     }, 5000);
   };
@@ -553,9 +553,9 @@
     for (var i = 0; i < diff.length; ++i) {
       var part = diff[i];
       if (!part[1]) {
-        diff.splice(i--, 1);
+        diff.splice(, 1);
       } else if (i && diff[i - 1][0] == part[0]) {
-        diff.splice(i--, 1);
+        diff.splice(, 1);
         diff[i][1] += part[1];
       }
     }
@@ -676,7 +676,7 @@
     for (var i = 0; i < clear.length; i++) {
       if (clear[i]) {
         var line = i + off;
-        for (var size = 1; i < clear.length - 1 && clear[i + 1]; i++, size++) {}
+        for (var size = 1; i < clear.length - 1 && clear[i + 1]; size++) {}
         if (size > margin) {
           var editors = [{line: line, cm: edit}];
           if (mv.left) editors.push({line: getMatchingOrigLine(line, mv.left.chunks), cm: mv.left.orig});

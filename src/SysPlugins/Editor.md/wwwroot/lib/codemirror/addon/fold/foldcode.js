@@ -81,7 +81,7 @@
 
   CodeMirror.defineExtension("isFolded", function(pos) {
     var marks = this.findMarksAt(pos);
-    for (var i = 0; i < marks.length; ++i)
+    for (var i of marks)
       if (marks[i].__isFold) return true;
   });
 
