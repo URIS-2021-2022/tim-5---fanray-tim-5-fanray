@@ -40,6 +40,16 @@ namespace Shortcodes.Parsing
         }
 
         /// <summary>
+        /// Sets the current document and resets the current position to the start of it
+        /// </summary>
+        /// <param name="html"></param>
+        public void Reset(string text)
+        {
+            _text = text ?? String.Empty;
+            _position = 0;
+        }
+
+        /// <summary>
         /// Resets the current position to a specified position in the current document
         /// </summary>
         public void ResetTo(int position)
@@ -50,15 +60,7 @@ namespace Shortcodes.Parsing
                 _position = _text.Length;
         }
 
-        /// <summary>
-        /// Sets the current document and resets the current position to the start of it
-        /// </summary>
-        /// <param name="html"></param>
-        public void Reset(string text)
-        {
-            _text = text ?? String.Empty;
-            _position = 0;
-        }
+
 
         /// <summary>
         /// Indicates if the current position is at the end of the current document
