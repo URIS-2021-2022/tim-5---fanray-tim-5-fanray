@@ -170,8 +170,8 @@ CodeMirror.defineMode("erlang", function(cmCfg) {
     // quoted atom
     if (ch == '\'') {
       if (!(state.in_atom = (!singleQuote(stream)))) {
-        if (stream.match(/\s*\/\s*[0-9]/,false)) {
-          stream.match(/\s*\/\s*[0-9]/,true);
+        if (stream.match(/\s*\/\s*\d/,false)) {
+          stream.match(/\s*\/\s*\d/,true);
           return rval(state,stream,"fun");      // 'f'/0 style fun
         }
         if (stream.match(/\s*\(/,false) || stream.match(/\s*:/,false)) {
@@ -197,8 +197,8 @@ CodeMirror.defineMode("erlang", function(cmCfg) {
     if (/[a-z_ß-öø-ÿ]/.test(ch)) {
       stream.eatWhile(anumRE);
 
-      if (stream.match(/\s*\/\s*[0-9]/,false)) {
-        stream.match(/\s*\/\s*[0-9]/,true);
+      if (stream.match(/\s*\/\s*\d/,false)) {
+        stream.match(/\s*\/\s*\d/,true);
         return rval(state,stream,"fun");      // f/0 style fun
       }
 
@@ -237,7 +237,7 @@ CodeMirror.defineMode("erlang", function(cmCfg) {
     }
 
     // number
-    var digitRE      = /[0-9]/;
+    var digitRE      = /\d/;
     var radixRE      = /[0-9a-zA-Z]/;         // 36#zZ style int
     if (digitRE.test(ch)) {
       stream.eatWhile(digitRE);

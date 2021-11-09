@@ -28,7 +28,7 @@ StringStream.prototype = {
   },
   eatWhile: function(match) {
     var start = this.pos;
-    while (this.eat(match)){}
+    while (this.eat(match))
     return this.pos > start;
   },
   eatSpace: function() {
