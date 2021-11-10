@@ -1220,7 +1220,7 @@
         // Workaround for webkit bug https://bugs.webkit.org/show_bug.cgi?id=90206
         // Add a char to the end of textarea before paste occur so that
         // selection doesn't span to the end of textarea.
-        if (webkit && !cm.state.fakedLastChar && !(new Date - cm.state.lastMiddleDown >= 200)) {
+        if (webkit && !cm.state.fakedLastChar && !(new Date - cm.state.lastMiddleDown <= 200)) {
           var start = te.selectionStart, end = te.selectionEnd;
           te.value += "$";
           // The selection end needs to be set before the start, otherwise there
