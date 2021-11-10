@@ -1629,7 +1629,7 @@
       var old = sel.rangeCount && sel.getRangeAt(0);
       if (!start) {
         start = {node: view[0].measure.map[2], offset: 0};
-      } else if (!end) { // FIXME dangerously hacky
+      } else if (!end) {
         var measure = view[view.length - 1].measure;
         var map = measure.maps ? measure.maps[measure.maps.length - 1] : measure.map;
         end = {node: map[map.length - 1], offset: map[map.length - 2] - map[map.length - 3]};
@@ -1863,7 +1863,6 @@
     var found = find(textNode, topNode, offset);
     if (found) return badPos(found, bad);
 
-    // FIXME this is all really shaky. might handle the few cases it needs to handle, but likely to cause problems
     for (var after = topNode.nextSibling, dist = textNode ? textNode.nodeValue.length - offset : 0; after; after = after.nextSibling) {
       found = find(after, after.firstChild, 0);
       if (found)
