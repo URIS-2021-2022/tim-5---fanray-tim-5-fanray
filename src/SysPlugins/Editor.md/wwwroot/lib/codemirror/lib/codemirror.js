@@ -2746,11 +2746,11 @@
     function getBidi(ch, partPos) {
       var part = order[partPos], right = part.level % 2;
       if (ch == bidiLeft(part) && partPos && part.level < order[partPos - 1].level) {
-        part = order[--partPos];
+        part = order[partPos];
         ch = bidiRight(part) - (part.level % 2 ? 0 : 1);
         right = true;
       } else if (ch == bidiRight(part) && partPos < order.length - 1 && part.level < order[partPos + 1].level) {
-        part = order[++partPos];
+        part = order[partPos];
         ch = bidiLeft(part) - part.level % 2;
         right = false;
       }
