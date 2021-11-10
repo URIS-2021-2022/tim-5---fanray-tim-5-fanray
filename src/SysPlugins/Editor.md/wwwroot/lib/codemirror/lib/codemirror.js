@@ -864,7 +864,7 @@
     // in display.lineDiv) with the view as we go.
     for (var i = 0; i < view.length; i++) {
       var lineView = view[i];
-      if (lineView.hidden) {
+      if (lineView.hidden) { //if
       } else if (!lineView.node || lineView.node.parentNode != container) { // Not drawn yet
         var node = buildLineElement(cm, lineView, lineN, dims);
         container.insertBefore(node, cur);
@@ -5134,8 +5134,9 @@
       if (cm.options.lineWrapping) clearLineMeasurementCache(this);
       var lineNo = cm.display.viewFrom;
       cm.doc.iter(lineNo, cm.display.viewTo, function(line) {
-        if (line.widgets) for (var i = 0; i < line.widgets.length; i++)
-          if (line.widgets[i].noHScroll) { regLineChange(cm, lineNo, "widget"); break; }
+          if (line.widgets) for (var i = 0; i < line.widgets.length; i++) {
+             if (line.widgets[i].noHScroll) { regLineChange(cm, lineNo, "widget"); break; }
+          }
         ++lineNo;
       });
       cm.curOp.forceUpdate = true;

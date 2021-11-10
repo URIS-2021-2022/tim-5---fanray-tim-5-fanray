@@ -45,7 +45,7 @@
     var re = config && config.bracketRegex ? config.bracketRegex : /[(){}[\]]/;
     var lineEnd = dir > 0 ? Math.min(where.line + maxScanLines, cm.lastLine() + 1)
                           : Math.max(cm.firstLine() - 1, where.line - maxScanLines);
-    for (var lineNo = where.line; lineNo != lineEnd; lineNo += dir) {
+    for (var lineNo = where.line; lineNo < lineEnd; lineNo += dir) {
       var line = cm.getLine(lineNo);
       if (!line) continue;
       var pos = dir > 0 ? 0 : line.length - 1, end = dir > 0 ? line.length : -1;

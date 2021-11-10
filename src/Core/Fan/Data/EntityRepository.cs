@@ -92,7 +92,7 @@ namespace Fan.Data
         /// </remarks>
         public virtual async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate) =>
             isSqlite ? 
-                _entities.ToList().Where(predicate.Compile()).ToList() :
+                _entities.AsEnumerable().Where(predicate.Compile()).ToList() :
                 await _entities.Where(predicate).ToListAsync();
 
         /// <summary>

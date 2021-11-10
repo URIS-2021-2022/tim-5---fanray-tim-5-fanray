@@ -259,7 +259,7 @@ CodeMirror.defineMode("vb", function(conf, parserConf) {
         },
 
         indent: function(state, textAfter) {
-            var trueText = textAfter.replace(/^\s+|\s+$/g, '') ;
+            var trueText = textAfter.replace(/^\s+|^\s+$/g, '') ;
             if (trueText.match(closing) || trueText.match(doubleClosing) || trueText.match(middle)) return conf.indentUnit*(state.currentIndent-1);
             if(state.currentIndent < 0) return 0;
             return state.currentIndent * conf.indentUnit;

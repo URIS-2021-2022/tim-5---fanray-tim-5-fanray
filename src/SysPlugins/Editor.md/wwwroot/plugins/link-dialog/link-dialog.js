@@ -17,7 +17,6 @@
 
 		exports.fn.linkDialog = function() {
 
-			var _this       = this;
 			var cm          = this.cm;
             var editor      = this.editor;
             var settings    = this.settings;

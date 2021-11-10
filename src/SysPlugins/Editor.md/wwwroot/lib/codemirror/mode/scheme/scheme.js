@@ -116,15 +116,16 @@ CodeMirror.defineMode("scheme", function () {
                     break;
                 case "s-expr-comment": // s-expr commenting mode
                     state.mode = false;
-                    if(stream.peek() == "(" || stream.peek() == "["){
+                    if (stream.peek() == "(" || stream.peek() == "[") {
                         // actually start scheme s-expr commenting mode
                         state.sExprComment = 0;
-                    }else{
+                    } else {
                         // if not we just comment the entire of the next token
                         stream.eatWhile(/[^/s]/); // eat non spaces
                         returnType = COMMENT;
                         break;
                     }
+                    break;
                 default: // default parsing mode
                     var ch = stream.next();
 

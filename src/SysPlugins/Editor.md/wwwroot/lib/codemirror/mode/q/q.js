@@ -24,10 +24,11 @@ CodeMirror.defineMode("q",function(config){
       if(c=="/")
         return(state.tokenize=tokenLineComment)(stream,state);
       else if(c=="\\"){
-        if(stream.eol()||/\s/.test(stream.peek()))
-          return stream.skipToEnd(),/^\\\s*$/.test(stream.current())?(state.tokenize=tokenCommentToEOF)(stream, state):state.tokenize=tokenBase,"comment";
-        else
-          return state.tokenize=tokenBase,"builtin";
+          if (stream.eol() || /\s/.test(stream.peek()))
+              return stream.skipToEnd(), /^\\\s*$/.test(stream.current()) ? (state.tokenize = tokenCommentToEOF)(stream, state) : state.tokenize = tokenBase, "comment";
+          else
+              return state.tokenize = tokenBase;
+              return "builtin";
       }
     if(/\s/.test(c))
       return stream.peek()=="/"?(stream.skipToEnd(),"comment"):"whitespace";

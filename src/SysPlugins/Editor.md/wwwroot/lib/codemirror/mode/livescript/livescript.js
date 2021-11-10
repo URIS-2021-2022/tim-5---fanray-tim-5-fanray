@@ -64,11 +64,10 @@
         return style.replace(/\./g, ' ');
       },
       indent: function(state){
-        var indentation = state.lastToken.indent;
         if (state.lastToken.content.match(indenter)) {
-          indentation += 2;
+            state.lastToken.indent += 2;
         }
-        return indentation;
+          return state.lastToken.indent;
       }
     };
     return external;
