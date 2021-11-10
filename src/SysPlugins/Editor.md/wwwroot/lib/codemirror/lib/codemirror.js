@@ -8621,7 +8621,9 @@
       for (var i = 0; i < len;) {
         if (countsAsLeft.test(types[i])) {
           var start = i;
-          for (++i; i < len && countsAsLeft.test(types[i]); ++i) {}
+            for (++i; i < len && countsAsLeft.test(types[i]); ++i) {
+                //it should be like this
+            }
           order.push(new BidiSpan(0, start, i));
         } else {
           var pos = i, at = order.length;
