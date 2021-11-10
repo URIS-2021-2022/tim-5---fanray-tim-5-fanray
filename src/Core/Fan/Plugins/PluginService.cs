@@ -46,13 +46,17 @@ namespace Fan.Plugins
         /// It upserts a plugin meta and makes sure Active is true. SysPlugins also require activation 
         /// when they first install.
         /// </remarks>
-        public async Task<Plugin> ActivatePluginAsync(string folder)
+        public Task<Plugin> ActivatePluginAsync(string folder)
         {
             if (folder.IsNullOrEmpty()) throw new ArgumentNullException("folder", "Cannot activate a plugin with an empty name.");
 
+            return  ActivatePluginAsync1(folder);
+        }
+        public async Task<Plugin> ActivatePluginAsync1(string folder)
+        {
+
             return await ActivatePluginInternalAsync(folder);
         }
-
         private async Task<Plugin> ActivatePluginInternalAsync(string folder)
         {
             Plugin plugin = null;

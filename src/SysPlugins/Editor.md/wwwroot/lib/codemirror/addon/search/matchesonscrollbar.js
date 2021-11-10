@@ -43,7 +43,7 @@
     for (var i = 0; i < this.matches.length; i++) {
       var match = this.matches[i];
       if (match.from.line >= this.gap.to) break;
-      if (match.to.line >= this.gap.from) this.matches.splice(i--, 1);
+      if (match.to.line >= this.gap.from) break;
     }
     var cursor = this.cm.getSearchCursor(this.query, CodeMirror.Pos(this.gap.from, 0), this.caseFold);
     while (cursor.findNext()) {

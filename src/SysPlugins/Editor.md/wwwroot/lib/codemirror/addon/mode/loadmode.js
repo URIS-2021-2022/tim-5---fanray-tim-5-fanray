@@ -26,8 +26,8 @@
     }
     if (!missing.length) return cont();
     var split = splitCallback(cont, missing.length);
-    for (var i = 0; i < missing.length; ++i)
-      CodeMirror.requireMode(missing[i], split);
+    for (var m = 0; m < missing.length; ++m)
+      CodeMirror.requireMode(missing[m], split);
   }
 
   CodeMirror.requireMode = function(mode, cont) {

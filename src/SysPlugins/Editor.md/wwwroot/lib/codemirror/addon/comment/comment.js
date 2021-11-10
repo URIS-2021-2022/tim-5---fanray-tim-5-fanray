@@ -172,12 +172,12 @@
       var openEnd = open + startString.length;
       if (pad && startLine.slice(openEnd, openEnd + pad.length) == pad) openEnd += pad.length;
       self.replaceRange("", Pos(start, open), Pos(start, openEnd));
-      if (lead) for (var i = start + 1; i <= end; ++i) {
-          var line = self.getLine(i), foundTmp = line.indexOf(lead);
-        if (foundTmp == -1 || nonWS.test(line.slice(0, foundTmp))) continue;
+      if (lead) for (var k = start + 1; k <= end; ++k) {
+          var line1 = self.getLine(k), foundTmp = line1.indexOf(lead);
+        if (foundTmp == -1 || nonWS.test(line1.slice(0, foundTmp))) continue;
         var foundEnd = foundTmp + lead.length;
-        if (pad && line.slice(foundEnd, foundEnd + pad.length) == pad) foundEnd += pad.length;
-        self.replaceRange("", Pos(i, foundTmp), Pos(i, foundEnd));
+        if (pad && line1.slice(foundEnd, foundEnd + pad.length) == pad) foundEnd += pad.length;
+        self.replaceRange("", Pos(k, foundTmp), Pos(k, foundEnd));
       }
     });
     return true;

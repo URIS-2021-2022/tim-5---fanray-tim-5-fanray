@@ -46,7 +46,7 @@
     }
     var poll = setInterval(function() {
       if (tooltip) for (var n = node;; n = n.parentNode) {
-        if (n && n.nodeType == 11) n = n.host;
+        if (n && n.nodeType == 11) break;
         if (n == document.body) return;
         if (!n) { hide(); break; }
       }
