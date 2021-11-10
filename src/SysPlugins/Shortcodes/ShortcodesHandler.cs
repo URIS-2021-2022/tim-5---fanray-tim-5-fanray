@@ -16,12 +16,12 @@ namespace Shortcodes
                                      INotificationHandler<ModelPreRender<BlogPostListVM>>
     {
         private readonly IShortcodeService shortcodeService;
-        private readonly IPluginService pluginService;
+        
 
         public ShortcodesHandler(IShortcodeService shortcodeService, IPluginService pluginService)
         {
             this.shortcodeService = shortcodeService;
-            this.pluginService = pluginService;
+            
         }
 
         /// <summary>

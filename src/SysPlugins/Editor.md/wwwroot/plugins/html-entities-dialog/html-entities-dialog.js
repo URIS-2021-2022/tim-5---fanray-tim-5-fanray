@@ -25,8 +25,6 @@
 			var settings    = _this.settings;
 			var path        = settings.pluginPath + pluginName + "/";
 			var editor      = this.editor;
-			var cursor      = cm.getCursor();
-			var selection   = cm.getSelection();
 			var classPrefix = _this.classPrefix;
 
 			var dialogName  = classPrefix + "dialog-" + pluginName, dialog;

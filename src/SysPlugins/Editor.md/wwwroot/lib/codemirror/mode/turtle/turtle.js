@@ -64,13 +64,7 @@ CodeMirror.defineMode("turtle", function(config) {
                         return "keyword";
                  }
       }
-      var word = stream.current();
-      if (ops.test(word))
-        return null;
-      else if (keywords.test(word))
-        return "meta";
-      else
-        return "variable";
+      
     }
   }
 

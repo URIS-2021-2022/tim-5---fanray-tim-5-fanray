@@ -264,7 +264,7 @@ CodeMirror.defineMode("tiddlywiki", function () {
     }
 
     ch = stream.next();
-    return (sb) ? ret("code", "comment") : ret("code", "comment");
+    return ret("code", "comment");
   }
 
   // tw em / italic

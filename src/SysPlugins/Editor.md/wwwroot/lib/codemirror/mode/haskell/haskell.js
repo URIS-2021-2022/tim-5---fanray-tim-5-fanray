@@ -88,10 +88,10 @@ CodeMirror.defineMode("haskell", function(_config, modeConfig) {
       source.eatWhile(digitRE);
       var t = "number";
       if (source.match(/^\.\d+/)) {
-        t = "number";
+        
       }
       if (source.eat(/[eE]/)) {
-        t = "number";
+        
         source.eat(/[-+]/);
         source.eatWhile(digitRE); // should require at least 1
       }
@@ -109,12 +109,12 @@ CodeMirror.defineMode("haskell", function(_config, modeConfig) {
           return "comment";
         }
       }
-      var t = "variable";
+      var z = "variable";
       if (ch == ':') {
-        t = "variable-2";
+        z = "variable-2";
       }
       source.eatWhile(symbolRE);
-      return t;
+      return z;
     }
 
     return "error";
