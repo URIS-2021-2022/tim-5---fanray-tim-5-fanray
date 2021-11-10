@@ -138,12 +138,12 @@
   CodeMirror.registerHelper("fold", "xml", function(cm, start) {
     var iter = new Iter(cm, start.line, 0);
     for (;;) {
-      var openTag = toNextTag(iter), end;
-      if (!openTag || iter.line != start.line || !(end = toTagEnd(iter))) return;
+        var openTag = toNextTag(iter), end = toTagEnd(iter);
+      if (!openTag || iter.line != start.line || !end) return;
       if (!openTag[1] && end != "selfClose") {
-        var start = Pos(iter.line, iter.ch);
+        var start1 = Pos(iter.line, iter.ch);
         var close = findMatchingClose(iter, openTag[2]);
-        return close && {from: start, to: close.from};
+        return close && {from: start1, to: close.from};
       }
     }
   });

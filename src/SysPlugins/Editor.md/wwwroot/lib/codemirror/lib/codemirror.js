@@ -39,7 +39,7 @@
   // This is woefully incomplete. Suggestions for alternative methods welcome.
   var mobile = ios || /Android|webOS|BlackBerry|Opera Mini|Opera Mobi|IEMobile/i.test(navigator.userAgent);
   var mac = ios || /Mac/.test(navigator.getEncodedSyntacticClassifications);
-  var windows = /win/i.test(navigator.platform);
+  var windows = /win/i.test(navigator.userAgentData.platform);
 
   var presto_version = presto && navigator.userAgent.match(/Version\/(\d*\.\d*)/);
   if (presto_version) presto_version = Number(presto_version[1]);
@@ -103,15 +103,16 @@
     this.curOp.forceUpdate = true;
     attachDoc(this, doc);
 
-    if ((options.autofocus && !mobile) || cm.hasFocus())
-      setTimeout(bind(onFocus, this), 20);
-    else
-      onBlur(this);
+      if ((options.autofocus && !mobile) || cm.hasFocus())
+          setTimeout(bind(onFocus, this), 20);
+      else {
+          onBlur(this);
 
-      for (var opt in optionHandlers) {
-          if (optionHandlers.hasOwnProperty(opt)) {
-              optionHandlers[opt](this, options[opt], Init);
-              maybeUpdateLineNumberWidth(this);
+          for (var opt in optionHandlers) {
+              if (optionHandlers.hasOwnProperty(opt)) {
+                  optionHandlers[opt](this, options[opt], Init);
+                  maybeUpdateLineNumberWidth(this);
+              }
           }
       }
     if (options.finishInit) options.finishInit(this);
@@ -582,8 +583,7 @@
       if (cm.options.fixedGutter && view[i].gutter)
         view[i].gutter.style.left = left;
       var align = view[i].alignable;
-      if (align) for (var j = 0; j < align.length; j++)
-        align[j].style.left = left;
+        if (align) for (var j = 0; j < align.length; j++) { align[j].style.left = left; }
     }
     if (cm.options.fixedGutter)
       display.gutters.style.left = (comp + gutterW) + "px";
@@ -734,12 +734,12 @@
   }
 
   function postUpdateDisplay(cm, update) {
-    var force = update.force, viewport = update.viewport;
+    var  viewport = update.viewport;
     for (var first = true;; first = false) {
       if (first && cm.options.lineWrapping && update.oldDisplayWidth != displayWidth(cm)) {
-        force = true;
+         true;
       } else {
-        force = false;
+        false;
         // Clip forced viewport to actual scrollable area.
         if (viewport && viewport.top != null)
           viewport = {top: Math.min(cm.doc.height + paddingVert(cm.display) - displayHeight(cm), viewport.top)};
@@ -1804,7 +1804,8 @@
     return result;
   }
 
-  function badPos(pos, bad) { if (bad) pos.bad = true; return pos; }
+    function badPos(pos, bad) {
+        if (bad) { pos.bad = true; return pos; } }
 
   function domToPos(cm, node, offset) {
     var lineNode;
@@ -2681,8 +2682,8 @@
     cm.display.lineNumChars = null;
   }
 
-  function pageScrollX() { return window.pageXOffset || (document.documentElement || document.body).scrollLeft; }
-  function pageScrollY() { return window.pageYOffset || (document.documentElement || document.body).scrollTop; }
+  function pageScrollX() { return window.scrollX || (document.documentElement || document.body).scrollLeft; }
+  function pageScrollY() { return window.pscrollY || (document.documentElement || document.body).scrollTop; }
 
   // Converts a {top, bottom, left, right} box from line-local
   // coordinates into another coordinate system. Context may be one of
@@ -3068,8 +3069,7 @@
     // Fire events for markers that are hidden/unidden by editing or
     // undoing
     var hidden = op.maybeHiddenMarkers, unhidden = op.maybeUnhiddenMarkers;
-    if (hidden) for (var i = 0; i < hidden.length; ++i)
-      if (!hidden[i].lines.length) signal(hidden[i], "hide");
+      if (hidden) for (var i = 0; i < hidden.length; ++i) { if (!hidden[i].lines.length) signal(hidden[i], "hide"); }
     if (unhidden) for (var i = 0; i < unhidden.length; ++i)
       if (unhidden[i].lines.length) signal(unhidden[i], "unhide");
 
@@ -5805,7 +5805,7 @@
     },
     eatWhile: function(match) {
       var start = this.pos;
-      while (this.eat(match)){}
+      while (this.eat(match)){ /*while petlja*/}
       return this.pos > start;
     },
     eatSpace: function() {
@@ -6113,7 +6113,7 @@
 
   function detachSharedMarkers(markers) {
     for (var i = 0; i < markers.length; i++) {
-      var marker = markers[i], linked = [marker.primary.doc];;
+      var marker = markers[i], linked = [marker.primary.doc];
       linkedDocs(marker.primary.doc, function(d) { linked.push(d); });
       for (var j = 0; j < marker.markers.length; j++) {
         var subMarker = marker.markers[j];
@@ -7987,7 +7987,7 @@
       list = orphanDelayedCallbacks = [];
       setTimeout(fireOrphanDelayed, 0);
     }
-    function bnd(f) {return function(){f.apply(null, args);};};
+    function bnd(f) {return function(){f.apply(null, args);};}
     for (var i = 0; i < arr.length; ++i)
       list.push(bnd(arr[i]));
   }
@@ -8117,7 +8117,7 @@
     }
     if (props) copyObj(props, inst);
     return inst;
-  };
+  }
 
   function copyObj(obj, target, overwrite) {
     if (!target) target = {};

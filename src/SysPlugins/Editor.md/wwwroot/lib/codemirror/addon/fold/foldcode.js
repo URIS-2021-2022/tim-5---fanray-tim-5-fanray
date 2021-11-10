@@ -22,17 +22,17 @@
     var minSize = getOption(cm, options, "minFoldSize");
 
     function getRange(allowFolded) {
-      var range = finder(cm, pos);
-      if (!range || range.to.line - range.from.line < minSize) return null;
-      var marks = cm.findMarksAt(range.from);
-      for (var i = 0; i < marks.length; ++i) {
-        if (marks[i].__isFold && force !== "fold") {
+      var range1 = finder(cm, pos);
+      if (!range1 || range1.to.line - range1.from.line < minSize) return null;
+      var marks = cm.findMarksAt(range1.from);
+      for (let mark of marks) {
+        if (mark.__isFold && force !== "fold") {
           if (!allowFolded) return null;
-          range.cleared = true;
-          marks[i].clear();
+          range1.cleared = true;
+          mark.clear();
         }
       }
-      return range;
+      return range1;
     }
 
     var range = getRange(true);
@@ -110,8 +110,8 @@
   CodeMirror.registerHelper("fold", "combine", function() {
     var funcs = Array.prototype.slice.call(arguments, 0);
     return function(cm, start) {
-      for (var i = 0; i < funcs.length; ++i) {
-        var found = funcs[i](cm, start);
+      for (let func of funcs) {
+        var found = func(cm, start);
         if (found) return found;
       }
     };

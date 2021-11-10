@@ -103,11 +103,14 @@
       }
     }
     return {
-      list: result,
-      from: replaceToken ? Pos(cur.line, tagStart == null ? token.start : tagStart) : cur,
+        list: result,
+        from: replaceToken ? Pos(cur.line, checkTagStart(tagStart)) : cur,
       to: replaceToken ? Pos(cur.line, token.end) : cur
-    };
-  }
+      };
 
+  }
+      function checkTagStart(tagStart) {
+          return tagStart == null ? token.start : tagStart;
+      }
   CodeMirror.registerHelper("hint", "xml", getHints);
 });

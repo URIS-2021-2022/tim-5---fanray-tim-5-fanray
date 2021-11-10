@@ -19,11 +19,11 @@ CodeMirror.registerHelper("fold", "markdown", function(cm, start) {
     return tokentype && /\bheader\b/.test(tokentype);
   }
 
-  function headerLevel(lineNo, line, nextLine) {
+  function headerLevel(lineNo, line, nextLine1) {
     var match = line && line.match(/^#+/);
     if (match && isHeader(lineNo)) return match[0].length;
-    match = nextLine && nextLine.match(/^[=\-]+\s*$/);
-    if (match && isHeader(lineNo + 1)) return nextLine[0] == "=" ? 1 : 2;
+    match = nextLine1 && nextLine1.match(/^[=\-]+\s*$/);
+    if (match && isHeader(lineNo + 1)) return nextLine1[0] == "=" ? 1 : 2;
     return maxDepth;
   }
 

@@ -88,7 +88,7 @@
       var from = cm.getCursor("from"), to = cm.getCursor("to");
       if (from.line != to.line) return;
       if (state.wordsOnly && !isWord(cm, from, to)) return;
-      var selection = cm.getRange(from, to).replace(/^\s+|\s+$/g, "");
+      var selection = cm.getRange(from, to).replace(/^(?:\s+|\s+)$/g, "");
       if (selection.length >= state.minChars)
         cm.addOverlay(state.overlay = makeOverlay(selection, false, state.style));
     });
