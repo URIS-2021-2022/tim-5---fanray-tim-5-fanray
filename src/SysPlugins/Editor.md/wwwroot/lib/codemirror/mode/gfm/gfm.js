@@ -84,7 +84,7 @@ CodeMirror.defineMode("gfm", function(config, modeConfig) {
           // SHA
           state.combineTokens = true;
           return "link";
-        } else if (stream.match(/^(?:[a-zA-Z0-9\-_]+\/)?(?:[a-zA-Z0-9\-_]+)?#[0-9]+\b/)) {
+        } else if (stream.match(/^(?:[a-zA-Z0-9\-_]+\/)?(?:[a-zA-Z0-9\-_]+)?#\d+\b/)) {
           // User/Project#Num
           // User#Num
           // #Num

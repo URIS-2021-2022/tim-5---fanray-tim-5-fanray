@@ -34,8 +34,8 @@ namespace Shortcodes
         {
             if (!(notification.Model is PageVM)) return Task.CompletedTask;
 
-            var pageVM = (PageVM)notification.Model;
-            ((PageVM)notification.Model).Body = shortcodeService.Parse(pageVM.Body);
+            var pageVM = notification.Model;
+            (notification.Model).Body = shortcodeService.Parse(pageVM.Body);
 
             return Task.CompletedTask;
         }

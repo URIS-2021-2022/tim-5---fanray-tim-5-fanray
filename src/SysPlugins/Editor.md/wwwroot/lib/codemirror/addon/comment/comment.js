@@ -67,7 +67,7 @@
       } else {
       for (var j = from.line; j < end; ++j) {
         if (blankLines || nonWS.test(self.getLine(j)))
-        self.replaceRange(commentString + pad, Pos(j, 0));
+            self.replaceRange(commentString + pad, Pos(j, 0));
         }
       }
     });

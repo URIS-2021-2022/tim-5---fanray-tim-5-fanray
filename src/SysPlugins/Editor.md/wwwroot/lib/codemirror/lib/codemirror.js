@@ -2836,9 +2836,8 @@
         var ch = x < fromX || x - fromX <= toX - x ? from : to;
         var xDiff = x - (ch == from ? fromX : toX);
         while (isExtendingChar(lineObj.text.charAt(ch))) ++ch;
-        var pos = PosWithInfo(lineNo, ch, ch == from ? fromOutside : toOutside,
+        return PosWithInfo(lineNo, ch, ch == from ? fromOutside : toOutside,
                               xDiff < -1 ? -1 : xDiff > 1 ? 1 : 0);
-        return pos;
       }
       var step = Math.ceil(dist / 2), middle = from + step;
       if (bidi) {
@@ -2936,8 +2935,8 @@
     do {
       for (; i < callbacks.length; i++)
         callbacks[i]();
-      for (var j = 0; j < group.ops.length; j++) {
-        var op = group.ops[j];
+      for (let value of group.ops) {
+        var op = value;
         if (op.cursorActivityHandlers)
           while (op.cursorActivityCalled < op.cursorActivityHandlers.length)
             op.cursorActivityHandlers[op.cursorActivityCalled++](op.cm);
@@ -5208,14 +5207,14 @@
     clearCaches(cm);
     regChange(cm);
   }, true);
-  option("specialChars", /[\t\u0000-\u0019\u00ad\u200b-\u200f\u2028\u2029\ufeff]/g, function(cm, val) {
+  option("specialChars", /[\t\u00ad\u200b-\u200f\u2028\u2029\ufeff]/g, function(cm, val) {
     cm.options.specialChars = new RegExp(val.source + (val.test("\t") ? "" : "|\t"), "g");
     cm.refresh();
   }, true);
   option("specialCharPlaceholder", defaultSpecialCharPlaceholder, function(cm) {cm.refresh();}, true);
   option("electricChars", true);
   option("inputStyle", mobile ? "contenteditable" : "textarea", function() {
-    throw new Error("inputStyle can not (yet) be changed in a running editor"); // FIXME
+    throw new Error("inputStyle can not (yet) be changed in a running editor");
   }, true);
   option("rtlMoveVisually", !windows);
   option("wholeLineUpdateBefore", true);

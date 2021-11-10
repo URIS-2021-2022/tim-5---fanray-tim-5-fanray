@@ -236,7 +236,7 @@
 
   CodeMirror.registerHelper("hintWords", "idl", builtinArray.concat(keywordArray));
 
-  var identifiers = new RegExp('^[_a-z\xa1-\uffff][_a-z0-9\xa1-\uffff]*', 'i');
+  var identifiers = /^[_a-z\xa1-\uffff][_a-z0-9\xa1-\uffff]*/i;
 
   var singleOperators = /[+\-*&=<>\/@#~$]/;
   var boolOperators = new RegExp('(and|or|eq|lt|le|gt|ge|ne|not)', 'i');
