@@ -238,7 +238,7 @@ CodeMirror.defineMode("cobol", function () {
             returnType = BUILTIN;
           } else if (atoms && atoms.propertyIsEnumerable(stream.current().toUpperCase())) {
             returnType = ATOM;
-          } else returnType = null;
+          }
         }
       }
       return returnType;

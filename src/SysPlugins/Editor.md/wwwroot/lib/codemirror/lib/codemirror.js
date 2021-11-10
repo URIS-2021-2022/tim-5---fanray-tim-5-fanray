@@ -1073,7 +1073,7 @@
   // number when a is less, and a positive number otherwise.
   var cmp = CodeMirror.cmpPos = function(a, b) { return a.line - b.line || a.ch - b.ch; };
 
-  function copyPos(x) {return Pos(x.line, x.ch);}
+  function copyPos(x) {return new Pos(x.line, x.ch);}
   function maxPos(a, b) { return cmp(a, b) < 0 ? b : a; }
   function minPos(a, b) { return cmp(a, b) < 0 ? a : b; }
 

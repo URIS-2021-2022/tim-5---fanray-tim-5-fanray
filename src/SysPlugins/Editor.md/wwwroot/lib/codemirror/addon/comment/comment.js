@@ -173,7 +173,7 @@
       if (pad && startLine.slice(openEnd, openEnd + pad.length) == pad) openEnd += pad.length;
       self.replaceRange("", Pos(start, open), Pos(start, openEnd));
       if (lead) for (var i = start + 1; i <= end; ++i) {
-        var line = self.getLine(i), found = line.indexOf(lead);
+          var line = self.getLine(i), foundTmp = line.indexOf(lead);
         if (foundTmp == -1 || nonWS.test(line.slice(0, foundTmp))) continue;
         var foundEnd = foundTmp + lead.length;
         if (pad && line.slice(foundEnd, foundEnd + pad.length) == pad) foundEnd += pad.length;

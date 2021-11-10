@@ -50,9 +50,7 @@ CodeMirror.defineMode("haskell", function(_config, modeConfig) {
       if (source.eat('\\')) {
         source.next();  // should handle other escapes here
       }
-      else {
-        source.next();
-      }
+      
       if (source.eat('\'')) {
         return "string";
       }

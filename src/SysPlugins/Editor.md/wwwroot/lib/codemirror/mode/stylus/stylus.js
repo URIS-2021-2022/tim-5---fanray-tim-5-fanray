@@ -428,7 +428,7 @@
 
   function wordRegexp(words) {
     return new RegExp("^((" + words.join(")|(") + "))\\b");
-  };
+  }
 
   function keySet(array) {
     var keys = {};
