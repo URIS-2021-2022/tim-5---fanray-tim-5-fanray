@@ -66,7 +66,7 @@
           this.bracketNo++;
           return "bracket";
         };
-        this.closeBracket = function() {};
+        this.closeBracket = function() ;
       };
     }
 
@@ -82,7 +82,7 @@
       this.name = "DEFAULT";
       this.style = "tag";
 
-      this.styleIdentifier = this.openBracket = this.closeBracket = function() {};
+      this.styleIdentifier = this.openBracket = this.closeBracket = function() ;
     };
 
     function setState(state, f) {

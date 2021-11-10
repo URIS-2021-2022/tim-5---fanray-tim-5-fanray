@@ -17,7 +17,7 @@
 		var pluginName   = "help-dialog";
 
 		exports.fn.helpDialog = function() {
-			var _this       = this;
+		
 			var lang        = this.lang;
 			var editor      = this.editor;
 			var settings    = this.settings;

@@ -306,13 +306,14 @@ return {
   },
   indent: function(state, textAfter) {
     var context = state.context;
-    if (context && context.noIndent) return 0;
-    if (context && /^{\//.test(textAfter))
-        context = context.prev;
-        while (context && !context.startOfLine)
-          context = context.prev;
-        if (context) return context.indent + indentUnit;
-        else return 0;
+      if (context && context.noIndent) return 0; {
+          if (context && /^{\//.test(textAfter))
+              context = context.prev;
+          while (context && !context.startOfLine)
+              context = context.prev;
+          if (context) return context.indent + indentUnit;
+          else return 0;
+      }
        },
     electricChars: "/"
   };

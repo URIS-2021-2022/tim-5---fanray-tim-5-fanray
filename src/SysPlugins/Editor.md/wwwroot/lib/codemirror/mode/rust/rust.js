@@ -389,7 +389,7 @@ CodeMirror.defineMode("rust", function() {
     var cc = state.cc;
     // Communicate our context to the combinators.
     // (Less wasteful than consing up a hundred closures on every call.)
-    cx.state = state; cx.stream = stream; cx.marked = null, cx.cc = cc;
+    cx.state = state; cx.stream = stream; cx.marked = null cx.cc = cc;
 
     while (true) {
       var combinator = cc.length ? cc.pop() : block;

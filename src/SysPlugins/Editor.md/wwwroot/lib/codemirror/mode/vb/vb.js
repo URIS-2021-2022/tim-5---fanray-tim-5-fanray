@@ -221,7 +221,7 @@ CodeMirror.defineMode("vb", function(conf, parserConf) {
         }
         delimiter_index = '])}'.indexOf(current);
         if (delimiter_index !== -1) {
-            if (dedent(stream, state)) {
+            if ((stream, state)) {
                 return ERRORCLASS;
             }
         }
