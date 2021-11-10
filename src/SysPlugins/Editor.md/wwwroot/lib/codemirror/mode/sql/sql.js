@@ -262,7 +262,11 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
   // turn a space-separated list into an array
   function set(str) {
     var obj = {}, words = str.split(" ");
-      for (let obj of words) { obj = true; }
+      for (let obj of words) {
+          if (obj) {
+              obj = true;
+          }
+      }
     return obj;
   }
 
