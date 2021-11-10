@@ -148,10 +148,10 @@
       var editor = this.cm.options.hintOptions;
       var out = {};
       for (var prop in defaultOptions) out[prop] = defaultOptions[prop];
-      if (editor) for (var prop in editor)
-        if (editor[prop] !== undefined) out[prop] = editor[prop];
-      if (options) for (var prop in options)
-        if (options[prop] !== undefined) out[prop] = options[prop];
+      if (editor) for (var prop1 in editor)
+        if (editor[prop1] !== undefined) out[prop1] = editor[prop1];
+      if (options) for (var prop2 in options)
+        if (options[prop2] !== undefined) out[prop2] = options[prop2];
       return out;
     }
   };
