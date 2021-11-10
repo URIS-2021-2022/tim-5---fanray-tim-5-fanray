@@ -45,8 +45,11 @@
       var cx = inner.state.context, curTag = cx && tags[cx.tagName];
       var childList = cx ? curTag && curTag.children : tags["!top"];
       if (childList && tagType != "close") {
-        for (var i = 0; i < childList.length; ++i) if (!prefix || childList[i].lastIndexOf(prefix, 0) == 0)
-          result.push("<" + childList[i]);
+          for (var i = 0; i < childList.length; ++i) {
+              if (!prefix || childList[i].lastIndexOf(prefix, 0) == 0) {
+                  result.push("<" + childList[i]);
+              }
+          }
       } else if (tagType != "close") {
         for (var name in tags)
           if (tags.hasOwnProperty(name) && name != "!top" && name != "!attrs" && (!prefix || name.lastIndexOf(prefix, 0) == 0))

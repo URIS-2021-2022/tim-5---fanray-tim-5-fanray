@@ -91,8 +91,9 @@
   function findMatchingClose(iter, tag) {
     var stack = [];
     for (;;) {
-      var next = toNextTag(iter), end, startLine = iter.line, startCh = iter.ch - (next ? next[0].length : 0);
-      if (!next || !(end = toTagEnd(iter))) return;
+        var next = toNextTag(iter), end, startLine = iter.line, startCh = iter.ch - (next ? next[0].length : 0);
+        end = toTagEnd(iter);
+      if (!next || !end) return;
       if (end == "selfClose") continue;
       if (next[1]) { // closing tag
         for (var i = stack.length - 1; i >= 0; --i) if (stack[i] == next[2]) {

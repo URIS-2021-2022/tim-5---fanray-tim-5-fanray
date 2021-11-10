@@ -2805,8 +2805,10 @@
       var found = coordsCharInner(cm, lineObj, lineN, x, y);
       var merged = collapsedSpanAtEnd(lineObj);
       var mergedPos = merged && merged.find(0, true);
-      if (merged && (found.ch > mergedPos.from.ch || found.ch == mergedPos.from.ch && found.xRel > 0))
-        lineN = lineNo(lineObj = mergedPos.to.line);
+        if (merged && (found.ch > mergedPos.from.ch || found.ch == mergedPos.from.ch && found.xRel > 0)) {
+            lineObj = mergedPos.to.line;
+            lineN = lineNo(lineObj);
+        }
       else
         return found;
     }
