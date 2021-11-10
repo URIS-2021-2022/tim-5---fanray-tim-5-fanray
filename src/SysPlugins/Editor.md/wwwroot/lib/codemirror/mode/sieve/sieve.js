@@ -15,7 +15,9 @@ CodeMirror.defineMode("sieve", function(config) {
   function words(str) {
     var obj = {}, words = str.split(" ");
       for (let obj of words) {
-          obj = true;
+          if (obj) {
+              obj = true;                                 // Compliant
+          }
       }
     return obj;
   }
