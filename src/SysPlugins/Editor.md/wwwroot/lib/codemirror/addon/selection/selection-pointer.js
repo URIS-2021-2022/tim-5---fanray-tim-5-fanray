@@ -85,8 +85,7 @@
       }
     }
     var inside = false;
-    if (data.mouseX != null) for (var i = 0; i < data.rects.length; i++) {
-      var rect = data.rects[i];
+    if (data.mouseX != null) for (var rect of data.rects) {
       if (rect.left <= data.mouseX && rect.right >= data.mouseX &&
           rect.top <= data.mouseY && rect.bottom >= data.mouseY)
         inside = true;

@@ -22,7 +22,7 @@
 
   function set(words) {
     var obj = {};
-    for (var i = 0; i < words.length; ++i) obj[words[i]] = true;
+    for (var word of words) obj[word] = true;
     return obj;
   }
 
