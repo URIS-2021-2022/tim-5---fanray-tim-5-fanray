@@ -76,9 +76,9 @@ CodeMirror.defineMode("vb", function(conf, parserConf) {
         if (stream.match(/^((&H)|(&O))?[0-9\.a-f]/i, false)) {
             var floatLiteral = false;
             // Floats
-            if (stream.match(/^\d*\.\d+F?/i)) { floatLiteral = true; }
-            else if (stream.match(/^\d+\.\d*F?/)) { floatLiteral = true; }
-            else if (stream.match(/^\.\d+F?/)) { floatLiteral = true; }
+            if (stream.match(/^\d*\.\d+F?/i) || stream.match(/^\d+\.\d*F?/) || stream.match(/^\.\d+F?/))
+            { floatLiteral = true; }
+            
 
             if (floatLiteral) {
                 // Float literals may be "imaginary"

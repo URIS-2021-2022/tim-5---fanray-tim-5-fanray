@@ -136,10 +136,8 @@ CodeMirror.defineMode("vbscript", function(conf, parserConf) {
         if (stream.match(/^((&H)|(&O))?[0-9\.]/i, false) && !stream.match(/^((&H)|(&O))?[0-9\.]+[a-z_]/i, false)) {
             var floatLiteral = false;
             // Floats
-            if (stream.match(/^\d*\.\d+/i)) { floatLiteral = true; }
-            else if (stream.match(/^\d+\.\d*/)) { floatLiteral = true; }
-            else if (stream.match(/^\.\d+/)) { floatLiteral = true; }
-
+            if (stream.match(/^\d*\.\d+/i) || stream.match(/^\d+\.\d*/) || stream.match(/^\.\d+/))
+            { floatLiteral = true; }
             if (floatLiteral) {
                 // Float literals may be "imaginary"
                 stream.eat(/J/i);

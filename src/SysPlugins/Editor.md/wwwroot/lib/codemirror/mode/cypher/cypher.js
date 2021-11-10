@@ -34,7 +34,7 @@
         stream.eatWhile(operatorChars);
         return null;
       } else {
-        stream.eatWhile(/[_\w\d]/);
+        stream.eatWhile(/[_\w]/);
         if (stream.eat(":")) {
           stream.eatWhile(/[\w\d_\-]/);
           return "atom";

@@ -354,7 +354,7 @@ CodeMirror.defineMode("tiddlywiki", function () {
     },
 
     token: function (stream, state) {
-      if (stream.eatSpace()) return null;
+        if (stream.eatSpace()) { return null; }
         return state.tokenize(stream, state);
        
     },
