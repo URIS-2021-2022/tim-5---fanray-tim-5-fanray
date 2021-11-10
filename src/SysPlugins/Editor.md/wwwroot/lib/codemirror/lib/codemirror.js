@@ -2846,7 +2846,14 @@
         for (var i = 0; i < step; ++i) middle = moveVisually(lineObj, middle, 1);
       }
       var middleX = getX(middle);
-      if (middleX > x) {to = middle; toX = middleX; if (toOutside = wrongLine) toX += 1000; dist = step;}
+        if (middleX > x) {
+            to = middle;
+            toX = middleX;
+            if (toOutside = wrongLine) {
+                toX += 1000;
+                dist = step;
+            }
+        }
       else {from = middle; fromX = middleX; fromOutside = wrongLine; dist -= step;}
     }
   }
