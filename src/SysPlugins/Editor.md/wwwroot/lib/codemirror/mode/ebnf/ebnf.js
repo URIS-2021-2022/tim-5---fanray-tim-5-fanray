@@ -69,10 +69,7 @@
 
         case stateType.comment:
           while (state.stack[0] === stateType.comment && !stream.eol()) {
-            if (state.commentType === commentType.slash && stream.match(/\*\//)) {
-              state.stack.shift(); // Clear flag
-              state.commentType = null;
-            } else if (state.commentType === commentType.parenthesis && stream.match(/\*\)/)) {
+              if ((state.commentType === commentType.slash || state.commentType === commentType.parenthesis) && stream.match(/\*\//)) {
               state.stack.shift(); // Clear flag
               state.commentType = null;
             } else {

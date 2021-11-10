@@ -108,7 +108,7 @@ namespace Fan.WebApp.Manage.Admin.Compose
                     Published = false,
                     IsDraft = false,
                     IsParentDraft = parent.Status == EPostStatus.Draft,
-                    PageLayout = parent != null ? (EPageLayout) parent.PageLayout : EPageLayout.Layout1,
+                    PageLayout = (EPageLayout) parent.PageLayout,
                 };
             }
             PageJson = JsonConvert.SerializeObject(pageIM);
