@@ -12,9 +12,6 @@ Report bugs/issues here: https://github.com/codemirror/CodeMirror/issues
 //  DOUBLE: 2
 //};
 
-//var regex = {
-//  keywords: /(Feature| {2}(Scenario|In order to|As|I)| {4}(Given|When|Then|And))/
-//};
 
 (function(mod) {
   if (typeof exports == "object" && typeof module == "object") // CommonJS

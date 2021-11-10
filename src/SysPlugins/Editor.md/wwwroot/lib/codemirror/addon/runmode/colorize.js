@@ -24,8 +24,7 @@
   CodeMirror.colorize = function(collection, defaultMode) {
     if (!collection) collection = document.body.getElementsByTagName("pre");
 
-    for (var i = 0; i < collection.length; ++i) {
-      var node = collection[i];
+    for (var node of collection) {
       var mode = node.getAttribute("data-lang") || defaultMode;
       if (!mode) continue;
 
