@@ -61,7 +61,9 @@
 
     function tokenIdent(stream, state) {
       stream.eatWhile(isDigit);
-      while (stream.eat(isDigit) || stream.eat(isNonDigit)) { }
+        while (stream.eat(isDigit) || stream.eat(isNonDigit)) {
+            //it should be like this
+        }
 
 
       var cur = stream.current();
