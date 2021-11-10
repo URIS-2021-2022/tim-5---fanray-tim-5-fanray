@@ -474,7 +474,7 @@ CodeMirror.defineMode("verilog", function(config, parserConfig) {
             style = svxchScopePrefixes[ch];
             state.svxCurCtlFlowChar = "@";
             stream.next();
-            stream.eatWhile(/[\w\$_]/);
+            stream.eatWhile(/[\w\$]/);
           } else if (stream.match(/\b[mM]4+/, true)) { // match: function(pattern, consume, caseInsensitive)
             // m4 pre proc
             stream.skipTo("(");
