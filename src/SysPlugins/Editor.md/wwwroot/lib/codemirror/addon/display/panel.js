@@ -18,7 +18,8 @@
     else
       info.wrapper.insertBefore(node, info.wrapper.firstChild);
     var height = (options && options.height) || node.offsetHeight;
-    this._setSize(null, info.heightLeft -= height);
+    info.heightLeft -= height;
+    this._setSize(null, info.heightLeft);
     info.panels++;
     return new Panel(this, node, options, height);
   });
@@ -35,7 +36,8 @@
     if (this.cleared) return;
     this.cleared = true;
     var info = this.cm.state.panels;
-    this.cm._setSize(null, info.heightLeft += this.height);
+    info.heightLeft += this.height
+    this.cm._setSize(null, info.heightLeft);
     info.wrapper.removeChild(this.node);
     if (--info.panels == 0) removePanels(this.cm);
   };
