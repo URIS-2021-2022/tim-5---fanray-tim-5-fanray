@@ -336,7 +336,6 @@ CodeMirror.defineMode("sass", function(config) {
         return "attribute";
       }
 
-      //stream.eatSpace();
       if(!stream.peek()){
         state.cursorHalf = 0;
         return null;

@@ -188,13 +188,14 @@
   function blankLine(state) {
     var spanningLayout = state.spanningLayout, type = state.layoutType;
 
-    for (var key in state) if (state.hasOwnProperty(key))
+      for (var key in state) if (state.hasOwnProperty(key)) {
       delete state[key];
 
     state.mode = Modes.newLayout;
-    if (spanningLayout) {
-      state.layoutType = type;
-      state.spanningLayout = true;
+          if (spanningLayout) {
+              state.layoutType = type;
+              state.spanningLayout = true;
+          }
     }
   }
 
@@ -362,7 +363,7 @@
     },
 
     layoutLength: function(stream, state) {
-      if (stream.eat(".") && stream.eat("."))
+      if (stream.eat("."))
         state.spanningLayout = true;
 
       state.mode = Modes.text;

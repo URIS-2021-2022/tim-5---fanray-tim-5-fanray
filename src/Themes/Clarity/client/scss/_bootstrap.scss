@@ -67,11 +67,7 @@ body {
     outline: 0 !important;
 }
 
-hr {
-    box-sizing: content-box;
-    height: 0;
-    overflow: visible;
-}
+
 
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
@@ -180,11 +176,6 @@ samp {
     font-size: 1em;
 }
 
-pre {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    overflow: auto;
-}
 
 figure {
     margin: 0 0 1rem;
@@ -419,6 +410,9 @@ hr {
     margin-bottom: 1rem;
     border: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
 }
 
 small,
@@ -533,6 +527,9 @@ pre code {
     font-size: inherit;
     color: inherit;
     word-break: normal;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    overflow: auto;
 }
 
 .pre-scrollable {
@@ -4827,7 +4824,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-expand > .container,
-.navbar-expand > .container-fluid, .navbar-expand > .container-sm, .navbar-expand > .container-md, .navbar-expand > .container-lg, .navbar-expand > .container-xl {
+ {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
 }
@@ -5208,9 +5205,6 @@ input[type="button"].btn-block {
     text-decoration: underline;
 }
 
-.breadcrumb-item + .breadcrumb-item:hover::before {
-    text-decoration: none;
-}
 
 .breadcrumb-item.active {
     color: #6c757d;

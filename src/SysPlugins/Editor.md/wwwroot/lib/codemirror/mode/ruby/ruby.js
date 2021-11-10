@@ -87,7 +87,7 @@ CodeMirror.defineMode("ruby", function(config) {
       stream.match(/^[\d_]*(?:\.[\d_]+)?(?:[eE][+\-]?[\d_]+)?/);
       return "number";
     } else if (ch == "?") {
-      while (stream.match(/^\\[CM]-/)) {}
+      while (stream.match(/^\\[CM]-/)) 
       if (stream.eat("\\")) stream.eatWhile(/\w/);
       else stream.next();
       return "string";

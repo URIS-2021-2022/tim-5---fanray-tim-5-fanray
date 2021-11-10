@@ -60,7 +60,6 @@
 			var cm          = this.cm;
 			var editor      = this.editor;
 			var settings    = this.settings;
-			var path        = settings.pluginPath + pluginName +"/";
 			var classPrefix = this.classPrefix;
 			var dialogName  = classPrefix + pluginName, dialog;
 

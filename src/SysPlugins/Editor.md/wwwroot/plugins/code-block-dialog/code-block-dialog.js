@@ -57,7 +57,6 @@
 
 		exports.fn.codeBlockDialog = function() {
 
-			var _this       = this;
             var cm          = this.cm;
             var lang        = this.lang;
             var editor      = this.editor;

@@ -45,9 +45,10 @@ CodeMirror.defineMode("tcl", function() {
       if ((ch == '"' || ch == "'") && state.inParams)
         return chain(stream, state, tokenString(ch));
       else if (/[\[\]{}\(\),;\.]/.test(ch)) {
-        if (ch == "(" && beforeParams) state.inParams = true;
+          if (ch == "(" && beforeParams) state.inParams = true; {
         else if (ch == ")") state.inParams = false;
-          return null;
+              return null;
+          }
       }
       else if (/\d/.test(ch)) {
         stream.eatWhile(/[\w\.]/);
