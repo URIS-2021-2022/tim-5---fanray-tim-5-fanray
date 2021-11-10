@@ -101,7 +101,6 @@ CodeMirror.defineMode('tiki', function(config) {
       break;
     case "^": //box
       return chain(inBlock("tw-box", "^"));
-      break;
     case "~": //np
       if (stream.match("np~")) {
         return chain(inBlock("meta", "~/np~"));

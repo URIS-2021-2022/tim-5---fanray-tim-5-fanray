@@ -99,7 +99,7 @@
           stt.state = ' compilation';
           return 'def' + stt.state;
         }
-        mat = stream.match(/^(VARIABLE|2VARIABLE|CONSTANT|2CONSTANT|CREATE|POSTPONE|VALUE|WORD)\s+(\S+)(\s|$)+/i);
+          mat = stream.match(/^(VARIABLE|2VARIABLE|CONSTANT|2CONSTANT|CREATE|POSTPONE|VALUE|WORD)\s+(\S+)(/s*/)+/i);
         if (mat) {
           stt.wordList.push({name: mat[2].toUpperCase()});
           return 'def' + stt.state;

@@ -102,7 +102,7 @@ CodeMirror.defineMode('shell', function() {
       }
       return (quote === '`' || quote === ')' ? 'quote' : 'string');
     };
-  };
+  }
 
   var tokenDollar = function(stream, state) {
     if (state.tokens.length > 1) stream.eat('$');
