@@ -114,7 +114,7 @@ CodeMirror.defineMode("haxe", function(config, parserConfig) {
     }
     else
     {
-        stream.eatWhile(/[\w_]/);
+        stream.eatWhile(/[\w]/);
         var word = stream.current(), known = keywords.propertyIsEnumerable(word) && keywords[word];
         return (known && state.kwAllowed) ? ret(known.type, known.style, word) :
                        ret("variable", "variable", word);
