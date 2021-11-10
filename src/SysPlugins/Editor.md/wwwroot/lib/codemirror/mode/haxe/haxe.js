@@ -97,7 +97,7 @@ CodeMirror.defineMode("haxe", function(config, parserConfig) {
     }
     else if (ch == "@") {
       stream.eat(/:/);
-      stream.eatWhile(/[\w_]/);
+      stream.eatWhile(/[\w]/);
       return ret ("metadata", "meta");
     }
     else if (isOperatorChar.test(ch)) {
