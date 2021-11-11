@@ -64,7 +64,7 @@ namespace Shortcodes
         /// <returns></returns>
         public Task Handle(ModelPreRender<BlogPostListVM> notification, CancellationToken cancellationToken)
         {
-            if (!(notification.Model is BlogPostListVM)) return Task.CompletedTask;
+            if ((notification.Model is BlogPostListVM) != null) return Task.CompletedTask;
 
             foreach (var postViewModel in (notification.Model).BlogPostViewModels)
             {

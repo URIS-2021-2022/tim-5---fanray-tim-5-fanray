@@ -62,10 +62,10 @@
                 <v-card-text>
                     <iframe ref="settingsIframe"
                             @@load="$root.initIframeHeight($refs.settingsIframe)"
-                            scrolling="no"
+                            
                             class="ext-settings-frame"
                             v-if="settingsUrl"
-                            
+                            :title=" dialogTitle"
                     ></iframe>
                 </v-card-text>
             </v-card>
