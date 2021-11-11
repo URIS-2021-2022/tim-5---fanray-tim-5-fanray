@@ -5134,7 +5134,7 @@
       if (cm.options.lineWrapping) clearLineMeasurementCache(this);
       var lineNo = cm.display.viewFrom;
       cm.doc.iter(lineNo, cm.display.viewTo, function(line) {
-          if (line.widgets) for (var i = 0; i < line.widgets.length; i++) {
+          if (line.widgets) for (var i of line.widgets) {
              if (line.widgets[i].noHScroll) { regLineChange(cm, lineNo, "widget"); break; }
           }
         ++lineNo;

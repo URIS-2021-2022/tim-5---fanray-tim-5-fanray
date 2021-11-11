@@ -535,7 +535,7 @@ CodeMirror.defineMode("perl",function(){
                         var c=look(stream, -2);
                         if(!(c&&/\w/.test(c))){
                                 c=look(stream, 0);
-                                if(c=="x"){
+                            if (c == "x" or c == "r"){
                                         c=look(stream, 1);
                                         if(c=="("){
                                                 eatSuffix(stream, 2);
@@ -552,7 +552,7 @@ CodeMirror.defineMode("perl",function(){
                                         if(/[\^'"!~\/]/.test(c)){
                                                 eatSuffix(stream, 1);
                                                 return tokenChain(stream,state,[stream.eat(c)],RXstyle,RXmodifiers);}}
-                                else if(c=="q"){
+                            else if(c=="q"){
                                         c=look(stream, 1);
                                         if(c=="("){
                                                 eatSuffix(stream, 2);
@@ -569,7 +569,7 @@ CodeMirror.defineMode("perl",function(){
                                         if(/[\^'"!~\/]/.test(c)){
                                                 eatSuffix(stream, 1);
                                                 return tokenChain(stream,state,[stream.eat(c)],"string");}}
-                                else if(c=="w"){
+                            else if(c=="w"){
                                         c=look(stream, 1);
                                         if(c=="("){
                                                 eatSuffix(stream, 2);
@@ -586,24 +586,7 @@ CodeMirror.defineMode("perl",function(){
                                         if(/[\^'"!~\/]/.test(c)){
                                                 eatSuffix(stream, 1);
                                                 return tokenChain(stream,state,[stream.eat(c)],"bracket");}}
-                                else if(c=="r"){
-                                        c=look(stream, 1);
-                                        if(c=="("){
-                                                eatSuffix(stream, 2);
-                                                return tokenChain(stream,state,[")"],RXstyle,RXmodifiers);}
-                                        if(c=="["){
-                                                eatSuffix(stream, 2);
-                                                return tokenChain(stream,state,["]"],RXstyle,RXmodifiers);}
-                                        if(c=="{"){
-                                                eatSuffix(stream, 2);
-                                                return tokenChain(stream,state,["}"],RXstyle,RXmodifiers);}
-                                        if(c=="<"){
-                                                eatSuffix(stream, 2);
-                                                return tokenChain(stream,state,[">"],RXstyle,RXmodifiers);}
-                                        if(/[\^'"!~\/]/.test(c)){
-                                                eatSuffix(stream, 1);
-                                                return tokenChain(stream,state,[stream.eat(c)],RXstyle,RXmodifiers);}}
-                                else if(/[\^'"!~\/(\[{<]/.test(c)){
+                            else if(/[\^'"!~\/(\[{<]/.test(c)){
                                         if(c=="("){
                                                 eatSuffix(stream, 1);
                                                 return tokenChain(stream,state,[")"],"string");}
