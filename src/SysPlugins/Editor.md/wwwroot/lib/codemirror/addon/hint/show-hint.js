@@ -191,7 +191,7 @@
         addBinding(key, custom[key]);
     var extra = completion.options.extraKeys;
     if (extra)
-      for (var key in extra) if (extra.hasOwnProperty(key))
+      for (var key2 in extra) if (extra.hasOwnProperty(key))
         addBinding(key, extra[key]);
     return ourMap;
   }

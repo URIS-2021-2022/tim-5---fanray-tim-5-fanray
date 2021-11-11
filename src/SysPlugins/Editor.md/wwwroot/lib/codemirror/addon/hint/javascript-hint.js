@@ -35,7 +35,7 @@
     token.state = CodeMirror.innerMode(editor.getMode(), token.state).state;
 
     // If it's not a 'word-style' token, ignore the token.
-    if (!/^[\w$_]*$/.test(token.string)) {
+    if (!/^[\w$]*$/.test(token.string)) {
       token = {start: cur.ch, end: cur.ch, string: "", state: token.state,
                type: token.string == "." ? "property" : null};
     } else if (token.end > cur.ch) {
@@ -74,7 +74,7 @@
       token.string = '.';
       token.type = "property";
     }
-    else if (/^\.[\w$_]*$/.test(token.string)) {
+    else if (/^\.[\w$]*$/.test(token.string)) {
       token.type = "property";
       token.start++;
       token.string = token.string.replace(/\./, '');

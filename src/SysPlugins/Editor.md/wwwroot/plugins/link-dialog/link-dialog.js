@@ -49,7 +49,7 @@
                                         "<br/>" +
                                     "</div>";
 
-                dialog = this.createDialog({
+                 this.createDialog({
                     title      : linkLang.title,
                     width      : 380,
                     height     : 211,

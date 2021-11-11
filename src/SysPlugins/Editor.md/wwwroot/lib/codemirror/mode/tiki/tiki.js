@@ -57,7 +57,7 @@ CodeMirror.defineMode('tiki', function(config) {
       while ((c = stream.eat(/[^\s\u00a0=\"\'\/?(}]/))) tagName += c;
       state.tokenize = inPlugin;
       return "tag";
-      break;
+    
     case "_": //bold
       if (stream.eat("_")) {
         return chain(inBlock("strong", "__", inText));
@@ -76,7 +76,6 @@ CodeMirror.defineMode('tiki', function(config) {
       break;
     case "[":// Weblink
       return chain(inBlock("variable-3", "]", inText));
-      break;
     case "|": //table
       if (stream.eat("|")) {
         return chain(inBlock("comment", "||"));
@@ -152,7 +151,7 @@ CodeMirror.defineMode('tiki', function(config) {
       type = "equals";
 
       if (peek == ">") {
-        ch = stream.next();
+        
         peek = stream.peek();
       }
 

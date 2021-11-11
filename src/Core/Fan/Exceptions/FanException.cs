@@ -1,6 +1,8 @@
 ﻿using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+
 
 namespace Fan.Exceptions
 {
@@ -13,10 +15,16 @@ namespace Fan.Exceptions
     /// </remarks>
     /// 
   
+    [Serializable]
     public class FanException : Exception
     {
         public FanException()
         {
+        }
+
+        protected FanException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+             base.GetObjectData(info, context);
         }
 
 
