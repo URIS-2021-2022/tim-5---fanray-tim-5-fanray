@@ -25,7 +25,7 @@ namespace Fan.Medias
 
             _storageAccount = CloudStorageAccount.Parse(connString);
             if (_storageAccount == null)
-                throw new ArgumentNullException("Azure Blob Storage connection string is not valid.");
+                throw new ArgumentNullException("_storageAccount", "Azure Blob Storage connection string is not valid.");
 
             var appSettings = serviceProvider.GetService<IOptionsSnapshot<AppSettings>>().Value;
 

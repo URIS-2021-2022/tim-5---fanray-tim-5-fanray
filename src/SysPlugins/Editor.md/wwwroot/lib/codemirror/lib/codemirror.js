@@ -1112,9 +1112,9 @@
       var from = range.from(), to = range.to();
       if (range.empty()) {
         if (deleted && deleted > 0) // Handle deletion
-          from = Pos(from.line, from.ch - deleted);
+          from = new Pos(from.line, from.ch - deleted);
         else if (cm.state.overwrite && !cm.state.pasteIncoming) // Handle overwrite
-          to = Pos(to.line, Math.min(getLine(doc, to.line).text.length, to.ch + lst(textLines).length));
+          to = new Pos(to.line, Math.min(getLine(doc, to.line).text.length, to.ch + lst(textLines).length));
       }
       var updateInput = cm.curOp.updateInput;
       var changeEvent = {from: from, to: to, text: multiPaste ? multiPaste[i % multiPaste.length] : textLines,
