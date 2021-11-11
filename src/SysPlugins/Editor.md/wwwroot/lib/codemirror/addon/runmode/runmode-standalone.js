@@ -23,8 +23,9 @@ StringStream.prototype = {
   },
   eat: function(match) {
     var ch = this.string.charAt(this.pos);
-    if (typeof match == "string") var ok = ch == match;
-    else var ok = ch && (match.test ? match.test(ch) : match(ch));
+    var ok;
+    if (typeof match == "string") ok = ch == match;
+    else ok = ch && (match.test ? match.test(ch) : match(ch));
     if (ok) {++this.pos; return ch;}
   },
   eatWhile: function(match) {
@@ -127,7 +128,7 @@ CodeMirror.runMode = function (string, modespec, callback, options) {
           content += text.slice(pos, idx);
           var size = tabSize - col % tabSize;
           col += size;
-          for (var i = 0; i < size; ++i) content += " ";
+          for (var k = 0; k < size; ++k) content += " ";
           pos = idx + 1;
         }
       }

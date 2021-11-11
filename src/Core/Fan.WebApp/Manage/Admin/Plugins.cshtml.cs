@@ -21,7 +21,7 @@ namespace Fan.WebApp.Manage.Admin
 
         public async Task OnGetAsync()
         {
-            var pluginManifests = (await pluginService.GetManifestsAsync()).ToList().OrderBy(p => p.Name);
+            var pluginManifests = (await pluginService.GetManifestsAsync()).AsEnumerable().OrderBy(p => p.Name);
             PluginManifestsJson = JsonConvert.SerializeObject(pluginManifests);
         }
 
