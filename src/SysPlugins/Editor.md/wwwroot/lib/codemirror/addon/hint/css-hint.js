@@ -21,7 +21,7 @@
     if (inner.mode.name != "css") return;
 
     var start = token.start, end = cur.ch, word = token.string.slice(0, end - start);
-    if (/[^\w$_-]/.test(word)) {
+    if (/[^\w$-]/.test(word)) {
       word = ""; start = end = cur.ch;
     }
 

@@ -1,4 +1,4 @@
-﻿@model IList<Nav>
+﻿@model IList<Nav >
 @{ 
     var currentUser = await userManager.GetUserAsync(Context.Request.HttpContext.User);
     var isSignedIn = signInManager.IsSignedIn(Context.Request.HttpContext.User);

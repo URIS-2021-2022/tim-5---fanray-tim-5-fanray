@@ -159,7 +159,7 @@
           return "meta";
         }
         if (state.pending == '"' || state.pending == "'") {
-          while (!stream.eol() && stream.next() != state.pending) {}
+          while (!stream.eol() && stream.next() != state.pending) 
           var style = "string";
         } else if (state.pending && stream.pos < state.pending.end) {
           stream.pos = state.pending.end;

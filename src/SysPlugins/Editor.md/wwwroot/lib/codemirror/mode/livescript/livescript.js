@@ -20,7 +20,7 @@
     var tokenBase = function(stream, state) {
       var next_rule = state.next || "start";
       if (next_rule) {
-        state.next = state.next;
+        this.state.next = state.next;
         var nr = Rules[next_rule];
         if (nr.splice) {
           for (var i$ = 0; i$ < nr.length; ++i$) {

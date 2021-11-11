@@ -55,7 +55,7 @@ namespace SocialIcons
         /// Returns my initial social links for seeding.
         /// </summary>
         /// <returns></returns>
-        public static  List<SocialLink> SocialLinkSeeds = new List<SocialLink>
+        public static readonly List<SocialLink> SocialLinkSeeds = new List<SocialLink>
         {
             new SocialLink { Icon = "rss", Url = "/feed" },
             new SocialLink { Icon = "twitter", Url = "https://twitter.com/fanraymedia" },
