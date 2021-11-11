@@ -570,13 +570,13 @@
 
   var cmpPos = CodeMirror.cmpPos;
 
-  function elt(tagname, cls /*, ... elts*/) {
+  function elt(tagname, cls1 /*, ... elts*/) {
     var e = document.createElement(tagname);
-    if (cls) e.className = cls;
+    if (cls1) e.className = cls1;
     for (var i = 2; i < arguments.length; ++i) {
-      var elt = arguments[i];
-      if (typeof elt == "string") elt = document.createTextNode(elt);
-      e.appendChild(elt);
+      var elt1 = arguments[i];
+      if (typeof elt1 == "string") elt1 = document.createTextNode(elt1);
+      e.appendChild(elt1);
     }
     return e;
   }
