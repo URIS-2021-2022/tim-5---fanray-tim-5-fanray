@@ -121,8 +121,9 @@ CodeMirror.defineMode("d", function(config, parserConfig) {
   function pushContext(state, col, type) {
     var indent = state.indented;
     if (state.context && state.context.type == "statement")
-      indent = state.context.indented;
-    return state.context = new Context(indent, col, type, null, state.context);
+       indent = state.context.indented;
+    state.context = new Context(indent, col, type, null, state.context);
+    return state.context;
   }
   function popContext(state) {
     var t = state.context.type;
@@ -188,7 +189,7 @@ CodeMirror.defineMode("d", function(config, parserConfig) {
 
   function words(str) {
     var obj = {}, words = str.split(" ");
-    for (var i = 0; i < words.length; ++i) obj[words[i]] = true;
+    for (let value of words) obj[value] = true;
     return obj;
   }
 

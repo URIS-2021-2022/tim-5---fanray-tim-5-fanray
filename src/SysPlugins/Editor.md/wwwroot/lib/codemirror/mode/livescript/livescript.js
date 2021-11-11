@@ -33,7 +33,8 @@
           stream.next();
           return 'error';
         }
-        if (stream.match(r = Rules[next_rule])) {
+        r = Rules[next_rule];
+        if (stream.match(r)) {
           if (r.regex && stream.match(r.regex)) {
             state.next = r.next;
             return r.token;
