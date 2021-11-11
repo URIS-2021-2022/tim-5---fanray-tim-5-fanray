@@ -64,7 +64,7 @@
     var nameStartChar = "_a-zA-Z\xC0-\xD6\xD8-\xF6\xF8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD";
     var nameChar = nameStartChar + "\\-0-9\xB7\u0300-\u036F\u203F-\u2040";
     var nameRegexp = new RegExp("^[:"+nameStartChar+"](?::["+nameChar+"]|["+nameChar+"]*)");
-    var attributeNameRegexp = new RegExp("^[:"+nameStartChar+"].[:\\"+nameChar+"]*(?=\\s*=)");
+    var attributeNameRegexp = new RegExp("^[:"+nameStartChar+"][:\\"+nameChar+"]*(?=\\s*=)");
     var wrappedAttributeNameRegexp = new RegExp("^[:"+nameStartChar+"][:\\."+nameChar+"]*");
     var classNameRegexp = /^\.-?[_a-zA-Z]+[\w\-]*/;
     var classIdRegexp = /^#[_a-zA-Z]+[\w\-]*/;

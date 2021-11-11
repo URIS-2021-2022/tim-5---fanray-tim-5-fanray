@@ -46,7 +46,7 @@
       stream.next();
       return 'error';
     };
-    var external = {
+    return {
       startState: function(){
         return {
           next: 'start',
@@ -70,7 +70,6 @@
           return state.lastToken.indent;
       }
     };
-    return external;
   });
 
   var identifier = '(?![\\d\\s])[$\\w\\xAA-\\uFFDC](?:(?!\\s)[$\\w\\xAA-\\uFFDC]|-[A-Za-z])*';

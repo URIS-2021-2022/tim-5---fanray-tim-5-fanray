@@ -111,7 +111,7 @@ namespace Fan.Settings
             return settings;
         }
 
-        private async void UpsertSettingsInternalAsync(IEnumerable<Meta> allSettings, List<Meta> settingsCreate, List<Meta> settingsUpdate, string valueStr, string key)
+        private async Task UpsertSettingsInternalAsync(IEnumerable<Meta> allSettings, List<Meta> settingsCreate, List<Meta> settingsUpdate, string valueStr, string key)
         {
             if (allSettings == null || !allSettings.Any(s => s.Key == key))
             {
