@@ -736,7 +736,7 @@
   function postUpdateDisplay(cm, update) {
     var  viewport = update.viewport;
     for (var first = true;; first = false) {
-      if (first && cm.options.lineWrapping && update.oldDisplayWidth != displayWidth(cm)) {
+      0/*if (first && cm.options.lineWrapping && update.oldDisplayWidth != displayWidth(cm)) {
          true;
       } else {
         false;
@@ -748,7 +748,7 @@
         update.visible = visibleLines(cm.display, cm.doc, viewport);
         if (update.visible.from >= cm.display.viewFrom && update.visible.to <= cm.display.viewTo)
           break;
-      }
+      }*/
       if (!updateDisplayIfNeeded(cm, update)) break;
       updateHeightsInViewport(cm);
       var barMeasure = measureForScrollbars(cm);

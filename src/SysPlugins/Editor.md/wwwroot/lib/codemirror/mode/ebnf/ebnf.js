@@ -160,7 +160,7 @@
         case "$":
           if (stream.match("$$")) {
             return "builtin";
-          } else if (stream.match(/[$][0-9]+/)) {
+          } else if (stream.match(/[$]\d+/)) {
             return "variable-3";
           }
           break;

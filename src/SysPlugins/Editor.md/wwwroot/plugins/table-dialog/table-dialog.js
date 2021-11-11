@@ -65,11 +65,11 @@
 		};
 
 		exports.fn.tableDialog = function() {
-			var _this       = this;
+			
 			var cm          = this.cm;
 			var editor      = this.editor;
 			var settings    = this.settings;
-			var path        = settings.path + "../plugins/" + pluginName +"/";
+			
 			var classPrefix = this.classPrefix;
 			var dialogName  = classPrefix + pluginName, dialog;
 

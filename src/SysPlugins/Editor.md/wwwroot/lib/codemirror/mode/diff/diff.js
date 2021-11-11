@@ -21,7 +21,7 @@ CodeMirror.defineMode("diff", function() {
 
   return {
     token: function(stream) {
-      var tw_pos = stream.string.search(/[\t ]+?$/);
+      var tw_pos = stream.string.search(/[\t ]+$/);
 
       if (!stream.sol() || tw_pos === 0) {
         stream.skipToEnd();

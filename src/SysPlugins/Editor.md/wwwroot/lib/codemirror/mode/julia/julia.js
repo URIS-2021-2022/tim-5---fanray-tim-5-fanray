@@ -33,7 +33,7 @@ CodeMirror.defineMode("julia", function(_conf, parserConf) {
   var openers = wordRegexp(blockOpeners);
   var closers = wordRegexp(blockClosers);
   var macro = /^@[_A-Za-z][_A-Za-z0-9]*/;
-  var symbol = /^:[_A-Za-z][_A-Za-z0-9]*/;
+  var symbol = /^:[_A-Za-z]\w*/;
   var indentInfo = null;
 
   function in_array(state) {

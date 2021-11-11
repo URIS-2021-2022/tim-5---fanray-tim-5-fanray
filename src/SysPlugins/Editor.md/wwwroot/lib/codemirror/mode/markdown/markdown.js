@@ -70,10 +70,10 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
 
   var hrRE = /^([*\-=_])(?:\s*\1){2,}\s*$/
   ,   ulRE = /^[*\-+]\s+/
-  ,   olRE = /^[0-9]+\.\s+/
+  ,   olRE = /^\d+\.\s+/
   ,   taskListRE = /^\[(x| )\](?=\s)/ // Must follow ulRE or olRE
   ,   atxHeaderRE = /^#+/
-  ,   setextHeaderRE = /^(?:\={1,}|-{1,})$/
+  ,   setextHeaderRE = /^(?:\=+|-+)$/
   ,   textRE = /^[^#!\[\]*_\\<>` "'(~]+/;
 
   function switchInline(stream, state, f) {

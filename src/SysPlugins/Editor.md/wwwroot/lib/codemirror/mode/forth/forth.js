@@ -119,7 +119,7 @@
           stt.state = '';
           return 'builtin compilation';
         }
-        if (stream.match(/^(POSTPONE)\s+\S+(\s|$)+/)) {
+        if (stream.match(/^(POSTPONE)\s+\S+/)) {
           return 'builtin';
         }
       }
